@@ -1,6 +1,6 @@
 import lateko.dsl.document
-import lateko.dsl.minus
-import lateko.dsl.url
+import lateko.dsl.inline.minus
+import lateko.dsl.inline.url
 
 document {
 	p {

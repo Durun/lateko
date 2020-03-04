@@ -1,6 +1,6 @@
 package lateko.element
 
-import lateko.dsl.text
+import lateko.dsl.inline.text
 import lateko.visitor.InlineVisitor
 import java.net.URL
 

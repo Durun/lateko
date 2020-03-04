@@ -1,5 +1,5 @@
 import lateko.dsl.document
-import lateko.dsl.url
+import lateko.dsl.inline.url
 
 document("サンプル") {
 

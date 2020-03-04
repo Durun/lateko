@@ -1,4 +1,4 @@
-import lateko.dsl.asMarkdown
+import lateko.dsl.inline.asMarkdown
 import lateko.dsl.document
 
 document {

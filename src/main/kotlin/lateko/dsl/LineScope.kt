@@ -1,5 +1,6 @@
 package lateko.dsl
 
+import lateko.dsl.inline.text
 import lateko.element.*
 
 open class LineScope : Builder<LineElement, LineComposition>() {
