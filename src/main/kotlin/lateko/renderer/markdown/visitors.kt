@@ -14,6 +14,8 @@ private val LineElement.renderedLine: String
 	}
 
 internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
+	private fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
+
 	override fun visit(text: Text): String {
 		return text.text
 	}
@@ -28,7 +30,7 @@ internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	}
 
 	override fun visit(code: EmbeddedCode): String {
-		val str = code.takeIf { it.format == EmbeddedCode.Format.Markdown }?.code
+		val str = code.takeIf { it.isEnabled() }?.code
 		return str.orEmpty()
 	}
 
@@ -37,7 +39,10 @@ internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	}
 
 	override fun visit(line: Line): String {
-		return line.element.accept(this) + "\n"
+		val lineStr = line.element.accept(this) + "\n"
+		return lineStr.takeUnless {
+			line.element is EmbeddedCode && !line.element.isEnabled()
+		}.orEmpty()
 	}
 }
 
