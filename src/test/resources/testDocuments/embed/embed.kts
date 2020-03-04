@@ -1,3 +1,4 @@
+import lateko.dsl.asMarkdown
 import lateko.dsl.document
 
 document {
@@ -5,6 +6,6 @@ document {
 		-"text1"
 		-"<!-- This is Markdown comment1 -->".asMarkdown()
 		-"text2"
-		markdown("<!-- This is Markdown comment2 -->")
+		-"<!-- This is Markdown comment2 -->".asMarkdown()
 	}
 }
