@@ -1,9 +1,23 @@
 package lateko.dsl
 
-import lateko.element.EmbeddedCode
-import lateko.element.InlineElement
-import lateko.element.Text
-import lateko.element.UrlText
+import lateko.element.*
+
+operator fun InlineElement.minus(other: InlineElement): InlineElement {
+	return InlineComposition.of(this, other)
+}
+
+operator fun InlineElement.minus(other: String): InlineElement {
+	return this - other.text
+}
+
+operator fun String.minus(other: InlineElement): InlineElement {
+	return this.text - other
+}
+
+@Deprecated("Using + is deprecated.", replaceWith = ReplaceWith("this - other", "lateko.dsl.minus"))
+operator fun InlineElement.plus(other: InlineElement): InlineElement = this - other
+@Deprecated("Using + is deprecated.", replaceWith = ReplaceWith("this - other", "lateko.dsl.minus"))
+operator fun InlineElement.plus(other: String): InlineElement = this - other
 
 fun String.asMarkdown(): EmbeddedCode = this.embed(EmbeddedCode.Format.Markdown)
 fun String.asTex(): EmbeddedCode = this.embed(EmbeddedCode.Format.Tex)

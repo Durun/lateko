@@ -23,7 +23,8 @@ internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	}
 
 	override fun visit(composition: InlineComposition): String {
-		return composition.children.joinToString("") { it.rendered }
+		val childrenStr = composition.children.map { it.accept(this) }
+		return childrenStr.joinToString("")
 	}
 
 	override fun visit(code: EmbeddedCode): String {
@@ -32,11 +33,11 @@ internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	}
 
 	override fun visit(lines: LineComposition): String {
-		return lines.children.joinToString("") { it.renderedLine }
+		return lines.children.joinToString("") { it.accept(this) }
 	}
 
 	override fun visit(line: Line): String {
-		return line.element.rendered + "\n"
+		return line.element.accept(this) + "\n"
 	}
 }
 

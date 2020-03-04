@@ -9,6 +9,11 @@ interface Composition : Element
 
 data class InlineComposition(val children: List<InlineElement>) : Composition, InlineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
+	companion object {
+		fun of(vararg elements: InlineElement): InlineComposition {
+			return InlineComposition(elements.asList())
+		}
+	}
 }
 
 data class Line(val element: InlineElement) : LineElement {
