@@ -2,6 +2,6 @@ package lateko.renderer
 
 interface Renderer
 
-interface MarkdownRenderer: Renderer
+interface MarkdownRenderer : Renderer
 
-interface TexRenderer: Renderer
+interface TexRenderer : Renderer

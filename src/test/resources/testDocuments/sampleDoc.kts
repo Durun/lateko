@@ -1,5 +1,6 @@
 import lateko.dsl.document
 import lateko.dsl.url
+
 document("サンプル") {
 
 	p {

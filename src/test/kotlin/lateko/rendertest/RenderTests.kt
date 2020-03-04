@@ -1,10 +1,7 @@
 package lateko.rendertest
 
-import io.kotest.assertions.forEachAsClue
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import lateko.element.Document
-import lateko.renderer.MarkdownRenderVisitor
 import java.io.File
 import java.nio.file.Path
 import java.nio.file.Paths

@@ -1,3 +1,3 @@
 import lateko.dsl.document
 
-document {  }
+document { }
