@@ -1,15 +1,15 @@
 package lateko.element
 
-import lateko.dsl.InlineScope
+import lateko.dsl.LineScope
 import lateko.visitor.StructureVisitor
 
 
-data class Paragraph(val content: InlineElement) : StructureElement {
+data class Paragraph(val content: LineElement) : StructureElement {
 	override fun <R> accept(visitor: StructureVisitor<R>): R = visitor.visit(this)
 
 	companion object {
-		fun of(content: InlineScope.() -> Unit): Paragraph {
-			val composition = InlineComposition.of(content)
+		fun of(content: LineScope.() -> Unit): Paragraph {
+			val composition = LineComposition.of(content)
 			return Paragraph(composition)
 		}
 	}

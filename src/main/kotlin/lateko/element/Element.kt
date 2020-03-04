@@ -9,6 +9,10 @@ interface InlineElement : Element {
 	fun <R> accept(visitor: InlineVisitor<R>): R
 }
 
+interface LineElement : Element {
+	fun <R> accept(visitor: InlineVisitor<R>): R
+}
+
 interface StructureElement : Element {
 	fun <R> accept(visitor: StructureVisitor<R>): R
 }

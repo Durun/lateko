@@ -25,7 +25,7 @@ open class StructureScope : Builder<StructureElement, StructureComposition>() {
 
 	fun chapter(name: String, content: StructureScope.() -> Unit) = chapter(name.text, content)
 
-	fun p(content: InlineScope.() -> Unit): Paragraph {
+	fun p(content: LineScope.() -> Unit): Paragraph {
 		val paragraph = Paragraph.of(content)
 		elements += paragraph
 		return paragraph

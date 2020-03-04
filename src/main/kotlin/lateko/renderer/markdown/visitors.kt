@@ -8,6 +8,10 @@ private val InlineElement.rendered: String
 	get() {
 		return this.accept(MarkdownInlineRenderVisitor)
 	}
+private val LineElement.renderedLine: String
+	get() {
+		return this.accept(MarkdownInlineRenderVisitor)
+	}
 
 internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	override fun visit(text: Text): String {
@@ -19,9 +23,23 @@ internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	}
 
 	override fun visit(composition: InlineComposition): String {
-		return composition.children.joinToString("\n") { it.rendered }
+		return composition.children.joinToString("") { it.rendered }
+	}
+
+	override fun visit(code: EmbeddedCode): String {
+		val str = code.takeIf { it.format == EmbeddedCode.Format.Markdown }?.code
+		return str.orEmpty()
+	}
+
+	override fun visit(lines: LineComposition): String {
+		return lines.children.joinToString("") { it.renderedLine }
+	}
+
+	override fun visit(line: Line): String {
+		return line.element.rendered + "\n"
 	}
 }
+
 
 internal class MarkdownRenderVisitor : DocumentVisitor<String>
 		, InlineVisitor<String> by MarkdownInlineRenderVisitor {
@@ -33,7 +51,7 @@ internal class MarkdownRenderVisitor : DocumentVisitor<String>
 		}
 
 	override fun visit(paragraph: Paragraph): String {
-		return paragraph.content.rendered + "\n\n"
+		return paragraph.content.renderedLine + "\n"
 	}
 
 	override fun visit(document: Document): String {
