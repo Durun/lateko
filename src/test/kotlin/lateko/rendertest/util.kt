@@ -1,7 +1,7 @@
 package lateko.rendertest
 
 import lateko.element.Document
-import lateko.renderer.MarkdownRenderVisitor
+import lateko.renderer.markdown.BasicMarkdownRenderer
 import java.io.File
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
@@ -20,7 +20,7 @@ internal fun generateDocument(script: File): Document {
 
 internal fun generateMarkdown(document: Document): String {
 	println("Generating Markdown...")
-	return document.accept(MarkdownRenderVisitor())
+	return BasicMarkdownRenderer.render(document)
 }
 
 internal fun generateTex(document: Document): String {

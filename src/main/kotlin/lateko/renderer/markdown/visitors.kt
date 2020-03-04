@@ -1,4 +1,4 @@
-package lateko.renderer
+package lateko.renderer.markdown
 
 import lateko.element.*
 import lateko.visitor.DocumentVisitor
@@ -9,7 +9,7 @@ private val InlineElement.rendered: String
 		return this.accept(MarkdownInlineRenderVisitor)
 	}
 
-object MarkdownInlineRenderVisitor : InlineVisitor<String>, MarkdownRenderer {
+internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	override fun visit(text: Text): String {
 		return text.text
 	}
@@ -23,7 +23,7 @@ object MarkdownInlineRenderVisitor : InlineVisitor<String>, MarkdownRenderer {
 	}
 }
 
-open class MarkdownRenderVisitor : DocumentVisitor<String>, MarkdownRenderer
+internal class MarkdownRenderVisitor : DocumentVisitor<String>
 		, InlineVisitor<String> by MarkdownInlineRenderVisitor {
 	private var sectionNestLevel = 1
 
