@@ -17,7 +17,7 @@ internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 	private fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
 
 	override fun visit(text: Text): String {
-		return text.text
+		return MarkdownEscaper.escape(text.text)
 	}
 
 	override fun visit(urlText: UrlText): String {
