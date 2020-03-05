@@ -10,7 +10,7 @@ import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
 
 
-private val scriptEngine: ScriptEngine = ScriptEngineManager().getEngineByExtension("kts")!!
+internal val scriptEngine: ScriptEngine = ScriptEngineManager().getEngineByExtension("kts")!!
 
 internal fun generateDocument(script: File): Document {
 	val reader = script.reader()

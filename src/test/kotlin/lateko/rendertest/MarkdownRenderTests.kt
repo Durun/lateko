@@ -1,6 +1,6 @@
 package lateko.rendertest
 
-import io.kotest.core.spec.style.StringSpec
+import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import java.io.File
 import java.nio.file.Path
@@ -8,7 +8,7 @@ import java.nio.file.Paths
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
 
-class RenderTests : StringSpec() {
+class MarkdownRenderTests : FunSpec() {
 	private val scriptEngine: ScriptEngine = ScriptEngineManager().getEngineByExtension("kts")!!
 	private val testDocDir: Path
 
@@ -22,16 +22,13 @@ class RenderTests : StringSpec() {
 	private fun testScript(script: File) {
 		val filePair = script.let { file ->
 			val markdown = Paths.get(file.absolutePath + ".md").toFile().takeIf { it.exists() }
-			val tex = Paths.get(file.absolutePath + ".tex").toFile().takeIf { it.exists() }
-			Triple(file, markdown, tex)
+			Pair(file, markdown)
 		}
 
-		filePair.let { (script, mdFile, texFile) ->
+		filePair.let { (script, mdFile) ->
 			val document = generateDocument(script)
 			val markdown = generateMarkdown(document)
-			// TODO: val tex = generateTex(document)
 			markdown shouldBe mdFile?.readText()
-			// TODO: tex shouldBe texFile?.readText()
 		}
 	}
 
@@ -40,7 +37,11 @@ class RenderTests : StringSpec() {
 		dir.walk().toSet()
 				.filter { it.extension == "kts" }
 				.forEach { file ->
-					file.name { testScript(file) }    // Submit test here
+					var enabled: Boolean = true
+					runCatching { generateMarkdown(generateDocument(file)) }
+							.onFailure { enabled = it !is NotImplementedError }
+					if (!Paths.get(file.path + ".md").toFile().exists()) enabled = false
+					test(file.name).config(enabled = enabled) { testScript(file) }    // Submit test here
 				}
 	}
 }
