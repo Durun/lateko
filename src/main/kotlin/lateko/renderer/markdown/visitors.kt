@@ -4,15 +4,6 @@ import lateko.element.*
 import lateko.visitor.DocumentRenderVisitor
 import lateko.visitor.InlineRenderVisitor
 
-private val InlineElement.rendered: String
-	get() {
-		return this.accept(MarkdownInlineRenderVisitor)
-	}
-private val LineElement.renderedLine: String
-	get() {
-		return this.accept(MarkdownInlineRenderVisitor)
-	}
-
 internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {
 	override fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
 
@@ -52,7 +43,7 @@ internal class MarkdownRenderVisitor : DocumentRenderVisitor
 	private var sectionNestLevel = 1
 
 	override fun visit(paragraph: Paragraph): String {
-		return paragraph.content.renderedLine + "\n"
+		return paragraph.content.rendered + "\n"
 	}
 
 	override fun visit(document: Document): String {
@@ -77,11 +68,5 @@ internal class MarkdownRenderVisitor : DocumentRenderVisitor
 		return content
 	}
 
-	override fun visit(composition: StructureComposition): String {
-		return composition.children.joinToString("") { it.rendered }
-	}
-
-	override fun visit(structure: Structure): String {
-		return structure.element.renderedLine
-	}
+	override fun visit(structure: Structure): String = structure.element.rendered
 }

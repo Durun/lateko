@@ -1,14 +1,16 @@
 package lateko.visitor
 
-import lateko.element.EmbeddedCode
-import lateko.element.InlineElement
-import lateko.element.LineElement
-import lateko.element.StructureElement
+import lateko.element.*
 
 interface DocumentRenderVisitor : StructureRenderVisitor, InlineRenderVisitor
+
 interface StructureRenderVisitor : StructureVisitor<String> {
 	val StructureElement.rendered: String
 		get() = this.accept(this@StructureRenderVisitor)
+
+	override fun visit(composition: StructureComposition): String {
+		return composition.children.joinToString("") { it.rendered }
+	}
 }
 
 interface InlineRenderVisitor : InlineVisitor<String> {

@@ -11,10 +11,6 @@ internal class TexRenderVisitor : DocumentRenderVisitor
 	private var sectionNestLevel = 0
 	private var chapterNestLevel = 0
 
-	override fun visit(composition: StructureComposition): String {
-		return composition.children.joinToString("") { it.rendered }
-	}
-
 	override fun visit(paragraph: Paragraph): String = paragraph.content.rendered + "\n"
 
 	override fun visit(section: Section): String {
