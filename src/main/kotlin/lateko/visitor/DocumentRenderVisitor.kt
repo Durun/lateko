@@ -19,6 +19,7 @@ interface InlineRenderVisitor : InlineVisitor<String> {
 	val LineElement.rendered: String
 		get() = this.accept(this@InlineRenderVisitor)
 
+	fun String.escape(): String
 	fun EmbeddedCode.isEnabled(): Boolean
 
 	override fun visit(composition: InlineComposition): String {
@@ -29,6 +30,7 @@ interface InlineRenderVisitor : InlineVisitor<String> {
 		return lines.children.joinToString("") { it.rendered }
 	}
 
+	override fun visit(text: Text): String = text.text.escape()
 	override fun visit(code: EmbeddedCode): String = code.takeIf { it.isEnabled() }?.code.orEmpty()
 
 	override fun visit(line: Line): String {
