@@ -4,19 +4,6 @@ import lateko.element.*
 import lateko.visitor.DocumentRenderVisitor
 import lateko.visitor.InlineRenderVisitor
 
-internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {
-	override fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
-
-	override fun visit(text: Text): String {
-		return MarkdownEscaper.escape(text.text)
-	}
-
-	override fun visit(urlText: UrlText): String {
-		return "[${urlText.text.rendered}](${urlText.url})"
-	}
-}
-
-
 internal class MarkdownRenderVisitor : DocumentRenderVisitor
 		, InlineRenderVisitor by MarkdownInlineRenderVisitor {
 	private var sectionNestLevel = 1
