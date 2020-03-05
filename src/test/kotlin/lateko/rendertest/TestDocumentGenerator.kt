@@ -21,12 +21,21 @@ object TestDocumentGenerator {
 	}
 
 	private fun saveDocumentIfNotExists(ktsFile: File, extension: String, content: Lazy<String>) {
-		val newFile = Paths.get(ktsFile.path + ".$extension").toFile()
-		newFile.takeIf { !it.exists() }?.let { file ->
-			println("Saving as $extension: $file")
+		val file = Paths.get(ktsFile.path + ".$extension").toFile()
+		runCatching {
+			if (file.exists()) throw FileAlreadyExistsException(file)
+			val fileText = content.value
 			file.createNewFile()
-			file.writeText(content.value)
-		} ?: println("Already exists: $newFile")
+			fileText
+		}.onFailure {
+			System.err.println("""Skip saving $extension: $file
+				|	${it::class.simpleName}: ${it.message}
+				|	at ${it.stackTrace.first()}
+			""".trimMargin())
+		}.onSuccess {
+			println("Saving $extension: $file")
+			file.writeText(it)
+		}
 	}
 
 	private fun saveDocuments(script: File) {
@@ -34,7 +43,7 @@ object TestDocumentGenerator {
 		val markdown = lazy { generateMarkdown(document.value) }
 		val tex = lazy { generateTex(document.value) }
 		saveDocumentIfNotExists(ktsFile = script, extension = "md", content = markdown)
-		// TODO: saveDocumentIfNotExists(ktsFile = script, extension = "tex", content = tex)
+		saveDocumentIfNotExists(ktsFile = script, extension = "tex", content = tex)
 		if (document.isInitialized()) println(document.value)
 	}
 }

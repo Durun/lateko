@@ -9,6 +9,7 @@ interface Composition : Element
 
 data class InlineComposition(val children: List<InlineElement>) : Composition, InlineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
+
 	companion object {
 		fun of(vararg elements: InlineElement): InlineComposition {
 			return InlineComposition(elements.asList())
@@ -24,6 +25,7 @@ data class LineComposition(val children: MutableList<LineElement>) : Composition
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 
 	companion object {
+		val empty: LineComposition = LineComposition(mutableListOf())
 		fun of(content: LineScope.() -> Unit): LineComposition {
 			val builder = LineScope()
 			builder.content()
