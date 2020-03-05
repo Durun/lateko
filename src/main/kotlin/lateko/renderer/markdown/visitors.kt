@@ -14,27 +14,6 @@ internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {
 	override fun visit(urlText: UrlText): String {
 		return "[${urlText.text.rendered}](${urlText.url})"
 	}
-
-	override fun visit(composition: InlineComposition): String {
-		val childrenStr = composition.children.map { it.accept(this) }
-		return childrenStr.joinToString("")
-	}
-
-	override fun visit(code: EmbeddedCode): String {
-		val str = code.takeIf { it.isEnabled() }?.code
-		return str.orEmpty()
-	}
-
-	override fun visit(lines: LineComposition): String {
-		return lines.children.joinToString("") { it.accept(this) }
-	}
-
-	override fun visit(line: Line): String {
-		val lineStr = line.element.accept(this) + "\n"
-		return lineStr.takeUnless {
-			line.element is EmbeddedCode && !line.element.isEnabled()
-		}.orEmpty()
-	}
 }
 
 

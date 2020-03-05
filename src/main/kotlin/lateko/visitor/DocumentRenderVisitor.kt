@@ -20,4 +20,21 @@ interface InlineRenderVisitor : InlineVisitor<String> {
 		get() = this.accept(this@InlineRenderVisitor)
 
 	fun EmbeddedCode.isEnabled(): Boolean
+
+	override fun visit(composition: InlineComposition): String {
+		return composition.children.joinToString("") { it.rendered }
+	}
+
+	override fun visit(lines: LineComposition): String {
+		return lines.children.joinToString("") { it.rendered }
+	}
+
+	override fun visit(code: EmbeddedCode): String = code.takeIf { it.isEnabled() }?.code.orEmpty()
+
+	override fun visit(line: Line): String {
+		val lineStr = line.element.accept(this) + "\n"
+		return lineStr.takeUnless {
+			line.element is EmbeddedCode && !line.element.isEnabled()
+		}.orEmpty()
+	}
 }
