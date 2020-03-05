@@ -5,6 +5,7 @@ import lateko.element.*
 interface DocumentVisitor<R> : StructureVisitor<R>, InlineVisitor<R>
 
 interface StructureVisitor<R> {
+	fun visit(structure: Structure): R
 	fun visit(composition: StructureComposition): R
 	fun visit(paragraph: Paragraph): R
 	fun visit(section: Section): R

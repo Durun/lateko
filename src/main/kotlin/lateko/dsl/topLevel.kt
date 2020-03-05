@@ -1,5 +1,6 @@
 package lateko.dsl
 
+import lateko.command.DocumentClass
 import lateko.element.Document
 import lateko.element.StructureComposition
 
@@ -8,7 +9,6 @@ fun document(name: String? = null, content: StructureScope.() -> Unit): Document
 fun texDocument(title: String?, header: TexHeaderScope.() -> Unit, content: StructureScope.() -> Unit): Document {
 	val headerBuilder = TexHeaderScope()
 	headerBuilder.apply {
-		documentClass("jsbook", "a4paper","11pt","oneside","openany","report")
 		title?.let { title(it) }
 		header()
 	}

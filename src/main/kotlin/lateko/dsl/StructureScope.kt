@@ -1,6 +1,5 @@
 package lateko.dsl
 
-import lateko.command.Command
 import lateko.command.TexCommand
 import lateko.dsl.inline.text
 import lateko.element.*
@@ -12,7 +11,7 @@ open class StructureScope : Builder<StructureElement, StructureComposition>() {
 		return this.copy(children = children.sortedBy { it is Section || it is Chapter })
 	}
 
-	private fun TexCommand.toParagraph(): Paragraph = Paragraph(Line(EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex)))
+	private fun TexCommand.toLine(): Structure = Structure(Line(EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex)))
 
 	protected fun <T : StructureElement> addStructure(content: StructureScope.() -> Unit, constructor: (StructureElement) -> T): T {
 		val builder = StructureScope()
@@ -22,7 +21,7 @@ open class StructureScope : Builder<StructureElement, StructureComposition>() {
 		return element
 	}
 
-	fun makeTitle(): Paragraph = TexCommand("maketitle").toParagraph().adding()
+	fun makeTitle(): Structure = TexCommand("maketitle").toLine().adding()
 
 	fun section(name: InlineElement? = null, content: StructureScope.() -> Unit): Section = addStructure(content) { Section(name = name, content = it) }
 

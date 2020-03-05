@@ -2,7 +2,6 @@ package lateko.renderer.tex
 
 import lateko.command.Begin
 import lateko.command.End
-import lateko.command.TexCommand
 import lateko.element.*
 import lateko.visitor.DocumentVisitor
 import lateko.visitor.InlineVisitor
@@ -65,4 +64,6 @@ internal class TexRenderVisitor : DocumentVisitor<String>
 			|${document.content.rendered}
 			|${End("document")}""".trimMargin()
 	}
+
+	override fun visit(structure: Structure): String = structure.element.rendered
 }

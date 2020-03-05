@@ -85,4 +85,8 @@ internal class MarkdownRenderVisitor : DocumentVisitor<String>
 	override fun visit(composition: StructureComposition): String {
 		return composition.children.joinToString("") { it.rendered }
 	}
+
+	override fun visit(structure: Structure): String {
+		return structure.element.renderedLine
+	}
 }
