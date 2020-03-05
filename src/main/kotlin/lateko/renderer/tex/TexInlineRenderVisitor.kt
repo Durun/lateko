@@ -1,10 +1,10 @@
 package lateko.renderer.tex
 
 import lateko.element.*
-import lateko.visitor.InlineVisitor
+import lateko.visitor.InlineRenderVisitor
 
 
-internal object TexInlineRenderVisitor : InlineVisitor<String> {
+internal object TexInlineRenderVisitor : InlineRenderVisitor {
 	private val InlineElement.rendered: String
 		get() {
 			return this.accept(TexInlineRenderVisitor)

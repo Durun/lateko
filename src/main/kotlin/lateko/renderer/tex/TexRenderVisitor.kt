@@ -3,11 +3,11 @@ package lateko.renderer.tex
 import lateko.command.Begin
 import lateko.command.End
 import lateko.element.*
-import lateko.visitor.DocumentVisitor
-import lateko.visitor.InlineVisitor
+import lateko.visitor.DocumentRenderVisitor
+import lateko.visitor.InlineRenderVisitor
 
-internal class TexRenderVisitor : DocumentVisitor<String>
-		, InlineVisitor<String> by TexInlineRenderVisitor {
+internal class TexRenderVisitor : DocumentRenderVisitor
+		, InlineRenderVisitor by TexInlineRenderVisitor {
 	private var sectionNestLevel = 0
 	private var chapterNestLevel = 0
 

@@ -1,8 +1,8 @@
 package lateko.renderer.markdown
 
 import lateko.element.*
-import lateko.visitor.DocumentVisitor
-import lateko.visitor.InlineVisitor
+import lateko.visitor.DocumentRenderVisitor
+import lateko.visitor.InlineRenderVisitor
 
 private val InlineElement.rendered: String
 	get() {
@@ -13,7 +13,7 @@ private val LineElement.renderedLine: String
 		return this.accept(MarkdownInlineRenderVisitor)
 	}
 
-internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
+internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {
 	private fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
 
 	override fun visit(text: Text): String {
@@ -47,8 +47,8 @@ internal object MarkdownInlineRenderVisitor : InlineVisitor<String> {
 }
 
 
-internal class MarkdownRenderVisitor : DocumentVisitor<String>
-		, InlineVisitor<String> by MarkdownInlineRenderVisitor {
+internal class MarkdownRenderVisitor : DocumentRenderVisitor
+		, InlineRenderVisitor by MarkdownInlineRenderVisitor {
 	private var sectionNestLevel = 1
 
 	private val StructureElement.rendered: String
