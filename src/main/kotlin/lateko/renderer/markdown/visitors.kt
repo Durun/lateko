@@ -14,7 +14,7 @@ private val LineElement.renderedLine: String
 	}
 
 internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {
-	private fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
+	override fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
 
 	override fun visit(text: Text): String {
 		return MarkdownEscaper.escape(text.text)
@@ -50,11 +50,6 @@ internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {
 internal class MarkdownRenderVisitor : DocumentRenderVisitor
 		, InlineRenderVisitor by MarkdownInlineRenderVisitor {
 	private var sectionNestLevel = 1
-
-	private val StructureElement.rendered: String
-		get() {
-			return this.accept(this@MarkdownRenderVisitor)
-		}
 
 	override fun visit(paragraph: Paragraph): String {
 		return paragraph.content.renderedLine + "\n"

@@ -11,19 +11,6 @@ internal class TexRenderVisitor : DocumentRenderVisitor
 	private var sectionNestLevel = 0
 	private var chapterNestLevel = 0
 
-	private val InlineElement.rendered: String
-		get() {
-			return this.accept(TexInlineRenderVisitor)
-		}
-	private val LineElement.rendered: String
-		get() {
-			return this.accept(TexInlineRenderVisitor)
-		}
-	private val StructureElement.rendered: String
-		get() {
-			return this.accept(this@TexRenderVisitor)
-		}
-
 	override fun visit(composition: StructureComposition): String {
 		return composition.children.joinToString("") { it.rendered }
 	}

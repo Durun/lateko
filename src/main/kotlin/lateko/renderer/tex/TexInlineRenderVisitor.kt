@@ -5,16 +5,7 @@ import lateko.visitor.InlineRenderVisitor
 
 
 internal object TexInlineRenderVisitor : InlineRenderVisitor {
-	private val InlineElement.rendered: String
-		get() {
-			return this.accept(TexInlineRenderVisitor)
-		}
-	private val LineElement.rendered: String
-		get() {
-			return this.accept(TexInlineRenderVisitor)
-		}
-
-	private fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Tex
+	override fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Tex
 
 	override fun visit(text: Text): String = TexEscaper.escape(text.text)
 
