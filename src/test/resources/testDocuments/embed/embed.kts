@@ -2,7 +2,7 @@ import lateko.dsl.inline.asMarkdown
 import lateko.dsl.document
 import lateko.dsl.inline.asTex
 
-document {
+document("Embed") {
 	p {
 		-"text1"
 		-"<!-- This is Markdown comment1 -->".asMarkdown()

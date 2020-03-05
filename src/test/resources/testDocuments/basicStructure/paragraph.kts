@@ -1,6 +1,6 @@
 import lateko.dsl.document
 
-document {
+document("Paragraph") {
 	p { -"A paragraph in Document." }
 
 	chapter("Chapter1") {

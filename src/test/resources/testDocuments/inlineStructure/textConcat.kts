@@ -2,7 +2,7 @@ import lateko.dsl.document
 import lateko.dsl.inline.minus
 import lateko.dsl.inline.url
 
-document {
+document("TextConcat") {
 	p {
 		-("a" + "b")
 	}
