@@ -17,5 +17,6 @@ operator fun String.minus(other: InlineElement): InlineElement {
 
 @Deprecated("Using + is deprecated.", replaceWith = ReplaceWith("this - other", "lateko.dsl.inline.minus"))
 operator fun InlineElement.plus(other: InlineElement): InlineElement = this - other
+
 @Deprecated("Using + is deprecated.", replaceWith = ReplaceWith("this - other", "lateko.dsl.inline.minus"))
 operator fun InlineElement.plus(other: String): InlineElement = this - other

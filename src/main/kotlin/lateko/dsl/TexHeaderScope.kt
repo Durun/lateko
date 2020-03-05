@@ -6,10 +6,11 @@ import lateko.element.Line
 import lateko.element.LineComposition
 import lateko.element.LineElement
 
-open class TexHeaderScope() : Builder<LineElement, LineComposition>() {
+open class TexHeaderScope : Builder<LineElement, LineComposition>() {
 	companion object {
-		private val defaultDocumentClass = DocumentClass(name = "jsbook", options = listOf("a4paper","11pt","oneside","openany","report"))
+		private val defaultDocumentClass = DocumentClass(name = "jsbook", options = listOf("a4paper", "11pt", "oneside", "openany", "report"))
 	}
+
 	private val format = EmbeddedCode.Format.Tex
 	private fun Command.toLine(): Line = Line(EmbeddedCode(this.toString(), format = format))
 
@@ -27,7 +28,7 @@ open class TexHeaderScope() : Builder<LineElement, LineComposition>() {
 
 	fun date(date: String): Line = Date(date).toLine().adding()
 
-	override fun build(): LineComposition{
+	override fun build(): LineComposition {
 		elements.add(index = 0, element = documentClass.toLine())
 		return LineComposition(elements)
 	}

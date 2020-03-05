@@ -1,7 +1,6 @@
 package lateko.rendertest
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.io.File
 import java.nio.file.Path

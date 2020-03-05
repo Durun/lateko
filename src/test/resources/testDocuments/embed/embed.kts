@@ -1,5 +1,5 @@
-import lateko.dsl.inline.asMarkdown
 import lateko.dsl.document
+import lateko.dsl.inline.asMarkdown
 import lateko.dsl.inline.asTex
 
 document("Embed") {

@@ -1,7 +1,10 @@
 package lateko.dsl
 
 import lateko.dsl.inline.text
-import lateko.element.*
+import lateko.element.InlineElement
+import lateko.element.Line
+import lateko.element.LineComposition
+import lateko.element.LineElement
 
 open class LineScope : Builder<LineElement, LineComposition>() {
 	operator fun InlineElement.unaryMinus() {
@@ -16,7 +19,6 @@ open class LineScope : Builder<LineElement, LineComposition>() {
 		return LineComposition(elements)
 	}
 
-	companion object {
-	}
+	companion object
 }
 
