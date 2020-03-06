@@ -1,6 +1,5 @@
 package lateko.element
 
-import lateko.dsl.inline.LineScope
 import lateko.visitor.InlineVisitor
 import lateko.visitor.StructureVisitor
 
@@ -35,18 +34,18 @@ interface Line : LineElement {
 
 private data class LineData(override val element: InlineElement) : Line
 
-data class LineComposition(val children: List<LineElement>) : Composition, LineElement {
+interface LineComposition : Composition, LineElement {
+	val children: List<LineElement>
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 
 	companion object {
-		val empty: LineComposition = LineComposition(mutableListOf())
-		fun of(content: LineScope.() -> Unit): LineComposition {
-			val builder = LineScope()
-			builder.content()
-			return builder.build()
+		fun Iterable<LineElement>.toComposition(): LineComposition {
+			return LineCompositionData(this.toList())
 		}
 	}
 }
+
+private data class LineCompositionData(override val children: List<LineElement>) : LineComposition
 
 interface Structure : StructureElement {
 	val element: LineElement
@@ -70,4 +69,4 @@ interface StructureComposition : Composition, StructureElement {
 	}
 }
 
-data class StructureCompositionData(override val children: List<StructureElement>) : StructureComposition
+private data class StructureCompositionData(override val children: List<StructureElement>) : StructureComposition

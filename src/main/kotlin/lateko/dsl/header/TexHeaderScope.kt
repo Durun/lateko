@@ -6,6 +6,7 @@ import lateko.element.EmbeddedCode
 import lateko.element.Line
 import lateko.element.Line.Companion.toLine
 import lateko.element.LineComposition
+import lateko.element.LineComposition.Companion.toComposition
 import lateko.element.LineElement
 
 open class TexHeaderScope : Builder<LineElement, LineComposition>() {
@@ -32,6 +33,6 @@ open class TexHeaderScope : Builder<LineElement, LineComposition>() {
 
 	override fun build(): LineComposition {
 		documentClass.toLine().addingFirst()
-		return LineComposition(elements)
+		return elements.toComposition()
 	}
 }
