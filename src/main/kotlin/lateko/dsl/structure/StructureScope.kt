@@ -20,9 +20,7 @@ open class StructureScope : Builder<StructureElement, StructureComposition>() {
 		}
 	}
 
-	private fun TexCommand.toLine(): Structure = Structure(Line(EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex)))
-
-	fun makeTitle(): Structure = TexCommand("maketitle").toLine().adding()
+	fun TexCommand.toLine(): Structure = Structure(Line(EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex)))
 
 	fun section(name: InlineElement? = null, content: StructureScope.() -> Unit): Section = Section(name = name, content = content.build()).adding()
 
@@ -36,4 +34,3 @@ open class StructureScope : Builder<StructureElement, StructureComposition>() {
 
 	override fun build(): StructureComposition = StructureComposition(elements)
 }
-
