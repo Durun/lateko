@@ -5,8 +5,8 @@ import lateko.model.structure.Chapter
 import lateko.model.structure.Paragraph
 import lateko.model.structure.Section
 import lateko.model.structure.Structure
-import lateko.visitor.DocumentRenderVisitor
-import lateko.visitor.InlineRenderVisitor
+import lateko.renderer.common.DocumentRenderVisitor
+import lateko.renderer.common.InlineRenderVisitor
 
 internal class MarkdownRenderVisitor : DocumentRenderVisitor
 		, InlineRenderVisitor by MarkdownInlineRenderVisitor {

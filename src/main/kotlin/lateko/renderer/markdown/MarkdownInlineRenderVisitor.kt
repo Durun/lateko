@@ -2,7 +2,7 @@ package lateko.renderer.markdown
 
 import lateko.model.inline.EmbeddedCode
 import lateko.model.inline.UrlText
-import lateko.visitor.InlineRenderVisitor
+import lateko.renderer.common.InlineRenderVisitor
 
 internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {
 	override fun String.escape(): String = MarkdownEscaper.escape(this)

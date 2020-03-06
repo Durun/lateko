@@ -1,0 +1,3 @@
+package lateko.renderer.common
+
+interface DocumentRenderVisitor : StructureRenderVisitor, InlineRenderVisitor

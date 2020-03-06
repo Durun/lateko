@@ -1,4 +1,4 @@
-package lateko.visitor
+package lateko.renderer.common
 
 import lateko.model.inline.EmbeddedCode
 import lateko.model.inline.InlineComposition
@@ -7,19 +7,7 @@ import lateko.model.inline.Text
 import lateko.model.line.Line
 import lateko.model.line.LineComposition
 import lateko.model.line.LineElement
-import lateko.model.structure.StructureComposition
-import lateko.model.structure.StructureElement
-
-interface DocumentRenderVisitor : StructureRenderVisitor, InlineRenderVisitor
-
-interface StructureRenderVisitor : StructureVisitor<String> {
-	val StructureElement.rendered: String
-		get() = this.accept(this@StructureRenderVisitor)
-
-	override fun visit(composition: StructureComposition): String {
-		return composition.children.joinToString("") { it.rendered }
-	}
-}
+import lateko.visitor.InlineVisitor
 
 interface InlineRenderVisitor : InlineVisitor<String> {
 	val InlineElement.rendered: String
