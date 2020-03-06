@@ -1,6 +1,6 @@
-package lateko.dsl
+package lateko.dsl.inline
 
-import lateko.dsl.inline.text
+import lateko.dsl.Builder
 import lateko.element.InlineElement
 import lateko.element.Line
 import lateko.element.LineComposition
@@ -16,12 +16,10 @@ open class LineScope : Builder<LineElement, LineComposition>() {
 	}
 
 	operator fun InlineElement.unaryMinus() {
-		elements += Line(this)
+		Line(this).adding()
 	}
 
-	operator fun String.unaryMinus() {
-		-this.text
-	}
+	operator fun String.unaryMinus() = -this.text
 
 	override fun build(): LineComposition = LineComposition(elements)
 }
