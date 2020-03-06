@@ -3,7 +3,11 @@ package lateko.renderer.tex
 import lateko.command.Begin
 import lateko.command.End
 import lateko.dsl.structure.IllegalNestError
-import lateko.model.*
+import lateko.model.Document
+import lateko.model.structure.Chapter
+import lateko.model.structure.Paragraph
+import lateko.model.structure.Section
+import lateko.model.structure.Structure
 import lateko.visitor.DocumentRenderVisitor
 import lateko.visitor.InlineRenderVisitor
 

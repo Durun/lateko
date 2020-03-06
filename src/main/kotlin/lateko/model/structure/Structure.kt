@@ -1,5 +1,6 @@
-package lateko.model
+package lateko.model.structure
 
+import lateko.model.line.LineElement
 import lateko.visitor.StructureVisitor
 
 interface Structure : StructureElement {

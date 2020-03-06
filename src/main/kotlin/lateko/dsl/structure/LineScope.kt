@@ -1,10 +1,10 @@
 package lateko.dsl.structure
 
 import lateko.dsl.Builder
-import lateko.model.InlineElement
-import lateko.model.LineComposition
-import lateko.model.LineComposition.Companion.toComposition
-import lateko.model.LineElement
+import lateko.model.inline.InlineElement
+import lateko.model.line.LineComposition
+import lateko.model.line.LineComposition.Companion.toComposition
+import lateko.model.line.LineElement
 
 open class LineScope : Builder<LineElement>() {
 	companion object {

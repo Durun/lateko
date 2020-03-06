@@ -1,6 +1,6 @@
 package lateko.dsl.inline
 
-import lateko.model.InlineElement
+import lateko.model.inline.InlineElement
 import lateko.model.inline.UrlText
 
 

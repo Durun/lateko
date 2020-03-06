@@ -1,7 +1,6 @@
 package lateko.model.inline
 
 import lateko.dsl.inline.text
-import lateko.model.InlineElement
 import lateko.visitor.InlineVisitor
 
 data class UrlText(

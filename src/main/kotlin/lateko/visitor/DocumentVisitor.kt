@@ -1,9 +1,13 @@
 package lateko.visitor
 
-import lateko.model.*
+import lateko.model.Document
 import lateko.model.inline.EmbeddedCode
+import lateko.model.inline.InlineComposition
 import lateko.model.inline.Text
 import lateko.model.inline.UrlText
+import lateko.model.line.Line
+import lateko.model.line.LineComposition
+import lateko.model.structure.*
 
 interface DocumentVisitor<R> : StructureVisitor<R>, InlineVisitor<R>
 

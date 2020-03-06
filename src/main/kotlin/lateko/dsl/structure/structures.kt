@@ -3,8 +3,12 @@ package lateko.dsl.structure
 import lateko.dsl.inline.text
 import lateko.dsl.structure.LineScope.Companion.build
 import lateko.dsl.structure.StructureScope.Companion.build
-import lateko.model.*
-import lateko.model.Line.Companion.toLine
+import lateko.model.inline.InlineElement
+import lateko.model.line.Line
+import lateko.model.line.Line.Companion.toLine
+import lateko.model.structure.Chapter
+import lateko.model.structure.Paragraph
+import lateko.model.structure.Section
 
 fun StructureScope.chapter(name: InlineElement, content: StructureScope.() -> Unit): Chapter = Chapter(name = name, content = content.build()).adding()
 fun StructureScope.chapter(name: String, content: StructureScope.() -> Unit) = chapter(name.text, content)

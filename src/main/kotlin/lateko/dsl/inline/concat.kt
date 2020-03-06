@@ -1,7 +1,7 @@
 package lateko.dsl.inline
 
-import lateko.model.InlineComposition.Companion.toComposition
-import lateko.model.InlineElement
+import lateko.model.inline.InlineComposition.Companion.toComposition
+import lateko.model.inline.InlineElement
 
 operator fun InlineElement.minus(other: InlineElement): InlineElement {
 	return listOf(this, other).toComposition()

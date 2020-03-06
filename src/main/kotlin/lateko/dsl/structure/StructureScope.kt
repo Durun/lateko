@@ -2,11 +2,11 @@ package lateko.dsl.structure
 
 import lateko.command.TexCommand
 import lateko.dsl.Builder
-import lateko.model.*
-import lateko.model.Line.Companion.toLine
-import lateko.model.Structure.Companion.toStructure
-import lateko.model.StructureComposition.Companion.toComposition
 import lateko.model.inline.EmbeddedCode
+import lateko.model.line.Line.Companion.toLine
+import lateko.model.structure.*
+import lateko.model.structure.Structure.Companion.toStructure
+import lateko.model.structure.StructureComposition.Companion.toComposition
 
 open class StructureScope : Builder<StructureElement>() {
 	companion object {

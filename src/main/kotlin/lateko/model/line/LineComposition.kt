@@ -1,5 +1,6 @@
-package lateko.model
+package lateko.model.line
 
+import lateko.model.Composition
 import lateko.visitor.InlineVisitor
 
 interface LineComposition : Composition<LineElement>, LineElement {

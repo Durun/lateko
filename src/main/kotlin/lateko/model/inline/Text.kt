@@ -1,6 +1,5 @@
 package lateko.model.inline
 
-import lateko.model.InlineElement
 import lateko.visitor.InlineVisitor
 
 data class Text(val text: String) : InlineElement {

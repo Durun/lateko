@@ -1,5 +1,7 @@
 package lateko.model
 
+import lateko.model.line.LineElement
+import lateko.model.structure.StructureElement
 import lateko.visitor.DocumentVisitor
 import lateko.visitor.StructureVisitor
 

@@ -1,6 +1,5 @@
 package lateko.model.inline
 
-import lateko.model.InlineElement
 import lateko.visitor.InlineVisitor
 
 data class EmbeddedCode(val code: String, val format: Format) : InlineElement {

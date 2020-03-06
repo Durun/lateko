@@ -1,5 +1,6 @@
-package lateko.model
+package lateko.model.inline
 
+import lateko.model.Composition
 import lateko.visitor.InlineVisitor
 
 interface InlineComposition : Composition<InlineElement>, InlineElement {
