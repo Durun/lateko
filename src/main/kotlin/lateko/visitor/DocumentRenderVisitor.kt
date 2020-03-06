@@ -1,6 +1,8 @@
 package lateko.visitor
 
 import lateko.model.*
+import lateko.model.inline.EmbeddedCode
+import lateko.model.inline.Text
 
 interface DocumentRenderVisitor : StructureRenderVisitor, InlineRenderVisitor
 

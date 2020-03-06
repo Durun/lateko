@@ -1,6 +1,6 @@
 package lateko.dsl.inline
 
-import lateko.model.EmbeddedCode
+import lateko.model.inline.EmbeddedCode
 
 
 fun String.asMarkdown(): EmbeddedCode = this.embed(EmbeddedCode.Format.Markdown)

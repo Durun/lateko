@@ -6,6 +6,7 @@ import lateko.model.*
 import lateko.model.Line.Companion.toLine
 import lateko.model.Structure.Companion.toStructure
 import lateko.model.StructureComposition.Companion.toComposition
+import lateko.model.inline.EmbeddedCode
 
 open class StructureScope : Builder<StructureElement>() {
 	companion object {
