@@ -30,7 +30,7 @@ open class TexHeaderScope : Builder<LineElement, LineComposition>() {
 	fun date(date: String): Line = Date(date).toLine().adding()
 
 	override fun build(): LineComposition {
-		elements.add(index = 0, element = documentClass.toLine())
+		documentClass.toLine().addingFirst()
 		return LineComposition(elements)
 	}
 }

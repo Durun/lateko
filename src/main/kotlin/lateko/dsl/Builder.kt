@@ -10,6 +10,11 @@ abstract class Builder<E : Element, C : Composition> {
 		return this
 	}
 
+	fun <T : E> T.addingFirst(): T {
+		elements.add(index = 0, element = this)
+		return this
+	}
+
 	abstract fun build(): C
 }
 
