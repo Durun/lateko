@@ -8,7 +8,7 @@ import lateko.element.LineComposition
 import lateko.element.LineComposition.Companion.toComposition
 import lateko.element.LineElement
 
-open class LineScope : Builder<LineElement, LineComposition>() {
+open class LineScope : Builder<LineElement>() {
 	companion object {
 		fun (LineScope.() -> Unit).build(): LineComposition {
 			val builder = LineScope()

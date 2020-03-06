@@ -3,9 +3,9 @@ package lateko.element
 import lateko.visitor.InlineVisitor
 import lateko.visitor.StructureVisitor
 
-interface Composition : Element
+interface Composition<E : Element> : Element
 
-interface InlineComposition : Composition, InlineElement {
+interface InlineComposition : Composition<InlineElement>, InlineElement {
 	val children: List<InlineElement>
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 
@@ -34,7 +34,7 @@ interface Line : LineElement {
 
 private data class LineData(override val element: InlineElement) : Line
 
-interface LineComposition : Composition, LineElement {
+interface LineComposition : Composition<LineElement>, LineElement {
 	val children: List<LineElement>
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 
@@ -58,7 +58,7 @@ interface Structure : StructureElement {
 
 private data class StructureData(override val element: LineElement) : Structure
 
-interface StructureComposition : Composition, StructureElement {
+interface StructureComposition : Composition<StructureElement>, StructureElement {
 	val children: List<StructureElement>
 	override fun <R> accept(visitor: StructureVisitor<R>): R = visitor.visit(this)
 

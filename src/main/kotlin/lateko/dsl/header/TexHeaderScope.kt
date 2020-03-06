@@ -9,7 +9,7 @@ import lateko.element.LineComposition
 import lateko.element.LineComposition.Companion.toComposition
 import lateko.element.LineElement
 
-open class TexHeaderScope : Builder<LineElement, LineComposition>() {
+open class TexHeaderScope : Builder<LineElement>() {
 	companion object {
 		private val defaultDocumentClass = DocumentClass(name = "jsbook", options = listOf("a4paper", "11pt", "oneside", "openany", "report"))
 	}

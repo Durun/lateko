@@ -3,7 +3,7 @@ package lateko.dsl
 import lateko.element.Composition
 import lateko.element.Element
 
-abstract class Builder<E : Element, C : Composition> {
+abstract class Builder<E : Element> {
 	private val mutableElements: MutableList<E> = mutableListOf()
 	protected val elements: List<E> get() = mutableElements
 
@@ -17,7 +17,7 @@ abstract class Builder<E : Element, C : Composition> {
 		return this
 	}
 
-	abstract fun build(): C
+	abstract fun build(): Composition<E>
 }
 
 
