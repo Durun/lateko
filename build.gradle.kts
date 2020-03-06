@@ -22,14 +22,16 @@ dependencies {
 	// Align versions of all Kotlin components.
 	implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
+	implementation(kotlin("reflect"))
+
 	// Use the Kotlin JDK 8 standard library.
 	implementation(kotlin("stdlib-jdk8"))
 
 	// Use the Kotlin Script library.
-	implementation(kotlin("script-runtime:$kotlinVersion"))
-	implementation(kotlin("script-util:$kotlinVersion"))
-	implementation(kotlin("compiler-embeddable:$kotlinVersion"))
-	implementation(kotlin("scripting-compiler-embeddable:$kotlinVersion"))
+	implementation(kotlin("script-runtime"))
+	implementation(kotlin("script-util"))
+	implementation(kotlin("compiler-embeddable"))
+	implementation(kotlin("scripting-compiler-embeddable"))
 
 	// Use the Kotlin test library.
 	val kotestVersion = "4.0.0-BETA1"
