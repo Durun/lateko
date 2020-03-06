@@ -2,12 +2,12 @@ package lateko.dsl.header
 
 import lateko.command.*
 import lateko.dsl.Builder
-import lateko.element.EmbeddedCode
-import lateko.element.Line
-import lateko.element.Line.Companion.toLine
-import lateko.element.LineComposition
-import lateko.element.LineComposition.Companion.toComposition
-import lateko.element.LineElement
+import lateko.model.EmbeddedCode
+import lateko.model.Line
+import lateko.model.Line.Companion.toLine
+import lateko.model.LineComposition
+import lateko.model.LineComposition.Companion.toComposition
+import lateko.model.LineElement
 
 open class TexHeaderScope : Builder<LineElement>() {
 	companion object {

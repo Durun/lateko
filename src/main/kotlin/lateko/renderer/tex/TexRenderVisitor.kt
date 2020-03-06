@@ -2,7 +2,7 @@ package lateko.renderer.tex
 
 import lateko.command.Begin
 import lateko.command.End
-import lateko.element.*
+import lateko.model.*
 import lateko.visitor.DocumentRenderVisitor
 import lateko.visitor.InlineRenderVisitor
 

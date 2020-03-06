@@ -1,6 +1,6 @@
 package lateko.renderer.markdown
 
-import lateko.element.*
+import lateko.model.*
 import lateko.visitor.DocumentRenderVisitor
 import lateko.visitor.InlineRenderVisitor
 

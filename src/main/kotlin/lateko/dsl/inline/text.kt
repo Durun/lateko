@@ -1,6 +1,6 @@
 package lateko.dsl.inline
 
-import lateko.element.Text
+import lateko.model.Text
 
 
 val String.text: Text get() = Text(this)

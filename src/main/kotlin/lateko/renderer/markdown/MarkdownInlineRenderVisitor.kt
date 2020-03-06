@@ -1,7 +1,7 @@
 package lateko.renderer.markdown
 
-import lateko.element.EmbeddedCode
-import lateko.element.UrlText
+import lateko.model.EmbeddedCode
+import lateko.model.UrlText
 import lateko.visitor.InlineRenderVisitor
 
 internal object MarkdownInlineRenderVisitor : InlineRenderVisitor {

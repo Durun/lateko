@@ -1,7 +1,7 @@
 package lateko.dsl
 
-import lateko.element.Composition
-import lateko.element.Element
+import lateko.model.Composition
+import lateko.model.Element
 
 abstract class Builder<E : Element> {
 	private val mutableElements: MutableList<E> = mutableListOf()

@@ -1,8 +1,8 @@
 package lateko.renderer.tex
 
 import lateko.command.TexCommand
-import lateko.element.EmbeddedCode
-import lateko.element.UrlText
+import lateko.model.EmbeddedCode
+import lateko.model.UrlText
 import lateko.visitor.InlineRenderVisitor
 
 

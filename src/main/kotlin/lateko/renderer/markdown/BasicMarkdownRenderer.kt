@@ -1,6 +1,6 @@
 package lateko.renderer.markdown
 
-import lateko.element.Document
+import lateko.model.Document
 import lateko.renderer.MarkdownRenderer
 
 object BasicMarkdownRenderer : MarkdownRenderer {

@@ -1,6 +1,6 @@
 package lateko.visitor
 
-import lateko.element.*
+import lateko.model.*
 
 interface DocumentVisitor<R> : StructureVisitor<R>, InlineVisitor<R>
 

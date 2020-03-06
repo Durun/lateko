@@ -1,4 +1,4 @@
-package lateko.element
+package lateko.model
 
 import lateko.dsl.inline.text
 import lateko.visitor.InlineVisitor

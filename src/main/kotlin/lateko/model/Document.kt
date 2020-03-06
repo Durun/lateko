@@ -1,4 +1,4 @@
-package lateko.element
+package lateko.model
 
 import lateko.visitor.DocumentVisitor
 import lateko.visitor.StructureVisitor

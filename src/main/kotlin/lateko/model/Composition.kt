@@ -1,3 +1,3 @@
-package lateko.element
+package lateko.model
 
 interface Composition<E : Element> : Element

@@ -1,7 +1,7 @@
 package lateko.dsl.inline
 
-import lateko.element.InlineElement
-import lateko.element.UrlText
+import lateko.model.InlineElement
+import lateko.model.UrlText
 
 
 fun InlineElement.url(url: String): UrlText = UrlText.of(url = url, text = this)

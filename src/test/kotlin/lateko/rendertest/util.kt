@@ -1,6 +1,6 @@
 package lateko.rendertest
 
-import lateko.element.Document
+import lateko.model.Document
 import lateko.renderer.MarkdownRenderer
 import lateko.renderer.TexRenderer
 import lateko.renderer.markdown.BasicMarkdownRenderer
