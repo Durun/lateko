@@ -4,14 +4,16 @@ import lateko.element.Composition
 import lateko.element.Element
 
 abstract class Builder<E : Element, C : Composition> {
-	protected val elements: MutableList<E> = mutableListOf()
+	private val mutableElements: MutableList<E> = mutableListOf()
+	protected val elements: List<E> get() = mutableElements
+
 	fun <T : E> T.adding(): T {
-		elements += this
+		mutableElements += this
 		return this
 	}
 
 	fun <T : E> T.addingFirst(): T {
-		elements.add(index = 0, element = this)
+		mutableElements.add(index = 0, element = this)
 		return this
 	}
 

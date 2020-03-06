@@ -21,7 +21,7 @@ data class Line(val element: InlineElement) : LineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 }
 
-data class LineComposition(val children: MutableList<LineElement>) : Composition, LineElement { // TODO: MutableList -> List
+data class LineComposition(val children: List<LineElement>) : Composition, LineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 
 	companion object {
