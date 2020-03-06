@@ -1,7 +1,11 @@
 package lateko.command
 
 class DocumentClass(options: List<String>, name: String) : TexCommand("documentclass", options, arg = name)
-class UsePackage(options: List<String>, name: String) : TexCommand("usepackage", options, arg = name)
+class UsePackage(options: List<String>, name: String) : TexCommand("usepackage", options, arg = name) {
+	constructor(name: String) : this(options = emptyList(), name = name)
+	constructor(name: String, option: String) : this(options = listOf(option), name = name)
+}
+
 class RequirePackage(name: String) : TexCommand("RequirePackage", arg = name)
 class Title(name: String) : TexCommand("title", arg = name)
 class Author(name: String) : TexCommand("author", arg = name)

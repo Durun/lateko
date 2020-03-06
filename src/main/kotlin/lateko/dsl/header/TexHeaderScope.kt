@@ -12,15 +12,24 @@ import lateko.element.LineElement
 open class TexHeaderScope : Builder<LineElement>() {
 	companion object {
 		private val defaultDocumentClass = DocumentClass(name = "jsbook", options = listOf("a4paper", "11pt", "oneside", "openany", "report"))
+		private val defaultUsePackages = listOf(
+				UsePackage(name = "hyperref", option = "dvipdfmx"),
+				UsePackage(name = "pxjahyper")
+		)
 	}
 
 	private val format = EmbeddedCode.Format.Tex
 	private fun Command.toLine(): Line = EmbeddedCode(this.toString(), format = format).toLine()
 
 	private var documentClass = defaultDocumentClass
+	private var usePackages = defaultUsePackages.toMutableList()
 
 	fun documentClass(className: String, vararg options: String) {
 		documentClass = DocumentClass(name = className, options = options.asList())
+	}
+
+	fun usePackage(packageName: String, vararg options: String) {
+		usePackages.add(UsePackage(name = packageName, options = options.asList()))
 	}
 
 	internal fun title(title: String): Line {
@@ -32,7 +41,12 @@ open class TexHeaderScope : Builder<LineElement>() {
 	fun date(date: String): Line = Date(date).toLine().adding()
 
 	override fun build(): LineComposition {
-		documentClass.toLine().addingFirst()
+		val header =
+				listOf(documentClass) +
+						usePackages
+		header.asReversed().forEach {
+			it.toLine().addingFirst()
+		}
 		return elements.toComposition()
 	}
 }

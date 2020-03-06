@@ -1,7 +1,6 @@
 package lateko.renderer.markdown
 
 import lateko.element.EmbeddedCode
-import lateko.element.Text
 import lateko.element.UrlText
 import lateko.visitor.InlineRenderVisitor
 
