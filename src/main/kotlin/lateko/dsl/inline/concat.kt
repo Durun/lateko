@@ -1,10 +1,10 @@
 package lateko.dsl.inline
 
-import lateko.element.InlineComposition
+import lateko.element.InlineComposition.Companion.toComposition
 import lateko.element.InlineElement
 
 operator fun InlineElement.minus(other: InlineElement): InlineElement {
-	return InlineComposition.of(this, other)
+	return listOf(this, other).toComposition()
 }
 
 operator fun InlineElement.minus(other: String): InlineElement {
