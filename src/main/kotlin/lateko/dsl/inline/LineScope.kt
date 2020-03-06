@@ -3,6 +3,7 @@ package lateko.dsl.inline
 import lateko.dsl.Builder
 import lateko.element.InlineElement
 import lateko.element.Line
+import lateko.element.Line.Companion.toLine
 import lateko.element.LineComposition
 import lateko.element.LineElement
 
@@ -21,5 +22,5 @@ open class LineScope : Builder<LineElement, LineComposition>() {
 	override fun build(): LineComposition = LineComposition(elements)
 }
 
-fun LineScope.line(element: InlineElement) = Line(element).adding()
+fun LineScope.line(element: InlineElement): Line = element.toLine().adding()
 

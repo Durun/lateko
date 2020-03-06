@@ -17,9 +17,16 @@ data class InlineComposition(val children: List<InlineElement>) : Composition, I
 	}
 }
 
-data class Line(val element: InlineElement) : LineElement {
+interface Line : LineElement {
+	val element: InlineElement
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
+
+	companion object {
+		fun InlineElement.toLine(): Line = LineData(this)
+	}
 }
+
+private data class LineData(override val element: InlineElement) : Line
 
 data class LineComposition(val children: List<LineElement>) : Composition, LineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)

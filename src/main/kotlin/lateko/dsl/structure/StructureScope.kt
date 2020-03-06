@@ -3,6 +3,7 @@ package lateko.dsl.structure
 import lateko.command.TexCommand
 import lateko.dsl.Builder
 import lateko.element.*
+import lateko.element.Line.Companion.toLine
 
 open class StructureScope : Builder<StructureElement, StructureComposition>() {
 	companion object {
@@ -17,7 +18,7 @@ open class StructureScope : Builder<StructureElement, StructureComposition>() {
 		}
 	}
 
-	fun TexCommand.toLine(): Structure = Structure(Line(EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex)))
+	fun TexCommand.toLine(): Structure = Structure(EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex).toLine())
 
 
 	override fun build(): StructureComposition = StructureComposition(elements)

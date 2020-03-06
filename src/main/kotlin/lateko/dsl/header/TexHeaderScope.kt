@@ -4,6 +4,7 @@ import lateko.command.*
 import lateko.dsl.Builder
 import lateko.element.EmbeddedCode
 import lateko.element.Line
+import lateko.element.Line.Companion.toLine
 import lateko.element.LineComposition
 import lateko.element.LineElement
 
@@ -13,7 +14,7 @@ open class TexHeaderScope : Builder<LineElement, LineComposition>() {
 	}
 
 	private val format = EmbeddedCode.Format.Tex
-	private fun Command.toLine(): Line = Line(EmbeddedCode(this.toString(), format = format))
+	private fun Command.toLine(): Line = EmbeddedCode(this.toString(), format = format).toLine()
 
 	private var documentClass = defaultDocumentClass
 

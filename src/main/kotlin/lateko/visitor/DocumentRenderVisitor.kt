@@ -36,7 +36,8 @@ interface InlineRenderVisitor : InlineVisitor<String> {
 	override fun visit(line: Line): String {
 		val lineStr = line.element.accept(this) + "\n"
 		return lineStr.takeUnless {
-			line.element is EmbeddedCode && !line.element.isEnabled()
+			val e = line.element
+			e is EmbeddedCode && !e.isEnabled()
 		}.orEmpty()
 	}
 }
