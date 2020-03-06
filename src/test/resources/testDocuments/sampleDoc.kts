@@ -1,5 +1,7 @@
 import lateko.dsl.document
 import lateko.dsl.inline.url
+import lateko.dsl.structure.chapter
+import lateko.dsl.structure.section
 
 document("サンプル") {
 

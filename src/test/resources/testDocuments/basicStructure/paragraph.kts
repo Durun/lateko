@@ -1,4 +1,6 @@
 import lateko.dsl.document
+import lateko.dsl.structure.chapter
+import lateko.dsl.structure.section
 
 document("Paragraph") {
 	p { -"A paragraph in Document." }
