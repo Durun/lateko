@@ -1,6 +1,8 @@
-package lateko.dsl
+package lateko.dsl.structure
 
 import lateko.command.TexCommand
+import lateko.dsl.Builder
+import lateko.dsl.LineScope
 import lateko.dsl.inline.text
 import lateko.element.*
 

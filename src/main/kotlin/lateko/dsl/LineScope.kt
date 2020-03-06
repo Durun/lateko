@@ -18,7 +18,5 @@ open class LineScope : Builder<LineElement, LineComposition>() {
 	override fun build(): LineComposition {
 		return LineComposition(elements)
 	}
-
-	companion object
 }
 

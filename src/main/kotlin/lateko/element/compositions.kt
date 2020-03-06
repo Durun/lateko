@@ -1,7 +1,7 @@
 package lateko.element
 
 import lateko.dsl.LineScope
-import lateko.dsl.StructureScope
+import lateko.dsl.structure.StructureScope
 import lateko.visitor.InlineVisitor
 import lateko.visitor.StructureVisitor
 
