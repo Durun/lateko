@@ -13,10 +13,6 @@ interface InlineComposition : Composition<InlineElement>, InlineElement {
 		fun Iterable<InlineElement>.toComposition(): InlineComposition {
 			return InlineCompositionData(this.toList())
 		}
-
-		fun of(vararg elements: InlineElement): InlineComposition {
-			return elements.asIterable().toComposition()
-		}
 	}
 }
 
