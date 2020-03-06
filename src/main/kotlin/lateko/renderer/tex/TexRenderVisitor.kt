@@ -6,7 +6,6 @@ import lateko.dsl.structure.IllegalNestError
 import lateko.model.*
 import lateko.visitor.DocumentRenderVisitor
 import lateko.visitor.InlineRenderVisitor
-import org.jetbrains.kotlin.org.jdom.IllegalNameException
 
 internal class TexRenderVisitor : DocumentRenderVisitor
 		, InlineRenderVisitor by TexInlineRenderVisitor {
