@@ -49,9 +49,16 @@ data class LineComposition(val children: List<LineElement>) : Composition, LineE
 	}
 }
 
-data class Structure(val element: LineElement) : StructureElement {
+interface Structure : StructureElement {
+	val element: LineElement
 	override fun <R> accept(visitor: StructureVisitor<R>): R = visitor.visit(this)
+
+	companion object {
+		fun LineElement.toStructure(): Structure = StructureData(this)
+	}
 }
+
+private data class StructureData(override val element: LineElement) : Structure
 
 data class StructureComposition(val children: List<StructureElement>) : Composition, StructureElement {
 	override fun <R> accept(visitor: StructureVisitor<R>): R = visitor.visit(this)

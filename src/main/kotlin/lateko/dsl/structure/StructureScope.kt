@@ -4,6 +4,7 @@ import lateko.command.TexCommand
 import lateko.dsl.Builder
 import lateko.element.*
 import lateko.element.Line.Companion.toLine
+import lateko.element.Structure.Companion.toStructure
 
 open class StructureScope : Builder<StructureElement, StructureComposition>() {
 	companion object {
@@ -18,7 +19,7 @@ open class StructureScope : Builder<StructureElement, StructureComposition>() {
 		}
 	}
 
-	fun TexCommand.toLine(): Structure = Structure(EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex).toLine())
+	fun TexCommand.toLine(): Structure = EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex).toLine().toStructure()
 
 
 	override fun build(): StructureComposition = StructureComposition(elements)
