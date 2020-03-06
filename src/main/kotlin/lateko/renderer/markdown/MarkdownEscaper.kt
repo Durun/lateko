@@ -12,8 +12,8 @@ object MarkdownEscaper : Escaper {
 	)
 
 	override fun escape(text: String): String {
-		return escapeMap.fold(text) { text, (before, after) ->
-			text.replace(before, after)
+		return escapeMap.fold(text) { acc, (before, after) ->
+			acc.replace(before, after)
 		}
 	}
 }
