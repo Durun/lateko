@@ -7,15 +7,23 @@ import lateko.visitor.StructureVisitor
 
 interface Composition : Element
 
-data class InlineComposition(val children: List<InlineElement>) : Composition, InlineElement {
+interface InlineComposition : Composition, InlineElement {
+	val children: List<InlineElement>
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 
 	companion object {
+		fun Iterable<InlineElement>.toComposition(): InlineComposition {
+			return InlineCompositionData(this.toList())
+		}
+
 		fun of(vararg elements: InlineElement): InlineComposition {
-			return InlineComposition(elements.asList())
+			return elements.asIterable().toComposition()
 		}
 	}
 }
+
+private data class InlineCompositionData(override val children: List<InlineElement>) : InlineComposition
+
 
 interface Line : LineElement {
 	val element: InlineElement
