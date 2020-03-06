@@ -1,6 +1,7 @@
 import lateko.dsl.document
 import lateko.dsl.inline.asMarkdown
 import lateko.dsl.inline.asTex
+import lateko.dsl.structure.p
 
 document("Embed") {
 	p {

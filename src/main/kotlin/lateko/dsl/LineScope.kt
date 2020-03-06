@@ -23,8 +23,6 @@ open class LineScope : Builder<LineElement, LineComposition>() {
 		-this.text
 	}
 
-	override fun build(): LineComposition {
-		return LineComposition(elements)
-	}
+	override fun build(): LineComposition = LineComposition(elements)
 }
 

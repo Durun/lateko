@@ -1,6 +1,7 @@
 import lateko.dsl.document
 import lateko.dsl.inline.minus
 import lateko.dsl.inline.url
+import lateko.dsl.structure.p
 
 document("TextConcat") {
 	p {

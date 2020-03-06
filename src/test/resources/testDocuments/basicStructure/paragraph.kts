@@ -1,5 +1,6 @@
 import lateko.dsl.document
 import lateko.dsl.structure.chapter
+import lateko.dsl.structure.p
 import lateko.dsl.structure.section
 
 document("Paragraph") {

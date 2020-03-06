@@ -8,9 +8,7 @@ internal class MarkdownRenderVisitor : DocumentRenderVisitor
 		, InlineRenderVisitor by MarkdownInlineRenderVisitor {
 	private var sectionNestLevel = 1
 
-	override fun visit(paragraph: Paragraph): String {
-		return paragraph.content.rendered + "\n"
-	}
+	override fun visit(paragraph: Paragraph): String = paragraph.content.rendered + "\n"
 
 	override fun visit(document: Document): String {
 		val title = document.name?.let { "# ${it.trim()}\n" }.orEmpty()
@@ -18,6 +16,7 @@ internal class MarkdownRenderVisitor : DocumentRenderVisitor
 	}
 
 	override fun visit(section: Section): String {
+		assert(sectionNestLevel >= 1)
 		sectionNestLevel++
 		val sectionName = section.name?.rendered ?: "　"
 		val content = "#".repeat(sectionNestLevel) + " " + sectionName.trim() + "\n" +
@@ -27,6 +26,7 @@ internal class MarkdownRenderVisitor : DocumentRenderVisitor
 	}
 
 	override fun visit(chapter: Chapter): String {
+		assert(sectionNestLevel >= 1)
 		sectionNestLevel++
 		val content = "#".repeat(sectionNestLevel) + " " + chapter.name.rendered.trim() + "\n" +
 				chapter.content.rendered
