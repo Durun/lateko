@@ -16,4 +16,5 @@ fun StructureScope.chapter(name: String, content: StructureScope.() -> Unit) = c
 fun StructureScope.section(name: InlineElement? = null, content: StructureScope.() -> Unit): Section = Section(name = name, content = content.build()).adding()
 fun StructureScope.section(name: String, content: StructureScope.() -> Unit) = section(name.text, content)
 
-fun StructureScope.p(content: LineScope.() -> Unit): Paragraph = Paragraph(content.build()).adding()
+fun StructureScope.paragraph(content: LineScope.() -> Unit): Paragraph = Paragraph(content.build()).adding()
+fun StructureScope.p(content: LineScope.() -> Unit): Paragraph = paragraph(content)
