@@ -1,6 +1,7 @@
-package lateko.dsl
+package lateko.dsl.header
 
 import lateko.command.*
+import lateko.dsl.Builder
 import lateko.element.EmbeddedCode
 import lateko.element.Line
 import lateko.element.LineComposition
