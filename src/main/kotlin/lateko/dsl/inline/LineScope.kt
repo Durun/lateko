@@ -15,12 +15,11 @@ open class LineScope : Builder<LineElement, LineComposition>() {
 		}
 	}
 
-	operator fun InlineElement.unaryMinus() {
-		Line(this).adding()
-	}
-
+	operator fun InlineElement.unaryMinus() = line(this)
 	operator fun String.unaryMinus() = -this.text
 
 	override fun build(): LineComposition = LineComposition(elements)
 }
+
+fun LineScope.line(element: InlineElement) = Line(element).adding()
 
