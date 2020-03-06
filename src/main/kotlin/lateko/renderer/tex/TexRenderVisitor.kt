@@ -2,9 +2,11 @@ package lateko.renderer.tex
 
 import lateko.command.Begin
 import lateko.command.End
+import lateko.dsl.structure.IllegalNestError
 import lateko.model.*
 import lateko.visitor.DocumentRenderVisitor
 import lateko.visitor.InlineRenderVisitor
+import org.jetbrains.kotlin.org.jdom.IllegalNameException
 
 internal class TexRenderVisitor : DocumentRenderVisitor
 		, InlineRenderVisitor by TexInlineRenderVisitor {
@@ -21,7 +23,7 @@ internal class TexRenderVisitor : DocumentRenderVisitor
 			1 -> lateko.command.Section(sectionName)
 			2 -> lateko.command.SubSection(sectionName)
 			3 -> lateko.command.SubSubSection(sectionName)
-			else -> throw Exception("Too many section nest level.") // TODO TooManyNestError
+			else -> throw IllegalNestError("Too many section nest.")
 		}
 		val content = "$sectionCommand\n${section.content.rendered}"
 		sectionNestLevel--
@@ -31,8 +33,8 @@ internal class TexRenderVisitor : DocumentRenderVisitor
 	override fun visit(chapter: Chapter): String {
 		assert(chapterNestLevel >= 0)
 		chapterNestLevel++
-		if (sectionNestLevel != 0) throw Exception("Chapter must not be in a section.") // TODO
-		if (chapterNestLevel > 1) throw Exception("Too many chapter nest level.") // TODO
+		if (sectionNestLevel != 0) throw IllegalNestError("Chapter must not be in a section.")
+		if (chapterNestLevel > 1) throw IllegalNestError("Too many chapter nest.")
 
 		val chapterName = chapter.name.rendered
 		val chapterCommand = lateko.command.Chapter(chapterName)
