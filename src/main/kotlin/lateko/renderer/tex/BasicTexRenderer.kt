@@ -5,7 +5,6 @@ import lateko.dsl.structure.IllegalNestError
 import lateko.model.Document
 import lateko.model.inline.EmbeddedCode
 import lateko.model.inline.InlineElement
-import lateko.model.inline.UrlText
 import lateko.model.line.LineElement
 import lateko.model.structure.Chapter
 import lateko.model.structure.Paragraph
@@ -24,25 +23,21 @@ object BasicTexRenderer : TexRenderer {
 			TexInlineRenderVisitor,
 			StructureRenderVisitor by TexStructureRenderVisitor()
 
-	private interface TexInlineRenderVisitor : TexInlineRenderVisitorCore, TexUrlRenderVisitor
+
+	private interface TexInlineRenderVisitor :
+			TexInlineRenderVisitorCore,
+			TexUrlRenderVisitor
 
 	private interface TexInlineRenderVisitorCore : InlineRenderVisitor {
 		override fun String.escape(): String = TexEscaper.escape(this)
 		override fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Tex
 	}
 
-	private interface TexUrlRenderVisitor : InlineRenderVisitor {
-		override fun visit(urlText: UrlText): String {
-			val text = urlText.text.rendered
-			val url = urlText.url
-			return if (text == url)
-				SimpleTexCommand("url", arg = url).toString()
-			else
-				SimpleTexCommand("href", args = listOf(url, text)).toString()
-		}
-	}
 
-	private class TexStructureRenderVisitor : StructureRenderVisitor {
+	private class TexStructureRenderVisitor :
+			StructureRenderVisitor by TexStructureRenderVisitorCore()
+
+	private class TexStructureRenderVisitorCore : StructureRenderVisitor {
 		private object V : TexInlineRenderVisitor
 
 		private val InlineElement.rendered: String
