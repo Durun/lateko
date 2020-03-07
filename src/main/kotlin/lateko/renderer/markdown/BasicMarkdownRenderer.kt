@@ -1,5 +1,6 @@
 package lateko.renderer.markdown
 
+import lateko.command.markdown.Header
 import lateko.model.Document
 import lateko.model.inline.EmbeddedCode
 import lateko.model.inline.UrlText
@@ -32,25 +33,24 @@ object BasicMarkdownRenderer : MarkdownRenderer {
 		override fun visit(paragraph: Paragraph): String = paragraph.content.rendered + "\n"
 
 		override fun visit(document: Document): String {
-			val title = document.name?.let { "# ${it.trim()}\n" }.orEmpty()
+			val title = document.name?.let { Header(level = 1, text = it).toString() }.orEmpty()
 			return title + document.content.rendered
 		}
 
 		override fun visit(section: Section): String {
-			assert(sectionNestLevel >= 1)
 			sectionNestLevel++
-			val sectionName = section.name?.rendered ?: "　"
-			val content = "#".repeat(sectionNestLevel) + " " + sectionName.trim() + "\n" +
-					section.content.rendered
+			val content =
+					Header(level = sectionNestLevel, text = section.name?.rendered).toString() +
+							section.content.rendered
 			sectionNestLevel--
 			return content
 		}
 
 		override fun visit(chapter: Chapter): String {
-			assert(sectionNestLevel >= 1)
 			sectionNestLevel++
-			val content = "#".repeat(sectionNestLevel) + " " + chapter.name.rendered.trim() + "\n" +
-					chapter.content.rendered
+			val content =
+					Header(level = sectionNestLevel, text = chapter.name.rendered).toString() +
+							chapter.content.rendered
 			sectionNestLevel--
 			return content
 		}
