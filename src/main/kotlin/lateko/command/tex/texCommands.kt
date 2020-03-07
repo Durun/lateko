@@ -19,3 +19,8 @@ class UsePackage(options: List<String>, name: String) : SimpleTexCommand("usepac
 	constructor(name: String) : this(options = emptyList(), name = name)
 	constructor(name: String, option: String) : this(options = listOf(option), name = name)
 }
+
+class BoldText(text: String) : FontTexCommand(style = "bf", text = text)
+class ItalicText(text: String) : FontTexCommand(style = "sl", text = text)
+class StrongItalicText(text: String) : FontTexCommand(style = "it", text = text)
+class TypewriterText(text: String) : FontTexCommand(style = "tt", text = text)
