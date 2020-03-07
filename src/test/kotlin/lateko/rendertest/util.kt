@@ -1,10 +1,10 @@
 package lateko.rendertest
 
 import lateko.model.Document
-import lateko.renderer.MarkdownRenderer
-import lateko.renderer.TexRenderer
 import lateko.renderer.markdown.BasicMarkdownRenderer
+import lateko.renderer.markdown.MarkdownRenderer
 import lateko.renderer.tex.BasicTexRenderer
+import lateko.renderer.tex.TexRenderer
 import java.io.File
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager

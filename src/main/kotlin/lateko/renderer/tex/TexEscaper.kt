@@ -1,6 +1,6 @@
 package lateko.renderer.tex
 
-import lateko.renderer.Escaper
+import lateko.renderer.common.Escaper
 
 object TexEscaper : Escaper {
 	private val escapeMap = listOf(

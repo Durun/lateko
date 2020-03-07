@@ -1,6 +1,6 @@
 package lateko.renderer.markdown
 
-import lateko.renderer.Escaper
+import lateko.renderer.common.Escaper
 
 object MarkdownEscaper : Escaper {
 	private val escapeMap = listOf(

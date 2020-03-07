@@ -11,7 +11,6 @@ import lateko.model.structure.Chapter
 import lateko.model.structure.Paragraph
 import lateko.model.structure.Section
 import lateko.model.structure.Structure
-import lateko.renderer.TexRenderer
 import lateko.renderer.common.DocumentRenderVisitor
 import lateko.renderer.common.InlineRenderVisitor
 
