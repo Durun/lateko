@@ -1,8 +1,6 @@
 package lateko.renderer.tex
 
-import lateko.command.Begin
-import lateko.command.End
-import lateko.command.TexCommand
+import lateko.command.tex.*
 import lateko.dsl.structure.IllegalNestError
 import lateko.model.Document
 import lateko.model.inline.EmbeddedCode
@@ -45,9 +43,9 @@ object BasicTexRenderer : TexRenderer {
 			sectionNestLevel++
 			val sectionName = section.name?.rendered.orEmpty()
 			val sectionCommand = when (sectionNestLevel) {
-				1 -> lateko.command.Section(sectionName)
-				2 -> lateko.command.SubSection(sectionName)
-				3 -> lateko.command.SubSubSection(sectionName)
+				1 -> Section(sectionName)
+				2 -> SubSection(sectionName)
+				3 -> SubSubSection(sectionName)
 				else -> throw IllegalNestError("Too many section nest.")
 			}
 			val content = "$sectionCommand\n${section.content.rendered}"
@@ -62,7 +60,7 @@ object BasicTexRenderer : TexRenderer {
 			if (chapterNestLevel > 1) throw IllegalNestError("Too many chapter nest.")
 
 			val chapterName = chapter.name.rendered
-			val chapterCommand = lateko.command.Chapter(chapterName)
+			val chapterCommand = Chapter(chapterName)
 			val content = "$chapterCommand\n${chapter.content.rendered}"
 			chapterNestLevel--
 			return content

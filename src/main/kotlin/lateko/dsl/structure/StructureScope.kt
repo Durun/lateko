@@ -1,6 +1,6 @@
 package lateko.dsl.structure
 
-import lateko.command.TexCommand
+import lateko.command.tex.TexCommand
 import lateko.dsl.Builder
 import lateko.model.inline.EmbeddedCode
 import lateko.model.line.Line.Companion.toLine

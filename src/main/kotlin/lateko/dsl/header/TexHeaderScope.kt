@@ -1,6 +1,7 @@
 package lateko.dsl.header
 
-import lateko.command.*
+import lateko.command.Command
+import lateko.command.tex.*
 import lateko.dsl.Builder
 import lateko.model.inline.EmbeddedCode
 import lateko.model.line.Line
