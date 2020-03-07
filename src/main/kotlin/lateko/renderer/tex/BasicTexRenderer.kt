@@ -25,9 +25,9 @@ object BasicTexRenderer : TexRenderer {
 			val text = urlText.text.rendered
 			val url = urlText.url
 			return if (text == url)
-				TexCommand("url", arg = url).toString()
+				SimpleTexCommand("url", arg = url).toString()
 			else
-				TexCommand("href", args = listOf(url, text)).toString()
+				SimpleTexCommand("href", args = listOf(url, text)).toString()
 		}
 	}
 
