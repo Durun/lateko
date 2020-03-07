@@ -28,7 +28,8 @@ object TestDocumentGenerator {
 			file.createNewFile()
 			fileText
 		}.onFailure {
-			System.err.println("""Skip saving $extension: $file
+			val out = if (it is FileAlreadyExistsException) System.out else System.err
+			out.println("""Skip saving $extension: $file
 				|	${it::class.simpleName}: ${it.message}
 				|	at ${it.stackTrace.first()}
 			""".trimMargin())
