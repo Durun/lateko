@@ -15,4 +15,7 @@ interface InlineVisitor<R> {
 
 	// URL
 	fun visit(urlText: UrlText): R
+
+	// StyledText
+	fun visit(text: StyledText): R
 }

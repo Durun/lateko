@@ -6,7 +6,8 @@ import lateko.renderer.tex.TexEscaper
 
 internal interface TexInlineRenderVisitor :
 		TexCoreInlineRenderVisitor,
-		TexUrlRenderVisitor
+		TexUrlRenderVisitor,
+		TexStyledTextRenderVisitor
 
 internal interface TexCoreInlineRenderVisitor : InlineRenderVisitor {
 	override fun String.escape(): String = TexEscaper.escape(this)
