@@ -8,4 +8,3 @@ data class UrlText(
 ) : InlineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 }
-

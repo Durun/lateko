@@ -4,23 +4,34 @@ import lateko.command.tex.*
 import lateko.dsl.structure.IllegalNestError
 import lateko.model.Document
 import lateko.model.inline.EmbeddedCode
+import lateko.model.inline.InlineElement
 import lateko.model.inline.UrlText
+import lateko.model.line.LineElement
 import lateko.model.structure.Chapter
 import lateko.model.structure.Paragraph
 import lateko.model.structure.Section
 import lateko.model.structure.Structure
 import lateko.renderer.common.DocumentRenderVisitor
 import lateko.renderer.common.InlineRenderVisitor
+import lateko.renderer.common.StructureRenderVisitor
 
 object BasicTexRenderer : TexRenderer {
 	override fun render(document: Document): String {
 		return TexRenderVisitor().visit(document)
 	}
 
-	private object TexInlineRenderVisitor : InlineRenderVisitor {
+	private class TexRenderVisitor : DocumentRenderVisitor,
+			TexInlineRenderVisitor,
+			StructureRenderVisitor by TexStructureRenderVisitor()
+
+	private interface TexInlineRenderVisitor : TexInlineRenderVisitorCore, TexUrlRenderVisitor
+
+	private interface TexInlineRenderVisitorCore : InlineRenderVisitor {
 		override fun String.escape(): String = TexEscaper.escape(this)
 		override fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Tex
+	}
 
+	private interface TexUrlRenderVisitor : InlineRenderVisitor {
 		override fun visit(urlText: UrlText): String {
 			val text = urlText.text.rendered
 			val url = urlText.url
@@ -31,8 +42,14 @@ object BasicTexRenderer : TexRenderer {
 		}
 	}
 
-	private class TexRenderVisitor : DocumentRenderVisitor
-			, InlineRenderVisitor by TexInlineRenderVisitor {
+	private class TexStructureRenderVisitor : StructureRenderVisitor {
+		private object V : TexInlineRenderVisitor
+
+		private val InlineElement.rendered: String
+			get() = this.accept(V)
+		private val LineElement.rendered: String
+			get() = this.accept(V)
+
 		private var sectionNestLevel = 0
 		private var chapterNestLevel = 0
 
