@@ -1,13 +1,9 @@
 package lateko.renderer.common
 
-import lateko.model.inline.EmbeddedCode
-import lateko.model.inline.InlineComposition
-import lateko.model.inline.InlineElement
-import lateko.model.inline.Text
+import lateko.model.inline.*
 import lateko.model.line.Line
 import lateko.model.line.LineComposition
 import lateko.model.line.LineElement
-import lateko.visitor.InlineVisitor
 
 interface InlineRenderVisitor : InlineVisitor<String> {
 	val InlineElement.rendered: String

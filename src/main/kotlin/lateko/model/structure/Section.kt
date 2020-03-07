@@ -1,7 +1,6 @@
 package lateko.model.structure
 
 import lateko.model.inline.InlineElement
-import lateko.visitor.StructureVisitor
 
 data class Section(
 		val content: StructureElement,

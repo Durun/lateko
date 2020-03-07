@@ -1,7 +1,7 @@
 package lateko.model.line
 
 import lateko.model.Composition
-import lateko.visitor.InlineVisitor
+import lateko.model.inline.InlineVisitor
 
 interface LineComposition : Composition<LineElement>, LineElement {
 	val children: List<LineElement>

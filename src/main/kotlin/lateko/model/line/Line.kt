@@ -1,7 +1,7 @@
 package lateko.model.line
 
 import lateko.model.inline.InlineElement
-import lateko.visitor.InlineVisitor
+import lateko.model.inline.InlineVisitor
 
 interface Line : LineElement {
 	val element: InlineElement

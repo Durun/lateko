@@ -1,7 +1,6 @@
 package lateko.model.structure
 
 import lateko.model.Composition
-import lateko.visitor.StructureVisitor
 
 interface StructureComposition : Composition<StructureElement>, StructureElement {
 	val children: List<StructureElement>

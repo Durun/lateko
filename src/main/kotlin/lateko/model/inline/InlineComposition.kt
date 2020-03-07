@@ -1,7 +1,6 @@
 package lateko.model.inline
 
 import lateko.model.Composition
-import lateko.visitor.InlineVisitor
 
 interface InlineComposition : Composition<InlineElement>, InlineElement {
 	val children: List<InlineElement>

@@ -2,7 +2,7 @@ package lateko.renderer.common
 
 import lateko.model.structure.StructureComposition
 import lateko.model.structure.StructureElement
-import lateko.visitor.StructureVisitor
+import lateko.model.structure.StructureVisitor
 
 interface StructureRenderVisitor : StructureVisitor<String> {
 	val StructureElement.rendered: String
