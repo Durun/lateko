@@ -9,3 +9,7 @@ class Header(val level: Int, val text: String?) : MarkdownCommand {
 		return "#".repeat(level) + " " + escapedText + "\n"
 	}
 }
+
+class Link(val url: String, val element: String = url) : MarkdownCommand {
+	override fun toString(): String = "[$element]($url)"
+}

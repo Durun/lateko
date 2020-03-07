@@ -1,6 +1,7 @@
 package lateko.renderer.markdown
 
 import lateko.command.markdown.Header
+import lateko.command.markdown.Link
 import lateko.model.Document
 import lateko.model.inline.EmbeddedCode
 import lateko.model.inline.UrlText
@@ -21,9 +22,7 @@ object BasicMarkdownRenderer : MarkdownRenderer {
 		override fun String.escape(): String = MarkdownEscaper.escape(this)
 		override fun EmbeddedCode.isEnabled(): Boolean = this.format == EmbeddedCode.Format.Markdown
 
-		override fun visit(urlText: UrlText): String {
-			return "[${urlText.text.rendered}](${urlText.url})"
-		}
+		override fun visit(urlText: UrlText): String = Link(url = urlText.url, element = urlText.text.rendered).toString()
 	}
 
 	private class MarkdownRenderVisitor : DocumentRenderVisitor
@@ -33,8 +32,8 @@ object BasicMarkdownRenderer : MarkdownRenderer {
 		override fun visit(paragraph: Paragraph): String = paragraph.content.rendered + "\n"
 
 		override fun visit(document: Document): String {
-			val title = document.name?.let { Header(level = 1, text = it).toString() }.orEmpty()
-			return title + document.content.rendered
+			return Header(level = 1, text = document.name).toString() +
+					document.content.rendered
 		}
 
 		override fun visit(section: Section): String {
