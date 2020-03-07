@@ -20,8 +20,8 @@ class UsePackage(options: List<String>, name: String) : SimpleTexCommand("usepac
 	constructor(name: String, option: String) : this(options = listOf(option), name = name)
 }
 
-class BoldText(text: String) : FontTexCommand(style = "bf", text = text)
-class ItalicText(text: String) : FontTexCommand(style = "sl", text = text)
-class StrongItalicText(text: String) : FontTexCommand(style = "it", text = text)
-class TypewriterText(text: String) : FontTexCommand(style = "tt", text = text)
-class SmallCapsText(text: String) : FontTexCommand(style = "sc", text = text)
+class BoldText(text: String) : SimpleTexCommand("textbf", arg = text)
+class ItalicText(text: String) : SimpleTexCommand("textsl", arg = text)
+class StrongItalicText(text: String) : SimpleTexCommand("textit", arg = text)
+class TypewriterText(text: String) : SimpleTexCommand("texttt", arg = text)
+class SmallCapsText(text: String) : SimpleTexCommand("textsc", arg = text)
