@@ -38,3 +38,9 @@ class BoldItalicText(val text: String) : MarkdownCommand {
 		else "***$text***"
 	}
 }
+
+class CodeText(val text: String) : MarkdownCommand {
+	override fun toString(): String {
+		return "`$text`"
+	}
+}
