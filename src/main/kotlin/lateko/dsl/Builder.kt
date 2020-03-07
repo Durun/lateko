@@ -3,6 +3,10 @@ package lateko.dsl
 import lateko.model.Composition
 import lateko.model.Element
 
+@DslMarker
+annotation class ScopeMarker
+
+@ScopeMarker
 abstract class Builder<E : Element> {
 	private val mutableElements: MutableList<E> = mutableListOf()
 	protected val elements: List<E> get() = mutableElements
@@ -20,6 +24,3 @@ abstract class Builder<E : Element> {
 	abstract fun build(): Composition<E>
 }
 
-
-@DslMarker
-annotation class ScopeMarker
