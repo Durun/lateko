@@ -1,11 +1,11 @@
-package lateko.renderer.tex
+package lateko.renderer.tex.visitor
 
 import lateko.command.tex.SimpleTexCommand
 import lateko.model.inline.UrlText
 import lateko.renderer.common.InlineRenderVisitor
 
 
-interface TexUrlRenderVisitor : InlineRenderVisitor {
+internal interface TexUrlRenderVisitor : InlineRenderVisitor {
 	override fun visit(urlText: UrlText): String {
 		val text = urlText.text.rendered
 		val url = urlText.url
