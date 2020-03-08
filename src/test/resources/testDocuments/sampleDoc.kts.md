@@ -16,7 +16,7 @@
 これはsubsection.
 
 ## フランクな挨拶
-<div id="sec"></div>
+<div id="ch"></div>
 やっほー。
 はい、こんにちは。
 
