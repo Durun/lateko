@@ -5,7 +5,7 @@ import lateko.model.inline.*
 import lateko.model.structure.*
 import lateko.model.structure.StructureComposition.Companion.toComposition
 
-class NameSectionIdVisitor : StructureVisitor<StructureElement> {
+class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 	private var sectionNestLevel = -1
 	private val nameStack: MutableList<String> = mutableListOf()
 	private fun MutableList<String>.push(name: String) {
