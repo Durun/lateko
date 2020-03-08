@@ -2,9 +2,9 @@
 [どぅるん](https://twitter.com/NegiIgaiNuki)
 
 ## 挨拶
-<div id="ch:挨拶"></div>
+<div id="ch"></div>
 ### 挨拶
-<div id="sec:挨拶/挨拶"></div>
+<div id="sec"></div>
 こんにちは。
 はい、こんにちは。
 
@@ -12,11 +12,11 @@
 いいえ、おはよう御座います。
 
 #### 
-<div id="subsec:挨拶/挨拶/188851569"></div>
+<div id="subsec188851569"></div>
 これはsubsection.
 
 ## フランクな挨拶
-<div id="sec:フランクな挨拶"></div>
+<div id="sec"></div>
 やっほー。
 はい、こんにちは。
 

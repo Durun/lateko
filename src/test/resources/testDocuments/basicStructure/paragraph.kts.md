@@ -2,18 +2,18 @@
 A paragraph in Document.
 
 ## Chapter1
-<div id="ch:Chapter1"></div>
+<div id="chchapter1"></div>
 A paragraph in Chapter.
 
 ### Section
-<div id="sec:Chapter1/Section"></div>
+<div id="secchapter1section"></div>
 A paragraph in Section.
 
 #### SubSection
-<div id="subsec:Chapter1/Section/SubSection"></div>
+<div id="subsecchapter1sectionsubsection"></div>
 A paragraph in SubSection.
 
 ##### SubSubSection
-<div id="subsubsec:Chapter1/Section/SubSection/SubSubSection"></div>
+<div id="subsubsecchapter1sectionsubsectionsubsubsection"></div>
 A paragraph in SubSubsection.
 

@@ -1,15 +1,15 @@
 # # Markdown Escapes #
 ## \#\# chapter \#\#
-<div id="ch:＃＃ chapter ＃＃"></div>
+<div id="chchapter"></div>
 \\ <- this is backslash
 
 \*asterisk\*
 ,and\*\*asterisks\*\*
 
 ### \#
-<div id="sec:＃＃ chapter ＃＃/＃"></div>
+<div id="secchapter"></div>
 #### \#
-<div id="subsec:＃＃ chapter ＃＃/＃/＃"></div>
+<div id="subsecchapter"></div>
 \_\_under\_bars\_\_
 
 \` <- this is \`backquote\`

@@ -1,32 +1,32 @@
 # TeX Escape
 ## System special characters
-<div id="ch:System special characters"></div>
+<div id="chsystemspecialcharacters"></div>
 ### Backslash
-<div id="sec:System special characters/Backslash"></div>
+<div id="secsystemspecialcharactersbackslash"></div>
 foo\\bar
 
 ### Sharp
-<div id="sec:System special characters/Sharp"></div>
+<div id="secsystemspecialcharacterssharp"></div>
 foo\#bar
 
 ### Dollar
-<div id="sec:System special characters/Dollar"></div>
+<div id="secsystemspecialcharactersdollar"></div>
 foo$bar
 
 ### Percent
-<div id="sec:System special characters/Percent"></div>
+<div id="secsystemspecialcharacterspercent"></div>
 foo%bar
 
 ### Ampersand
-<div id="sec:System special characters/Ampersand"></div>
+<div id="secsystemspecialcharactersampersand"></div>
 foo&bar
 
 ### Under bar
-<div id="sec:System special characters/Under bar"></div>
+<div id="secsystemspecialcharactersunderbar"></div>
 foo\_bar
 
 ### Braces
-<div id="sec:System special characters/Braces"></div>
+<div id="secsystemspecialcharactersbraces"></div>
 foo{bar
 
 foo}bar
@@ -34,28 +34,28 @@ foo}bar
 bar{foo}bar
 
 ## Special characters
-<div id="ch:Special characters"></div>
+<div id="chspecialcharacters"></div>
 ### Bar
-<div id="sec:Special characters/Bar"></div>
+<div id="secspecialcharactersbar"></div>
 foo|bar
 
 ### Asterisk
-<div id="sec:Special characters/Asterisk"></div>
+<div id="secspecialcharactersasterisk"></div>
 foo\*bar
 
 ### Less
-<div id="sec:Special characters/Less"></div>
+<div id="secspecialcharactersless"></div>
 foo<bar
 
 ### Greater
-<div id="sec:Special characters/Greater"></div>
+<div id="secspecialcharactersgreater"></div>
 foo>bar
 
 ### Hat
-<div id="sec:Special characters/Hat"></div>
+<div id="secspecialcharactershat"></div>
 foo^bar
 
 ### Tilde
-<div id="sec:Special characters/Tilde"></div>
+<div id="secspecialcharacterstilde"></div>
 foo~bar
 
