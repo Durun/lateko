@@ -9,8 +9,11 @@ import lateko.model.Document
 import lateko.model.inline.InlineElement
 import lateko.model.inline.Reference
 import lateko.model.structure.Chapter
+import lateko.model.structure.Section
 import lateko.model.structure.StructureElement
 
+fun sectionOf(title: InlineElement? = null, content: StructureScope.() -> Unit) = Section(name = title, content = content.build())
+fun sectionOf(title: String, content: StructureScope.() -> Unit) = sectionOf(title = title.text, content = content)
 
 fun chapterOf(title: InlineElement, content: StructureScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
 fun chapterOf(title: String, content: StructureScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)
