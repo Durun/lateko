@@ -2,8 +2,8 @@ package lateko.dsl.structure
 
 import lateko.dsl.chapterOf
 import lateko.dsl.inline.text
+import lateko.dsl.paragraphOf
 import lateko.dsl.sectionOf
-import lateko.dsl.structure.LineScope.Companion.build
 import lateko.model.inline.InlineElement
 import lateko.model.line.Line
 import lateko.model.line.Line.Companion.toLine
@@ -17,7 +17,7 @@ fun StructureScope.chapter(title: String, content: StructureScope.() -> Unit): C
 fun StructureScope.section(name: InlineElement? = null, content: StructureScope.() -> Unit): Section = sectionOf(name, content).adding()
 fun StructureScope.section(name: String, content: StructureScope.() -> Unit): Section = sectionOf(name, content).adding()
 
-fun StructureScope.paragraph(content: LineScope.() -> Unit): Paragraph = Paragraph(content.build()).adding()
+fun StructureScope.paragraph(content: LineScope.() -> Unit): Paragraph = paragraphOf(content).adding()
 fun StructureScope.p(content: LineScope.() -> Unit): Paragraph = paragraph(content)
 
 fun LineScope.line(element: InlineElement): Line = element.toLine().adding()
