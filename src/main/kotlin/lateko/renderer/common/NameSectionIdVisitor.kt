@@ -35,33 +35,24 @@ class NameSectionIdVisitor : StructureVisitor<StructureElement> {
 	override fun visit(section: Section): StructureElement {
 		sectionNestLevel++
 		nameStack.push(section.name?.getText() ?: section.id)
-		val new = Section(
-				content = section.content.accept(this),
-				name = section.name,
-				idName = "${"sub".repeat(sectionNestLevel)}sec:${nameStack.toId()}"
-		)
+		section.content.accept(this)
+		section.changeId("${"sub".repeat(sectionNestLevel)}sec:${nameStack.toId()}")
 		nameStack.pop()
 		sectionNestLevel--
-		return new
+		return section
 	}
 
 	override fun visit(chapter: Chapter): StructureElement {
 		nameStack.push(chapter.name.getText())
-		val new = Chapter(
-				content = chapter.content.accept(this),
-				name = chapter.name,
-				idName = "ch:${nameStack.toId()}"
-		)
+		chapter.content.accept(this)
+		chapter.changeId("ch:${nameStack.toId()}")
 		nameStack.pop()
-		return new
+		return chapter
 	}
 
 	override fun visit(document: Document): StructureElement {
-		return Document(
-				name = document.name,
-				header = document.header,
-				content = document.content.accept(this)
-		)
+		document.content.accept(this)
+		return document
 	}
 
 	private object GetTextVisitor : InlineRenderVisitor {
