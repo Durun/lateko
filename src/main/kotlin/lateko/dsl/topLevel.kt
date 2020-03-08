@@ -3,6 +3,9 @@ package lateko.dsl
 import lateko.dsl.command.makeTitle
 import lateko.dsl.header.TexHeaderScope
 import lateko.dsl.inline.text
+import lateko.dsl.structure.ChapterScope
+import lateko.dsl.structure.ChapterScope.Companion.build
+import lateko.dsl.structure.DocumentScope
 import lateko.dsl.structure.LineScope
 import lateko.dsl.structure.LineScope.Companion.build
 import lateko.dsl.structure.StructureScope
@@ -20,18 +23,18 @@ fun paragraphOf(content: LineScope.() -> Unit): Paragraph = Paragraph(content.bu
 fun sectionOf(title: InlineElement? = null, content: StructureScope.() -> Unit) = Section(name = title, content = content.build())
 fun sectionOf(title: String, content: StructureScope.() -> Unit) = sectionOf(title = title.text, content = content)
 
-fun chapterOf(title: InlineElement, content: StructureScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
-fun chapterOf(title: String, content: StructureScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)
+fun chapterOf(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
+fun chapterOf(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)
 
-fun document(name: String? = null, content: StructureScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
+fun document(name: String? = null, content: DocumentScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
 
-fun texDocument(title: String?, header: TexHeaderScope.() -> Unit, content: StructureScope.() -> Unit): Document {
+fun texDocument(title: String?, header: TexHeaderScope.() -> Unit, content: DocumentScope.() -> Unit): Document {
 	val headerBuilder = TexHeaderScope()
 	headerBuilder.apply {
 		title?.let { title(it) }
 		header()
 	}
-	val contentBuilder = StructureScope()
+	val contentBuilder = DocumentScope()
 	contentBuilder.apply {
 		title?.let { makeTitle() }
 		content()

@@ -10,7 +10,7 @@ import lateko.model.structure.StructureComposition.Companion.toComposition
 
 open class StructureScope : Builder<StructureElement>() {
 	companion object {
-		private fun StructureComposition.sortNest(): StructureComposition {
+		protected fun StructureComposition.sortNest(): StructureComposition {
 			return children.sortedBy { it is Section || it is Chapter }.toComposition()
 		}
 
