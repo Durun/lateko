@@ -6,6 +6,7 @@ import lateko.renderer.tex.TexEscaper
 
 internal interface TexInlineRenderVisitor :
 		TexCoreInlineRenderVisitor,
+		TexRefRenderVisitor,
 		TexUrlRenderVisitor,
 		TexStyledTextRenderVisitor
 

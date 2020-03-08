@@ -1,5 +1,6 @@
 package lateko.dsl.structure
 
+import lateko.dsl.chapterOf
 import lateko.dsl.inline.text
 import lateko.dsl.structure.LineScope.Companion.build
 import lateko.dsl.structure.StructureScope.Companion.build
@@ -10,8 +11,8 @@ import lateko.model.structure.Chapter
 import lateko.model.structure.Paragraph
 import lateko.model.structure.Section
 
-fun StructureScope.chapter(name: InlineElement, content: StructureScope.() -> Unit): Chapter = Chapter(name = name, content = content.build()).adding()
-fun StructureScope.chapter(name: String, content: StructureScope.() -> Unit) = chapter(name.text, content)
+fun StructureScope.chapter(title: InlineElement, content: StructureScope.() -> Unit): Chapter = chapterOf(title, content).adding()
+fun StructureScope.chapter(title: String, content: StructureScope.() -> Unit): Chapter = chapterOf(title, content).adding()
 
 fun StructureScope.section(name: InlineElement? = null, content: StructureScope.() -> Unit): Section = Section(name = name, content = content.build()).adding()
 fun StructureScope.section(name: String, content: StructureScope.() -> Unit) = section(name.text, content)

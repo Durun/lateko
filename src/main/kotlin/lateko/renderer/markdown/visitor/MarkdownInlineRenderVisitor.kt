@@ -5,6 +5,7 @@ import lateko.renderer.common.InlineRenderVisitor
 import lateko.renderer.markdown.MarkdownEscaper
 
 internal interface MarkdownInlineRenderVisitor : MarkdownInlineRenderVisitorCore,
+		MarkdownRefRenderVisitor,
 		MarkdownUrlRenderVisitor,
 		MarkdownStyledTextRenderVisitor
 

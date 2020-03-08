@@ -20,6 +20,10 @@ class UsePackage(options: List<String>, name: String) : SimpleTexCommand("usepac
 	constructor(name: String, option: String) : this(options = listOf(option), name = name)
 }
 
+class Label(id: String) : SimpleTexCommand("label", arg = id)
+class Ref(label: String) : SimpleTexCommand("ref", arg = label)
+//TODO class Cite
+
 class BoldText(text: String) : SimpleTexCommand("textbf", arg = text)
 class ItalicText(text: String) : SimpleTexCommand("textsl", arg = text)
 class StrongItalicText(text: String) : SimpleTexCommand("textit", arg = text)

@@ -1,9 +1,6 @@
 package lateko.renderer.tex.visitor
 
-import lateko.command.tex.Begin
-import lateko.command.tex.End
-import lateko.command.tex.SubSection
-import lateko.command.tex.SubSubSection
+import lateko.command.tex.*
 import lateko.dsl.structure.IllegalNestError
 import lateko.model.Document
 import lateko.model.inline.InlineElement
@@ -30,12 +27,13 @@ internal class TexSectionsRenderVisitor(
 		sectionNestLevel++
 		val sectionName = section.name?.rendered.orEmpty()
 		val sectionCommand = when (sectionNestLevel) {
-			1 -> lateko.command.tex.Section(sectionName)
+			1 -> Section(sectionName)
 			2 -> SubSection(sectionName)
 			3 -> SubSubSection(sectionName)
 			else -> throw IllegalNestError("Too many section nest.")
 		}
-		val content = "$sectionCommand\n${section.content.rendered}"
+		val labelCommand = Label(section.id)
+		val content = "$sectionCommand$labelCommand\n${section.content.rendered}"
 		sectionNestLevel--
 		return content
 	}
@@ -47,8 +45,9 @@ internal class TexSectionsRenderVisitor(
 		if (chapterNestLevel > 1) throw IllegalNestError("Too many chapter nest.")
 
 		val chapterName = chapter.name.rendered
-		val chapterCommand = lateko.command.tex.Chapter(chapterName)
-		val content = "$chapterCommand\n${chapter.content.rendered}"
+		val chapterCommand = Chapter(chapterName)
+		val labelCommand = Label(chapter.id)
+		val content = "$chapterCommand$labelCommand\n${chapter.content.rendered}"
 		chapterNestLevel--
 		return content
 	}

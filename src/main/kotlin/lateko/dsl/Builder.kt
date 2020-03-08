@@ -21,6 +21,7 @@ abstract class Builder<E : Element> {
 		return this
 	}
 
+	operator fun <T : E> T.unaryMinus(): T = this.adding()
 	abstract fun build(): Composition<E>
 }
 

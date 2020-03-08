@@ -13,6 +13,9 @@ interface InlineVisitor<R> {
 	fun visit(text: Text): R
 	fun visit(code: EmbeddedCode): R
 
+	// Ref
+	fun visit(ref: Reference): R
+
 	// URL
 	fun visit(urlText: UrlText): R
 

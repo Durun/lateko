@@ -7,6 +7,7 @@ import lateko.model.line.LineElement
 import lateko.model.structure.Chapter
 import lateko.model.structure.Section
 import lateko.model.structure.StructureElement
+import lateko.renderer.markdown.anchor
 
 internal class MarkdownSectionsRenderVisitor(
 		private val V: MarkdownInlineRenderVisitor,
@@ -29,6 +30,7 @@ internal class MarkdownSectionsRenderVisitor(
 		sectionNestLevel++
 		val content =
 				Header(level = sectionNestLevel, text = section.name?.rendered).toString() +
+						section.anchor + "\n" +
 						section.content.rendered
 		sectionNestLevel--
 		return content
@@ -38,6 +40,7 @@ internal class MarkdownSectionsRenderVisitor(
 		sectionNestLevel++
 		val content =
 				Header(level = sectionNestLevel, text = chapter.name.rendered).toString() +
+						chapter.anchor + "\n" +
 						chapter.content.rendered
 		sectionNestLevel--
 		return content

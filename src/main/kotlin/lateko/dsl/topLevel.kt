@@ -2,8 +2,16 @@ package lateko.dsl
 
 import lateko.dsl.command.makeTitle
 import lateko.dsl.header.TexHeaderScope
+import lateko.dsl.inline.text
 import lateko.dsl.structure.StructureScope
+import lateko.dsl.structure.StructureScope.Companion.build
 import lateko.model.Document
+import lateko.model.inline.InlineElement
+import lateko.model.structure.Chapter
+
+
+fun chapterOf(title: InlineElement, content: StructureScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
+fun chapterOf(title: String, content: StructureScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)
 
 fun document(name: String? = null, content: StructureScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
 

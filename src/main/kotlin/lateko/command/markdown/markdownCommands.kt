@@ -10,6 +10,10 @@ class Header(val level: Int, val text: String?) : MarkdownCommand {
 	}
 }
 
+class Anchor(private val id: Any) : MarkdownCommand {
+	override fun toString(): String = """<div id="$id"></div>"""
+}
+
 class Link(val url: String, val element: String = url) : MarkdownCommand {
 	override fun toString(): String = "[$element]($url)"
 }
