@@ -9,6 +9,7 @@ import lateko.model.line.Line.Companion.toLine
 import lateko.model.line.LineComposition
 import lateko.model.line.LineComposition.Companion.toComposition
 import lateko.model.line.LineElement
+import lateko.renderer.tex.TexEscaper
 
 open class TexHeaderScope : Builder<LineElement>() {
 	companion object {
@@ -21,6 +22,7 @@ open class TexHeaderScope : Builder<LineElement>() {
 
 	private val format = EmbeddedCode.Format.Tex
 	private fun Command.toLine(): Line = EmbeddedCode(this.toString(), format = format).toLine()
+	private fun String.escape() = TexEscaper.escape(this)
 
 	private var documentClass = defaultDocumentClass
 	private var usePackages = defaultUsePackages.toMutableList()
@@ -34,7 +36,7 @@ open class TexHeaderScope : Builder<LineElement>() {
 	}
 
 	internal fun title(title: String): Line {
-		return Title(title).toLine().adding()
+		return Title(title.escape()).toLine().adding()
 	}
 
 	fun author(author: String): Line = Author(author).toLine().adding()
