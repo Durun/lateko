@@ -11,7 +11,17 @@ class Header(val level: Int, val text: String?) : MarkdownCommand {
 }
 
 class Anchor(private val id: Any) : MarkdownCommand {
-	override fun toString(): String = """<div id="$id"></div>"""
+	override fun toString(): String = """<div id="${escapeAnchor(id.toString())}"></div>"""
+
+	companion object {
+		fun escapeAnchor(id: String): String {
+			return id.toLowerCase().replace(Regex("[^a-z0-9]"), "")
+		}
+	}
+}
+
+class AnchorLink(val url: String, val element: String = url) : MarkdownCommand {
+	override fun toString(): String = "\n\n[$element](#${Anchor.escapeAnchor(url)})"
 }
 
 class Link(val url: String, val element: String = url) : MarkdownCommand {

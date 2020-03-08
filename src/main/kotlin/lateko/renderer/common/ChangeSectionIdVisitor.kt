@@ -62,6 +62,7 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 					.replace('%', '％')
 					.replace('{', '｛')
 					.replace('}', '｝')
+					.replace(" ", "")
 			// TODO
 		}
 

@@ -7,7 +7,9 @@ import lateko.dsl.structure.StructureScope
 import lateko.dsl.structure.StructureScope.Companion.build
 import lateko.model.Document
 import lateko.model.inline.InlineElement
+import lateko.model.inline.Reference
 import lateko.model.structure.Chapter
+import lateko.model.structure.StructureElement
 
 
 fun chapterOf(title: InlineElement, content: StructureScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
@@ -32,3 +34,5 @@ fun texDocument(title: String?, header: TexHeaderScope.() -> Unit, content: Stru
 			content = contentBuilder.build()
 	)
 }
+
+val StructureElement.ref: Reference get() = Reference(this)
