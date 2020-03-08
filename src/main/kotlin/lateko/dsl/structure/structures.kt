@@ -28,11 +28,28 @@ class ChapterScope : StructureScope() {
 	}
 }
 
+class SectionScope : StructureScope() {
+	companion object {
+		private fun StructureComposition.sortNest(): StructureComposition {
+			return children.sortedBy { it is Section || it is Chapter }.toComposition()
+		}
+
+		fun (SectionScope.() -> Unit).build(): StructureComposition {
+			val builder = SectionScope()
+			builder.this()
+			return builder.build().sortNest()
+		}
+	}
+}
+
 fun DocumentScope.chapter(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = chapterOf(title, content).adding()
 fun DocumentScope.chapter(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title, content).adding()
 
-fun StructureScope.section(name: InlineElement? = null, content: StructureScope.() -> Unit): Section = sectionOf(name, content).adding()
-fun StructureScope.section(name: String, content: StructureScope.() -> Unit): Section = sectionOf(name, content).adding()
+fun ChapterScope.section(name: InlineElement? = null, content: SectionScope.() -> Unit): Section = sectionOf(name, content).adding()
+fun ChapterScope.section(name: String, content: SectionScope.() -> Unit): Section = sectionOf(name, content).adding()
+
+fun SectionScope.section(name: InlineElement? = null, content: SectionScope.() -> Unit): Section = sectionOf(name, content).adding()
+fun SectionScope.section(name: String, content: SectionScope.() -> Unit): Section = sectionOf(name, content).adding()
 
 fun StructureScope.paragraph(content: LineScope.() -> Unit): Paragraph = paragraphOf(content).adding()
 fun StructureScope.p(content: LineScope.() -> Unit): Paragraph = paragraph(content)

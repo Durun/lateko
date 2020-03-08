@@ -40,11 +40,9 @@ object TestDocumentGenerator {
 	}
 
 	private fun saveDocuments(script: File) {
-		val document = lazy { generateDocument(script) }
-		val markdown = lazy { generateMarkdown(document.value) }
-		val tex = lazy { generateTex(document.value) }
+		val markdown = lazy { generateMarkdown(generateDocument(script)) }
+		val tex = lazy { generateTex(generateDocument(script)) }
 		saveDocumentIfNotExists(ktsFile = script, extension = "md", content = markdown)
 		saveDocumentIfNotExists(ktsFile = script, extension = "tex", content = tex)
-		if (document.isInitialized()) println(document.value)
 	}
 }

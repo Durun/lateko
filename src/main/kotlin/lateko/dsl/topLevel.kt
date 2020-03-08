@@ -8,8 +8,8 @@ import lateko.dsl.structure.ChapterScope.Companion.build
 import lateko.dsl.structure.DocumentScope
 import lateko.dsl.structure.LineScope
 import lateko.dsl.structure.LineScope.Companion.build
-import lateko.dsl.structure.StructureScope
-import lateko.dsl.structure.StructureScope.Companion.build
+import lateko.dsl.structure.SectionScope
+import lateko.dsl.structure.SectionScope.Companion.build
 import lateko.model.Document
 import lateko.model.inline.InlineElement
 import lateko.model.inline.Reference
@@ -20,8 +20,8 @@ import lateko.model.structure.StructureElement
 
 fun paragraphOf(content: LineScope.() -> Unit): Paragraph = Paragraph(content.build())
 
-fun sectionOf(title: InlineElement? = null, content: StructureScope.() -> Unit) = Section(name = title, content = content.build())
-fun sectionOf(title: String, content: StructureScope.() -> Unit) = sectionOf(title = title.text, content = content)
+fun sectionOf(title: InlineElement? = null, content: SectionScope.() -> Unit) = Section(name = title, content = content.build())
+fun sectionOf(title: String, content: SectionScope.() -> Unit) = sectionOf(title = title.text, content = content)
 
 fun chapterOf(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
 fun chapterOf(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)

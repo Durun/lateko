@@ -43,6 +43,8 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 	}
 
 	override fun visit(chapter: Chapter): StructureElement {
+		if (chapter.id.startsWith("ch:")) return chapter // skip
+
 		nameStack.push(chapter.name.getText())
 		chapter.content.accept(this)
 		chapter.changeId("ch:${nameStack.toId()}")
