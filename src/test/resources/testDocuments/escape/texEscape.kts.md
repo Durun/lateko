@@ -1,61 +1,91 @@
 # TeX Escape
-## System special characters
+
 <div id="chsystemspecialcharacters"></div>
-### Backslash
+
+## System special characters
+
 <div id="secsystemspecialcharactersbackslash"></div>
+
+### Backslash
 foo\\bar
 
-### Sharp
+
 <div id="secsystemspecialcharacterssharp"></div>
+
+### Sharp
 foo\#bar
 
-### Dollar
+
 <div id="secsystemspecialcharactersdollar"></div>
+
+### Dollar
 foo$bar
 
-### Percent
+
 <div id="secsystemspecialcharacterspercent"></div>
+
+### Percent
 foo%bar
 
-### Ampersand
+
 <div id="secsystemspecialcharactersampersand"></div>
+
+### Ampersand
 foo&bar
 
-### Under bar
+
 <div id="secsystemspecialcharactersunderbar"></div>
+
+### Under bar
 foo\_bar
 
-### Braces
+
 <div id="secsystemspecialcharactersbraces"></div>
+
+### Braces
 foo{bar
 
 foo}bar
 
 bar{foo}bar
 
-## Special characters
+
 <div id="chspecialcharacters"></div>
-### Bar
+
+## Special characters
+
 <div id="secspecialcharactersbar"></div>
+
+### Bar
 foo|bar
 
-### Asterisk
+
 <div id="secspecialcharactersasterisk"></div>
+
+### Asterisk
 foo\*bar
 
-### Less
+
 <div id="secspecialcharactersless"></div>
+
+### Less
 foo<bar
 
-### Greater
+
 <div id="secspecialcharactersgreater"></div>
+
+### Greater
 foo>bar
 
-### Hat
+
 <div id="secspecialcharactershat"></div>
+
+### Hat
 foo^bar
 
-### Tilde
+
 <div id="secspecialcharacterstilde"></div>
+
+### Tilde
 foo~bar
 
