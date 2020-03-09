@@ -10,33 +10,6 @@ import lateko.model.line.Line.Companion.toLine
 import lateko.model.structure.Chapter
 import lateko.model.structure.Paragraph
 import lateko.model.structure.Section
-import lateko.model.structure.StructureComposition
-import lateko.model.structure.StructureComposition.Companion.toComposition
-
-private fun StructureComposition.sortNest(): StructureComposition {
-	return children.sortedBy { it is Section || it is Chapter }.toComposition()
-}
-
-class DocumentScope : StructureScope()
-class ChapterScope : StructureScope() {
-	companion object {
-		fun (ChapterScope.() -> Unit).build(): StructureComposition {
-			val builder = ChapterScope()
-			builder.this()
-			return builder.build().sortNest()
-		}
-	}
-}
-
-class SectionScope : StructureScope() {
-	companion object {
-		fun (SectionScope.() -> Unit).build(): StructureComposition {
-			val builder = SectionScope()
-			builder.this()
-			return builder.build().sortNest()
-		}
-	}
-}
 
 fun DocumentScope.chapter(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = chapterOf(title, content).adding()
 fun DocumentScope.chapter(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title, content).adding()
