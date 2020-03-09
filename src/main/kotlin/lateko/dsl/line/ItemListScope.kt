@@ -3,6 +3,7 @@ package lateko.dsl.line
 import lateko.dsl.Builder
 import lateko.dsl.inline.text
 import lateko.model.inline.InlineElement
+import lateko.model.line.IndexedItem
 import lateko.model.line.ItemList
 import lateko.model.line.ItemList.Companion.toComposition
 import lateko.model.line.ListItem
@@ -23,5 +24,11 @@ abstract class ItemListScope<I : ListItem> : Builder<ListItem>() {
 class SimpleItemListScope : ItemListScope<SimpleItem>() {
 	override fun item(element: InlineElement): SimpleItem {
 		return SimpleItem(element).adding()
+	}
+}
+
+class IndexedItemListScope : ItemListScope<IndexedItem>() {
+	override fun item(element: InlineElement): IndexedItem {
+		return IndexedItem(element).adding()
 	}
 }

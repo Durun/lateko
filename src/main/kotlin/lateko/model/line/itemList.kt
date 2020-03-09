@@ -9,6 +9,11 @@ class SimpleItem(val element: InlineElement) : ListItem {
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
 }
 
+class IndexedItem(val element: InlineElement) : ListItem {
+	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
+}
+
+
 interface ItemList : ListItem, Composition<ListItem> {
 	val items: List<ListItem>
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)

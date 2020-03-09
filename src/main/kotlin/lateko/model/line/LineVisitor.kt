@@ -8,4 +8,5 @@ interface LineVisitor<R> {
 	// List
 	fun visit(list: ItemList): R
 	fun visit(item: SimpleItem): R
+	fun visit(item: IndexedItem): R
 }
