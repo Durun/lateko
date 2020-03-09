@@ -4,4 +4,8 @@ interface LineVisitor<R> {
 	// Core
 	fun visit(lines: LineComposition): R
 	fun visit(line: Line): R
+
+	// List
+	fun visit(list: ItemList): R
+	fun visit(item: SimpleItem): R
 }
