@@ -7,11 +7,7 @@ This is a chapter.
 <div id="chconclusion"></div>
 This is conclusion.
 Reference of intro is
+<a href="#chintroduction">ch:Introduction</a>
 
-
-[ch:Introduction](#chintroduction)
-
-Reference of intro is 
-
-[ch:Introduction](#chintroduction).
+Reference of intro is <a href="#chintroduction">ch:Introduction</a>.
 

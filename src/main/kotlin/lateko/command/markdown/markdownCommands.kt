@@ -21,7 +21,7 @@ class Anchor(private val id: Any) : MarkdownCommand {
 }
 
 class AnchorLink(val url: String, val element: String = url) : MarkdownCommand {
-	override fun toString(): String = "\n\n[$element](#${Anchor.escapeAnchor(url)})"
+	override fun toString(): String = """<a href="#${Anchor.escapeAnchor(url)}">$element</a>"""
 }
 
 class Link(val url: String, val element: String = url) : MarkdownCommand {
