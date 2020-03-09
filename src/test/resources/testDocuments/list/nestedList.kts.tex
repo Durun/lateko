@@ -1,0 +1,50 @@
+\documentclass[a4paper,11pt,oneside,openany,report]{jsbook}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\title{Nested List}
+
+\begin{document}
+\maketitle
+\chapter{Nested list example}\label{ch:Nestedlistexample}
+Simple list.
+\begin{itemize}
+\item a
+\begin{enumerate}
+\item a-1
+\begin{itemize}
+\item a-1-i
+\item a-1-ii
+\end{itemize}
+\item a-2
+\end{enumerate}
+\item b
+\item c
+\begin{description}
+\item[A]\mbox{}\\descriptionA
+\item[B]\mbox{}\\descriptionB
+\item[C]\mbox{}\\descriptionC
+\end{description}
+\end{itemize}
+\chapter{Complicated example}\label{ch:Complicatedexample}
+\begin{description}
+\item[a]\mbox{}\\descriptionA
+\begin{itemize}
+\item a
+\item b
+\item c
+\end{itemize}
+\item[b]\mbox{}\\descriptionB
+\begin{description}
+\item[A]\mbox{}\\descriptionA
+\item[B]\mbox{}\\descriptionB
+\item[C]\mbox{}\\descriptionC
+\end{description}
+\item[c]\mbox{}\\descriptionC
+\begin{enumerate}
+\item a
+\item b
+\item c
+\end{enumerate}
+\end{description}
+
+\end{document}
