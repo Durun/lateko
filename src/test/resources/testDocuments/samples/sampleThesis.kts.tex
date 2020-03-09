@@ -1,0 +1,33 @@
+\documentclass[a4paper,11pt,oneside,openany,report]{jsbook}
+\usepackage[left=30mm,right=30mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[nobreak]{cite}
+\usepackage{xspace}
+\usepackage[a4paper,dvipdfmx,pdfdisplaydoctitle=true,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc,bookmarksopen=true,pdftitle={Sample Thesis},pdfauthor={me}]{hyperref}
+\usepackage{pxjahyper}
+\RequirePackage{nameref}
+\RequirePackage{titleref}
+\title{Sample Thesis}
+
+\begin{document}
+\frontmatter
+\maketitle
+\chapter{概要}\label{ch:概要}
+これは論文形式のサンプルです。
+
+\tableofcontents
+\listoffigures
+\listoftables
+\mainmatter
+\chapter{はじめに}\label{ch:はじめに}
+これはサンプルです。
+
+\chapter{おわりに}\label{ch:おわりに}
+以上、サンプルでした。
+
+\backmatter
+\chapter{謝辞}\label{ch:謝辞}
+これは謝辞です。
+
+
+\end{document}
