@@ -10,8 +10,8 @@ internal interface TexListRenderVisitor : LineRenderVisitor {
 	override fun visit(item: SimpleItem): String = "\\item ${item.element.accept(inlineRenderVisitor)}"
 	override fun visit(list: ItemList): String {    // TODO
 		val envName = "itemize"
-		return Begin(envName).toString() +
-				list.items.joinToString("\n") { it.accept(this) } +
+		return "${Begin(envName)}\n" +
+				list.items.joinToString("\n") { it.accept(this) } + "\n" +
 				End(envName)
 	}
 }

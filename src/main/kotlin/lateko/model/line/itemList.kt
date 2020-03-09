@@ -1,5 +1,6 @@
 package lateko.model.line
 
+import lateko.model.Composition
 import lateko.model.inline.InlineElement
 
 interface ListItem : LineElement
@@ -8,6 +9,15 @@ class SimpleItem(val element: InlineElement) : ListItem {
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
 }
 
-abstract class ItemList(val items: List<ListItem>) : ListItem {
+interface ItemList : ListItem, Composition<ListItem> {
+	val items: List<ListItem>
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
+
+	companion object {
+		fun Iterable<ListItem>.toComposition(): ItemList {
+			return ItemListData(this.toList())
+		}
+	}
+
+	private data class ItemListData(override val items: List<ListItem>) : ItemList
 }
