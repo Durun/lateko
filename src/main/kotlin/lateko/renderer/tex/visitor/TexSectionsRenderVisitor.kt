@@ -10,14 +10,15 @@ import lateko.model.structure.Section
 import lateko.model.structure.StructureElement
 
 internal class TexSectionsRenderVisitor(
-		private val V: TexInlineRenderVisitor,
-		private val W: TexStructureRenderVisitor) {
+		private val inlineVisitor: TexInlineRenderVisitor,
+		private val lineVisitor: TexLineRenderVisitor,
+		private val structureVisitor: TexStructureRenderVisitor) {
 	private val InlineElement.rendered: String
-		get() = this.accept(V)
+		get() = this.accept(inlineVisitor)
 	private val LineElement.rendered: String
-		get() = this.accept(V)
+		get() = this.accept(lineVisitor)
 	private val StructureElement.rendered: String
-		get() = this.accept(W)
+		get() = this.accept(structureVisitor)
 
 	private var sectionNestLevel = 0
 	private var chapterNestLevel = 0

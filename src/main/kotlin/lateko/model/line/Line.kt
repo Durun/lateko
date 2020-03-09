@@ -1,11 +1,10 @@
 package lateko.model.line
 
 import lateko.model.inline.InlineElement
-import lateko.model.inline.InlineVisitor
 
 interface Line : LineElement {
 	val element: InlineElement
-	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
+	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
 
 	companion object {
 		fun InlineElement.toLine(): Line = LineData(this)

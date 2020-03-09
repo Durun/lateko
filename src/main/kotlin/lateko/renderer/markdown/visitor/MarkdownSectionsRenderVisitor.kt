@@ -11,14 +11,15 @@ import lateko.renderer.markdown.MarkdownEscaper
 import lateko.renderer.markdown.anchor
 
 internal class MarkdownSectionsRenderVisitor(
-		private val V: MarkdownInlineRenderVisitor,
-		private val W: MarkdownStructureRenderVisitor) {
+		private val inlineVisitor: MarkdownInlineRenderVisitor,
+		private val lineVisitor: MarkdownLineRenderVisitor,
+		private val structureVisitor: MarkdownStructureRenderVisitor) {
 	private val InlineElement.rendered: String
-		get() = this.accept(V)
+		get() = this.accept(inlineVisitor)
 	private val LineElement.rendered: String
-		get() = this.accept(V)
+		get() = this.accept(lineVisitor)
 	private val StructureElement.rendered: String
-		get() = this.accept(W)
+		get() = this.accept(structureVisitor)
 
 	private var sectionNestLevel = 1
 
