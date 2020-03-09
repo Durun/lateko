@@ -29,8 +29,8 @@ internal class MarkdownSectionsRenderVisitor(
 	fun visit(section: Section): String {
 		sectionNestLevel++
 		val content =
-				Header(level = sectionNestLevel, text = section.name?.rendered).toString() +
-						section.anchor + "\n" +
+				"\n${section.anchor}\n\n" +
+						Header(level = sectionNestLevel, text = section.name?.rendered).toString() +
 						section.content.rendered
 		sectionNestLevel--
 		return content
@@ -39,8 +39,8 @@ internal class MarkdownSectionsRenderVisitor(
 	fun visit(chapter: Chapter): String {
 		sectionNestLevel++
 		val content =
-				Header(level = sectionNestLevel, text = chapter.name.rendered).toString() +
-						chapter.anchor + "\n" +
+				"\n${chapter.anchor}\n\n" +
+						Header(level = sectionNestLevel, text = chapter.name.rendered).toString() +
 						chapter.content.rendered
 		sectionNestLevel--
 		return content
