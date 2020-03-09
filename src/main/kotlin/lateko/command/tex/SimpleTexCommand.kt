@@ -14,4 +14,6 @@ open class SimpleTexCommand(
 		val argStr = args.joinToString("") { "{$it}" }
 		return "\\$command$optionStr$argStr"
 	}
+
+	val arg: String? get() = args.firstOrNull()
 }

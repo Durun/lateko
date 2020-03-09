@@ -14,10 +14,15 @@ class Date(date: String) : SimpleTexCommand("date", arg = date)
 object MakeTitle : SimpleTexCommand("maketitle")
 
 class DocumentClass(options: List<String>, name: String) : SimpleTexCommand("documentclass", options, arg = name)
-class RequirePackage(name: String) : SimpleTexCommand("RequirePackage", arg = name)
+class RequirePackage(name: String) : SimpleTexCommand("RequirePackage", arg = name) {
+	val packageName: String get() = arg ?: throw IllegalStateException()
+}
+
 class UsePackage(options: List<String>, name: String) : SimpleTexCommand("usepackage", options, arg = name) {
 	constructor(name: String) : this(options = emptyList(), name = name)
 	constructor(name: String, option: String) : this(options = listOf(option), name = name)
+
+	val packageName: String get() = arg ?: throw IllegalStateException()
 }
 
 class Label(id: String) : SimpleTexCommand("label", arg = id)

@@ -14,10 +14,21 @@ import lateko.renderer.tex.TexEscaper
 open class TexHeaderScope : Builder<LineElement>() {
 	companion object {
 		private val defaultDocumentClass = DocumentClass(name = "jsbook", options = listOf("a4paper", "11pt", "oneside", "openany", "report"))
-		private val defaultUsePackages = listOf(
+		private val defaultUsePackages: List<UsePackage> = listOf(
 				UsePackage(name = "hyperref", option = "dvipdfmx"),
 				UsePackage(name = "pxjahyper")
 		)
+		private val defaultRequirePackages: List<RequirePackage> = listOf()
+
+		private fun MutableList<UsePackage>.addOrUpdate(usePackage: UsePackage) {
+			this.removeIf { it.packageName == usePackage.packageName }
+			this.add(usePackage)
+		}
+
+		private fun MutableList<RequirePackage>.addOrUpdate(requirePackage: RequirePackage) {
+			this.removeIf { it.packageName == requirePackage.packageName }
+			this.add(requirePackage)
+		}
 	}
 
 	private val format = EmbeddedCode.Format.Tex
@@ -25,14 +36,19 @@ open class TexHeaderScope : Builder<LineElement>() {
 	private fun String.escape() = TexEscaper.escape(this)
 
 	private var documentClass = defaultDocumentClass
-	private var usePackages = defaultUsePackages.toMutableList()
+	private val usePackages = defaultUsePackages.toMutableList()
+	private val requirePackages = defaultRequirePackages.toMutableList()
 
 	fun documentClass(className: String, vararg options: String) {
 		documentClass = DocumentClass(name = className, options = options.asList())
 	}
 
 	fun usePackage(packageName: String, vararg options: String) {
-		usePackages.add(UsePackage(name = packageName, options = options.asList()))
+		usePackages.addOrUpdate(UsePackage(name = packageName, options = options.asList()))
+	}
+
+	fun requirePackage(packageName: String) {
+		requirePackages.addOrUpdate(RequirePackage(packageName))
 	}
 
 	internal fun title(title: String): Line {
@@ -46,7 +62,8 @@ open class TexHeaderScope : Builder<LineElement>() {
 	override fun build(): LineComposition {
 		val header =
 				listOf(documentClass) +
-						usePackages
+						usePackages +
+						requirePackages
 		header.asReversed().forEach {
 			it.toLine().addingFirst()
 		}
