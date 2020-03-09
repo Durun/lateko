@@ -28,7 +28,7 @@ fun chapterOf(title: String, content: ChapterScope.() -> Unit): Chapter = chapte
 
 fun document(name: String? = null, content: DocumentScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
 
-fun texDocument(title: String?, header: TexHeaderScope.() -> Unit, content: DocumentScope.() -> Unit): Document {
+fun texDocument(title: String?, autoMakeTitle: Boolean = true, header: TexHeaderScope.() -> Unit, content: DocumentScope.() -> Unit): Document {
 	val headerBuilder = TexHeaderScope()
 	headerBuilder.apply {
 		title?.let { title(it) }
@@ -36,7 +36,7 @@ fun texDocument(title: String?, header: TexHeaderScope.() -> Unit, content: Docu
 	}
 	val contentBuilder = DocumentScope()
 	contentBuilder.apply {
-		title?.let { makeTitle() }
+		title?.let { if (autoMakeTitle) makeTitle() }
 		content()
 	}
 	return Document(

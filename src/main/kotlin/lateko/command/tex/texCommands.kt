@@ -11,7 +11,11 @@ class End(name: String) : SimpleTexCommand("end", arg = name)
 class Title(name: String) : SimpleTexCommand("title", arg = name)
 class Author(name: String) : SimpleTexCommand("author", arg = name)
 class Date(date: String) : SimpleTexCommand("date", arg = date)
+
 object MakeTitle : SimpleTexCommand("maketitle")
+object TableOfContents : SimpleTexCommand("tableofcontents")
+object ListOfFigures : SimpleTexCommand("listoffigures")
+object ListOfTables : SimpleTexCommand("listoftables")
 
 class DocumentClass(options: List<String>, name: String) : SimpleTexCommand("documentclass", options, arg = name)
 class RequirePackage(name: String) : SimpleTexCommand("RequirePackage", arg = name) {
