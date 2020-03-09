@@ -1,5 +1,7 @@
 # This is the title breaking line here
-## Example
+
 <div id="chexample"></div>
+
+## Example
 This is a statement breaking line here.
 
