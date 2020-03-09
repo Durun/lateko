@@ -8,16 +8,10 @@ import lateko.model.structure.*
 import lateko.model.structure.Structure.Companion.toStructure
 import lateko.model.structure.StructureComposition.Companion.toComposition
 
-open class StructureScope : Builder<StructureElement>() {
+abstract class StructureScope : Builder<StructureElement>() {
 	companion object {
 		protected fun StructureComposition.sortNest(): StructureComposition {
 			return children.sortedBy { it is Section || it is Chapter }.toComposition()
-		}
-
-		fun (StructureScope.() -> Unit).build(): StructureComposition {
-			val builder = StructureScope()
-			builder.this()
-			return builder.build().sortNest()
 		}
 	}
 

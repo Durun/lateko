@@ -5,11 +5,8 @@ import io.kotest.matchers.shouldBe
 import java.io.File
 import java.nio.file.Path
 import java.nio.file.Paths
-import javax.script.ScriptEngine
-import javax.script.ScriptEngineManager
 
 class MarkdownRenderTests : FunSpec() {
-	private val scriptEngine: ScriptEngine = ScriptEngineManager().getEngineByExtension("kts")!!
 	private val testDocDir: Path
 
 	init {
@@ -37,7 +34,7 @@ class MarkdownRenderTests : FunSpec() {
 		dir.walk().toSet()
 				.filter { it.extension == "kts" }
 				.forEach { file ->
-					var enabled: Boolean = true
+					var enabled = true
 					runCatching { generateMarkdown(generateDocument(file)) }
 							.onFailure { enabled = it !is NotImplementedError }
 					if (!Paths.get(file.path + ".md").toFile().exists()) enabled = false
