@@ -24,12 +24,15 @@ internal interface MarkdownListRenderVisitor : LineRenderVisitor {
 			if (it is DescriptionItem && it.lineBreak) "\n"
 			else "\n\n"
 		}
-		return items.joinToString("\n") {
+		val listString = items.joinToString("\n") {
 			val rendered = it.accept(this)
 			if (it is ItemList)
 				rendered.prependIndent("\t")
 			else
 				rendered
 		} + suffix
+		return listString
+				.replace(Regex("\t+\n"), "\n") // remove redundant tabs
+				.replace("\n\n\n", "\n")
 	}
 }
