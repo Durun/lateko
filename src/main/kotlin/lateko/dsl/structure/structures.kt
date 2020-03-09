@@ -13,13 +13,13 @@ import lateko.model.structure.Section
 import lateko.model.structure.StructureComposition
 import lateko.model.structure.StructureComposition.Companion.toComposition
 
+private fun StructureComposition.sortNest(): StructureComposition {
+	return children.sortedBy { it is Section || it is Chapter }.toComposition()
+}
+
 class DocumentScope : StructureScope()
 class ChapterScope : StructureScope() {
 	companion object {
-		private fun StructureComposition.sortNest(): StructureComposition {
-			return children.sortedBy { it is Section || it is Chapter }.toComposition()
-		}
-
 		fun (ChapterScope.() -> Unit).build(): StructureComposition {
 			val builder = ChapterScope()
 			builder.this()
@@ -30,10 +30,6 @@ class ChapterScope : StructureScope() {
 
 class SectionScope : StructureScope() {
 	companion object {
-		private fun StructureComposition.sortNest(): StructureComposition {
-			return children.sortedBy { it is Section || it is Chapter }.toComposition()
-		}
-
 		fun (SectionScope.() -> Unit).build(): StructureComposition {
 			val builder = SectionScope()
 			builder.this()
