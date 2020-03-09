@@ -6,10 +6,10 @@ import lateko.model.line.LineComposition
 import lateko.model.line.LineComposition.Companion.toComposition
 import lateko.model.line.LineElement
 
-open class LineScope : Builder<LineElement>() {
+open class ParagraphScope : Builder<LineElement>() {
 	companion object {
-		fun (LineScope.() -> Unit).build(): LineComposition {
-			val builder = LineScope()
+		fun (ParagraphScope.() -> Unit).build(): LineComposition {
+			val builder = ParagraphScope()
 			builder.this()
 			return builder.build()
 		}

@@ -51,8 +51,8 @@ fun ChapterScope.section(name: String, content: SectionScope.() -> Unit): Sectio
 fun SectionScope.section(name: InlineElement? = null, content: SectionScope.() -> Unit): Section = sectionOf(name, content).adding()
 fun SectionScope.section(name: String, content: SectionScope.() -> Unit): Section = sectionOf(name, content).adding()
 
-fun StructureScope.paragraph(content: LineScope.() -> Unit): Paragraph = paragraphOf(content).adding()
-fun StructureScope.p(content: LineScope.() -> Unit): Paragraph = paragraph(content)
+fun StructureScope.paragraph(content: ParagraphScope.() -> Unit): Paragraph = paragraphOf(content).adding()
+fun StructureScope.p(content: ParagraphScope.() -> Unit): Paragraph = paragraph(content)
 
-fun LineScope.line(element: InlineElement): Line = element.toLine().adding()
-fun LineScope.line(element: String): Line = element.text.toLine().adding()
+fun ParagraphScope.line(element: InlineElement): Line = element.toLine().adding()
+fun ParagraphScope.line(element: String): Line = element.text.toLine().adding()
