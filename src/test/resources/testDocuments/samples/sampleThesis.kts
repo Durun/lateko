@@ -17,8 +17,7 @@ fun thesisDocument(title: String, author: String,
 			usePackage("graphicx", "dvipdfmx")
 			usePackage("cite", "nobreak")
 			usePackage("xspace")
-			usePackage(
-					"hyperref",
+			usePackage("hyperref",
 					"a4paper,dvipdfmx,pdfdisplaydoctitle=true",
 					"bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc,bookmarksopen=true",
 					"pdftitle={$title}",
