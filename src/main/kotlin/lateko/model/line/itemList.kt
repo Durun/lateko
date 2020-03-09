@@ -13,6 +13,12 @@ class IndexedItem(val element: InlineElement) : ListItem {
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
 }
 
+class DescriptionItem(
+		val title: InlineElement,
+		val element: InlineElement,
+		val lineBreak: Boolean = true) : ListItem {
+	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
+}
 
 interface ItemList : ListItem, Composition<ListItem> {
 	val items: List<ListItem>
