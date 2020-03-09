@@ -8,7 +8,8 @@ object MarkdownEscaper : Escaper {
 			"#" to "\\#",
 			"*" to "\\*",
 			"_" to "\\_",
-			"`" to "\\`"
+			"`" to "\\`",
+			"\n" to " "
 	)
 
 	override fun escape(text: String): String {

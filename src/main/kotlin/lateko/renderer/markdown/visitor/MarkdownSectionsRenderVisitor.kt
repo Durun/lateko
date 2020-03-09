@@ -7,6 +7,7 @@ import lateko.model.line.LineElement
 import lateko.model.structure.Chapter
 import lateko.model.structure.Section
 import lateko.model.structure.StructureElement
+import lateko.renderer.markdown.MarkdownEscaper
 import lateko.renderer.markdown.anchor
 
 internal class MarkdownSectionsRenderVisitor(
@@ -22,7 +23,8 @@ internal class MarkdownSectionsRenderVisitor(
 	private var sectionNestLevel = 1
 
 	fun visit(document: Document): String {
-		return Header(level = 1, text = document.name).toString() +
+		val docName = document.name?.let { MarkdownEscaper.escape(it) }
+		return Header(level = 1, text = docName).toString() +
 				document.content.rendered
 	}
 

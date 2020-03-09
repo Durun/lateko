@@ -13,7 +13,8 @@ object TexEscaper : Escaper {
 			"<" to "\\textless",
 			">" to "\\textgreater",
 			"^" to "\\textasciitilde",
-			"~" to "\\textasciicircum"
+			"~" to "\\textasciicircum",
+			"\n" to "\\\\"
 	)
 
 	private fun String.escapeCore(): String {
