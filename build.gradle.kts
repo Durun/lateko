@@ -40,7 +40,7 @@ dependencies {
 
 application {
 	// Define the main class for the application.
-	mainClassName = "lateko.AppKt"
+	mainClassName = "io.github.durun.lateko.AppKt"
 }
 
 tasks {

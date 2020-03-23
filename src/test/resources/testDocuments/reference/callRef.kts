@@ -1,8 +1,8 @@
-import lateko.dsl.chapterOf
-import lateko.dsl.document
-import lateko.dsl.inline.minus
-import lateko.dsl.ref
-import lateko.dsl.structure.p
+import io.github.durun.lateko.dsl.chapterOf
+import io.github.durun.lateko.dsl.document
+import io.github.durun.lateko.dsl.inline.minus
+import io.github.durun.lateko.dsl.ref
+import io.github.durun.lateko.dsl.structure.p
 
 val intro = chapterOf("Introduction") {
 	p {

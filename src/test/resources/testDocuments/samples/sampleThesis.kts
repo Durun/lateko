@@ -1,8 +1,8 @@
-import lateko.dsl.command.*
-import lateko.dsl.structure.DocumentScope
-import lateko.dsl.structure.chapter
-import lateko.dsl.structure.p
-import lateko.dsl.texDocument
+import io.github.durun.lateko.dsl.command.*
+import io.github.durun.lateko.dsl.structure.DocumentScope
+import io.github.durun.lateko.dsl.structure.chapter
+import io.github.durun.lateko.dsl.structure.p
+import io.github.durun.lateko.dsl.texDocument
 
 fun thesisDocument(title: String, author: String,
 				   frontContent: DocumentScope.() -> Unit,

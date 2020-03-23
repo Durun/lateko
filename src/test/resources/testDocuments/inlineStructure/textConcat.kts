@@ -1,7 +1,7 @@
-import lateko.dsl.document
-import lateko.dsl.inline.minus
-import lateko.dsl.inline.url
-import lateko.dsl.structure.p
+import io.github.durun.lateko.dsl.document
+import io.github.durun.lateko.dsl.inline.minus
+import io.github.durun.lateko.dsl.inline.url
+import io.github.durun.lateko.dsl.structure.p
 
 document("TextConcat") {
 	p {

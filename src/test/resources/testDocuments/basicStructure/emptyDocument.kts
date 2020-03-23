@@ -1,3 +1,3 @@
-import lateko.dsl.document
+import io.github.durun.lateko.dsl.document
 
 document { }

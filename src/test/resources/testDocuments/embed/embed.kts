@@ -1,7 +1,7 @@
-import lateko.dsl.document
-import lateko.dsl.inline.asMarkdown
-import lateko.dsl.inline.asTex
-import lateko.dsl.structure.p
+import io.github.durun.lateko.dsl.document
+import io.github.durun.lateko.dsl.inline.asMarkdown
+import io.github.durun.lateko.dsl.inline.asTex
+import io.github.durun.lateko.dsl.structure.p
 
 document("Embed") {
 	p {

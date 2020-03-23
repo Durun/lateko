@@ -1,5 +1,5 @@
-import lateko.dsl.document
-import lateko.dsl.structure.*
+import io.github.durun.lateko.dsl.document
+import io.github.durun.lateko.dsl.structure.*
 
 document("Nested List") {
 	chapter("Nested list example") {
