@@ -2,16 +2,13 @@ package io.github.durun.lateko.renderer.common
 
 import io.github.durun.lateko.model.inline.EmbeddedCode
 import io.github.durun.lateko.model.inline.InlineElement
-import io.github.durun.lateko.model.line.Line
-import io.github.durun.lateko.model.line.LineComposition
-import io.github.durun.lateko.model.line.LineElement
-import io.github.durun.lateko.model.line.LineVisitor
+import io.github.durun.lateko.model.line.*
 
 interface LineRenderVisitor : LineVisitor<String> {
 	val InlineElement.rendered: String
 		get() = this.renderedAs(outputFormat())
 	val LineElement.rendered: String
-		get() = this.accept(this@LineRenderVisitor)
+		get() = this.renderedAs(outputFormat())
 
 	fun outputFormat(): EmbeddedCode.Format
 
@@ -26,4 +23,7 @@ interface LineRenderVisitor : LineVisitor<String> {
 			e is EmbeddedCode && e.format != outputFormat()
 		}.orEmpty()
 	}
+
+	override fun visit(lines: LineExtension): String = lines.renderedAs(outputFormat())
+
 }

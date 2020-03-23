@@ -6,7 +6,6 @@ import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.renderer.common.ChangeSectionIdVisitor
 import io.github.durun.lateko.renderer.common.DocumentRenderVisitor
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
-import io.github.durun.lateko.renderer.markdown.visitor.MarkdownLineRenderVisitor
 import io.github.durun.lateko.renderer.markdown.visitor.MarkdownStructureRenderVisitor
 
 object BasicMarkdownRenderer : MarkdownRenderer {
@@ -17,12 +16,7 @@ object BasicMarkdownRenderer : MarkdownRenderer {
 	}
 
 	private class MarkdownRenderVisitor : DocumentRenderVisitor,
-			MarkdownLineRenderVisitor,
-			StructureRenderVisitor by MarkdownStructureRenderVisitor(MarkdownLineRenderVisitorObj) {
-
-		private object MarkdownLineRenderVisitorObj : MarkdownLineRenderVisitor {
-			override fun outputFormat() = EmbeddedCode.Format.Markdown
-		}
+			StructureRenderVisitor by MarkdownStructureRenderVisitor() {
 
 		override val InlineElement.rendered: String
 			get() = this.renderedAs(outputFormat())

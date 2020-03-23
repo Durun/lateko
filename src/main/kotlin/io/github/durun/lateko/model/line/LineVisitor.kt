@@ -5,9 +5,6 @@ interface LineVisitor<R> {
 	fun visit(lines: LineComposition): R
 	fun visit(line: Line): R
 
-	// List
-	fun visit(list: ItemList): R
-	fun visit(item: SimpleItem): R
-	fun visit(item: IndexedItem): R
-	fun visit(item: DescriptionItem): R
+	// Extensions
+	fun visit(lines: LineExtension): R
 }

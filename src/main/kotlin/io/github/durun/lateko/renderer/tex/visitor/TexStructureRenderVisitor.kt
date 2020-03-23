@@ -1,6 +1,7 @@
 package io.github.durun.lateko.renderer.tex.visitor
 
 import io.github.durun.lateko.model.Document
+import io.github.durun.lateko.model.inline.EmbeddedCode
 import io.github.durun.lateko.model.line.LineElement
 import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Paragraph
@@ -8,10 +9,9 @@ import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.Structure
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 
-internal class TexStructureRenderVisitor(
-		lineVisitor: TexLineRenderVisitor) : StructureRenderVisitor {
-	private val coreVisitor = TexCoreStructureRenderVisitor(lineVisitor)
-	private val sectionVisitor = TexSectionsRenderVisitor(lineVisitor, this)
+internal class TexStructureRenderVisitor : StructureRenderVisitor {
+	private val coreVisitor = TexCoreStructureRenderVisitor()
+	private val sectionVisitor = TexSectionsRenderVisitor(this)
 
 	override fun visit(structure: Structure): String = coreVisitor.visit(structure)
 	override fun visit(paragraph: Paragraph): String = coreVisitor.visit(paragraph)
@@ -20,10 +20,9 @@ internal class TexStructureRenderVisitor(
 	override fun visit(chapter: Chapter): String = sectionVisitor.visit(chapter)
 	override fun visit(document: Document): String = sectionVisitor.visit(document)
 
-	private class TexCoreStructureRenderVisitor(
-			private val lineVisitor: TexLineRenderVisitor) {
+	private class TexCoreStructureRenderVisitor {
 		private val LineElement.rendered: String
-			get() = this.accept(lineVisitor)
+			get() = this.renderedAs(EmbeddedCode.Format.Tex)
 
 		fun visit(structure: Structure): String = structure.element.rendered
 		fun visit(paragraph: Paragraph): String = paragraph.content.rendered + "\n"

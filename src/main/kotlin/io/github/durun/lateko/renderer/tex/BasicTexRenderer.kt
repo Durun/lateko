@@ -6,7 +6,6 @@ import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.renderer.common.ChangeSectionIdVisitor
 import io.github.durun.lateko.renderer.common.DocumentRenderVisitor
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
-import io.github.durun.lateko.renderer.tex.visitor.TexLineRenderVisitor
 import io.github.durun.lateko.renderer.tex.visitor.TexStructureRenderVisitor
 
 object BasicTexRenderer : TexRenderer {
@@ -17,12 +16,7 @@ object BasicTexRenderer : TexRenderer {
 	}
 
 	private class TexRenderVisitor : DocumentRenderVisitor,
-			TexLineRenderVisitor,
-			StructureRenderVisitor by TexStructureRenderVisitor(TexLineRenderVisitorObj) {
-
-		private object TexLineRenderVisitorObj : TexLineRenderVisitor {
-			override fun outputFormat() = EmbeddedCode.Format.Tex
-		}
+			StructureRenderVisitor by TexStructureRenderVisitor() {
 
 		override val InlineElement.rendered: String
 			get() = this.renderedAs(outputFormat())

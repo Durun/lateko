@@ -11,12 +11,11 @@ import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureElement
 
 internal class TexSectionsRenderVisitor(
-		private val lineVisitor: TexLineRenderVisitor,
 		private val structureVisitor: TexStructureRenderVisitor) {
 	private val InlineElement.rendered: String
 		get() = this.renderedAs(EmbeddedCode.Format.Tex)
 	private val LineElement.rendered: String
-		get() = this.accept(lineVisitor)
+		get() = this.renderedAs(EmbeddedCode.Format.Tex)
 	private val StructureElement.rendered: String
 		get() = this.accept(structureVisitor)
 
