@@ -4,11 +4,11 @@ import io.github.durun.lateko.dsl.chapterOf
 import io.github.durun.lateko.dsl.inline.text
 import io.github.durun.lateko.dsl.paragraphOf
 import io.github.durun.lateko.dsl.sectionOf
+import io.github.durun.lateko.extension.Paragraph
 import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.model.line.Line
 import io.github.durun.lateko.model.line.Line.Companion.toLine
 import io.github.durun.lateko.model.structure.Chapter
-import io.github.durun.lateko.model.structure.Paragraph
 import io.github.durun.lateko.model.structure.Section
 
 fun DocumentScope.chapter(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = chapterOf(title, content).adding()

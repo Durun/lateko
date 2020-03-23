@@ -4,8 +4,8 @@ import io.github.durun.lateko.dsl.Builder
 import io.github.durun.lateko.dsl.line.DescriptionItemListScope
 import io.github.durun.lateko.dsl.line.IndexedItemListScope
 import io.github.durun.lateko.dsl.line.SimpleItemListScope
-import io.github.durun.lateko.model.line.ItemList
-import io.github.durun.lateko.model.line.ListItem
+import io.github.durun.lateko.extension.ItemList
+import io.github.durun.lateko.extension.ListItem
 
 fun ParagraphScope.list(items: SimpleItemListScope.() -> Unit): ItemList {
 	val builder = SimpleItemListScope()

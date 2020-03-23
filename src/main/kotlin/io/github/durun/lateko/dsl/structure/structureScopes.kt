@@ -2,6 +2,7 @@ package io.github.durun.lateko.dsl.structure
 
 import io.github.durun.lateko.command.tex.SimpleTexCommand
 import io.github.durun.lateko.dsl.Builder
+import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.EmbeddedCode
 import io.github.durun.lateko.model.line.Line.Companion.toLine
 import io.github.durun.lateko.model.structure.*
@@ -10,7 +11,7 @@ import io.github.durun.lateko.model.structure.StructureComposition.Companion.toC
 
 
 abstract class StructureScope : Builder<StructureElement>() {
-	fun SimpleTexCommand.toLine(): Structure = EmbeddedCode(this.toString(), format = EmbeddedCode.Format.Tex).toLine().toStructure()
+	fun SimpleTexCommand.toLine(): Structure = EmbeddedCode(this.toString(), format = Format.Tex).toLine().toStructure()
 
 	override fun build(): StructureComposition = elements.toComposition()
 }

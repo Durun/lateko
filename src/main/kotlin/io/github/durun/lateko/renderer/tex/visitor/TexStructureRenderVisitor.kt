@@ -3,7 +3,7 @@ package io.github.durun.lateko.renderer.tex.visitor
 import io.github.durun.lateko.command.tex.*
 import io.github.durun.lateko.dsl.structure.IllegalNestError
 import io.github.durun.lateko.model.Document
-import io.github.durun.lateko.model.inline.EmbeddedCode
+import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.model.line.LineElement
 import io.github.durun.lateko.model.structure.*
@@ -12,11 +12,12 @@ import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 
 internal class TexStructureRenderVisitor : StructureRenderVisitor {
-	override fun visit(structure: Structure): String = structure.element.renderedAs(EmbeddedCode.Format.Tex)
-	override fun visit(structure: StructureExtension): String = structure.renderedAs(EmbeddedCode.Format.Tex)
-	private val InlineElement.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Tex)
-	private val LineElement.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Tex)
+	override val outputFormat = Format.Tex
+	private val InlineElement.rendered: String get() = this.renderedAs(outputFormat)
+	private val LineElement.rendered: String get() = this.renderedAs(outputFormat)
 	private val StructureElement.rendered: String get() = this.accept(this@TexStructureRenderVisitor)
+	override fun visit(structure: Structure): String = structure.element.rendered
+	override fun visit(structure: StructureExtension): String = structure.renderedAs(outputFormat)
 
 	private var sectionNestLevel = 0
 	private var chapterNestLevel = 0

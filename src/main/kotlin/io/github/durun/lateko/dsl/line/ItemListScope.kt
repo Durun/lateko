@@ -2,9 +2,9 @@ package io.github.durun.lateko.dsl.line
 
 import io.github.durun.lateko.dsl.Builder
 import io.github.durun.lateko.dsl.inline.text
+import io.github.durun.lateko.extension.*
+import io.github.durun.lateko.extension.ItemList.Companion.toComposition
 import io.github.durun.lateko.model.inline.InlineElement
-import io.github.durun.lateko.model.line.*
-import io.github.durun.lateko.model.line.ItemList.Companion.toComposition
 
 abstract class ItemListScope<I : ListItem> : Builder<ListItem>() {
 	fun item(text: String): I = item(text.text)

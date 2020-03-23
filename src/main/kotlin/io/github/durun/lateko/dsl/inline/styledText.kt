@@ -1,6 +1,6 @@
 package io.github.durun.lateko.dsl.inline
 
-import io.github.durun.lateko.model.inline.StyledText
+import io.github.durun.lateko.extension.StyledText
 import io.github.durun.lateko.model.inline.Text
 
 private val Text.styled: StyledText get() = StyledText(this, emptySet())

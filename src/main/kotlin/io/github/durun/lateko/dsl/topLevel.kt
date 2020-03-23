@@ -10,11 +10,11 @@ import io.github.durun.lateko.dsl.structure.ParagraphScope
 import io.github.durun.lateko.dsl.structure.ParagraphScope.Companion.build
 import io.github.durun.lateko.dsl.structure.SectionScope
 import io.github.durun.lateko.dsl.structure.SectionScope.Companion.build
+import io.github.durun.lateko.extension.Paragraph
 import io.github.durun.lateko.model.Document
 import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.model.inline.Reference
 import io.github.durun.lateko.model.structure.Chapter
-import io.github.durun.lateko.model.structure.Paragraph
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureElement
 

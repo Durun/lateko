@@ -1,27 +1,29 @@
-package io.github.durun.lateko.model.line
+package io.github.durun.lateko.extension
 
 import io.github.durun.lateko.command.tex.Begin
 import io.github.durun.lateko.command.tex.End
 import io.github.durun.lateko.model.Composition
-import io.github.durun.lateko.model.inline.EmbeddedCode
+import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement
+import io.github.durun.lateko.model.line.LineExtension
+import io.github.durun.lateko.model.line.LineVisitor
 
 interface ListItem : LineExtension
 
 class SimpleItem(val element: InlineElement) : ListItem {
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
-	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
-		EmbeddedCode.Format.Markdown -> "- ${element.renderedAs(format)}"
-		EmbeddedCode.Format.Tex -> "\\item ${element.renderedAs(format)}"
+	override fun renderedAs(format: Format): String = when (format) {
+		Format.Markdown -> "- ${element.renderedAs(format)}"
+		Format.Tex -> "\\item ${element.renderedAs(format)}"
 		else -> element.renderedAs(format)
 	}
 }
 
 class IndexedItem(val element: InlineElement) : ListItem {
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
-	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
-		EmbeddedCode.Format.Markdown -> "1. ${element.renderedAs(format)}"
-		EmbeddedCode.Format.Tex -> "\\item ${element.renderedAs(format)}"
+	override fun renderedAs(format: Format): String = when (format) {
+		Format.Markdown -> "1. ${element.renderedAs(format)}"
+		Format.Tex -> "\\item ${element.renderedAs(format)}"
 		else -> TODO()
 	}
 }
@@ -31,8 +33,8 @@ class DescriptionItem(
 		val element: InlineElement,
 		val lineBreak: Boolean = true) : ListItem {
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
-	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
-		EmbeddedCode.Format.Markdown -> {
+	override fun renderedAs(format: Format): String = when (format) {
+		Format.Markdown -> {
 			val title = title.renderedAs(format)
 			val element = element.renderedAs(format)
 			if (lineBreak)
@@ -40,7 +42,7 @@ class DescriptionItem(
 			else
 				"- $title $element"
 		}
-		EmbeddedCode.Format.Tex -> {
+		Format.Tex -> {
 			val title = title.renderedAs(format)
 			val element = element.renderedAs(format)
 			if (lineBreak)
@@ -55,8 +57,8 @@ class DescriptionItem(
 interface ItemList : ListItem, Composition<ListItem> {
 	val items: List<ListItem>
 	override fun <R> accept(visitor: LineVisitor<R>): R = visitor.visit(this)
-	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
-		EmbeddedCode.Format.Markdown -> {
+	override fun renderedAs(format: Format): String = when (format) {
+		Format.Markdown -> {
 			val items = items
 			val suffix = items.lastOrNull().let {
 				if (it is DescriptionItem && it.lineBreak) "\n"
@@ -73,7 +75,7 @@ interface ItemList : ListItem, Composition<ListItem> {
 					.replace(Regex("\t+\n"), "\n") // remove redundant tabs
 					.replace("\n\n\n", "\n")
 		}
-		EmbeddedCode.Format.Tex -> {    // TODO
+		Format.Tex -> {    // TODO
 			val items = items
 			val leafItems = items.filterNot { it is ItemList }
 			val envName = when (true) {

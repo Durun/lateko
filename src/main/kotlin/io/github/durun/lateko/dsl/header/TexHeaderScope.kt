@@ -3,6 +3,7 @@ package io.github.durun.lateko.dsl.header
 import io.github.durun.lateko.command.Command
 import io.github.durun.lateko.command.tex.*
 import io.github.durun.lateko.dsl.Builder
+import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.EmbeddedCode
 import io.github.durun.lateko.model.line.Line
 import io.github.durun.lateko.model.line.Line.Companion.toLine
@@ -31,7 +32,7 @@ open class TexHeaderScope : Builder<LineElement>() {
 		}
 	}
 
-	private val format = EmbeddedCode.Format.Tex
+	private val format = Format.Tex
 	private fun Command.toLine(): Line = EmbeddedCode(this.toString(), format = format).toLine()
 	private fun String.escape() = TexEscaper.escape(this)
 

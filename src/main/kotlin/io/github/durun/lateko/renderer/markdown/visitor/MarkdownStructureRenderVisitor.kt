@@ -2,18 +2,21 @@ package io.github.durun.lateko.renderer.markdown.visitor
 
 import io.github.durun.lateko.command.markdown.Header
 import io.github.durun.lateko.model.Document
-import io.github.durun.lateko.model.inline.EmbeddedCode
+import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement
+import io.github.durun.lateko.model.line.LineElement
 import io.github.durun.lateko.model.structure.*
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 import io.github.durun.lateko.renderer.markdown.MarkdownEscaper
 import io.github.durun.lateko.renderer.markdown.anchor
 
 internal class MarkdownStructureRenderVisitor : StructureRenderVisitor {
-	override fun visit(structure: Structure): String = structure.element.renderedAs(EmbeddedCode.Format.Markdown)
-	override fun visit(structure: StructureExtension): String = structure.renderedAs(EmbeddedCode.Format.Markdown)
-	private val InlineElement.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Markdown)
+	override val outputFormat = Format.Markdown
+	private val InlineElement.rendered: String get() = this.renderedAs(outputFormat)
+	private val LineElement.rendered: String get() = this.renderedAs(outputFormat)
 	private val StructureElement.rendered: String get() = this.accept(this@MarkdownStructureRenderVisitor)
+	override fun visit(structure: Structure): String = structure.element.rendered
+	override fun visit(structure: StructureExtension): String = structure.renderedAs(outputFormat)
 
 	private var sectionNestLevel = 1
 

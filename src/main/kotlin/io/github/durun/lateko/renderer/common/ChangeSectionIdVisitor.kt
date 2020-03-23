@@ -1,7 +1,7 @@
 package io.github.durun.lateko.renderer.common
 
 import io.github.durun.lateko.model.Document
-import io.github.durun.lateko.model.inline.EmbeddedCode
+import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.model.inline.Reference
 import io.github.durun.lateko.model.structure.*
@@ -60,7 +60,7 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 	override fun visit(structure: StructureExtension): StructureElement = structure
 
 	private object GetTextVisitor : InlineRenderVisitor {
-		override fun outputFormat(): EmbeddedCode.Format = EmbeddedCode.Format.None
+		override fun outputFormat(): Format = Format.None
 		override fun visit(ref: Reference): String = throw IllegalStateException()
 	}
 
