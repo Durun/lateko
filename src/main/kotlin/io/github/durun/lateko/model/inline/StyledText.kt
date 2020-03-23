@@ -10,4 +10,10 @@ data class StyledText(val text: Text, val styles: Set<Style>) : InlineElement {
 		Typewriter,
 		SmallCaps
 	}
+
+	override fun renderedAs(format: EmbeddedCode.Format): String? = when (format) {
+		EmbeddedCode.Format.Markdown -> TODO()
+		EmbeddedCode.Format.Tex -> TODO()
+		else -> null
+	}
 }

@@ -16,9 +16,6 @@ interface InlineVisitor<R> {
 	// Ref
 	fun visit(ref: Reference): R
 
-	// URL
-	fun visit(urlText: UrlText): R
-
 	// StyledText
 	fun visit(text: StyledText): R
 }

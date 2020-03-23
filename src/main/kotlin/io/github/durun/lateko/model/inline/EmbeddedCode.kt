@@ -8,4 +8,7 @@ data class EmbeddedCode(val code: String, val format: Format) : InlineElement {
 	}
 
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
+	override fun renderedAs(format: Format): String? {
+		return code.takeIf { this.format == format }
+	}
 }

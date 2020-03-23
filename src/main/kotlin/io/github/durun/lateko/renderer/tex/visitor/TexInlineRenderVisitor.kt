@@ -6,7 +6,6 @@ import io.github.durun.lateko.renderer.tex.TexEscaper
 internal interface TexInlineRenderVisitor :
 		TexCoreInlineRenderVisitor,
 		TexRefRenderVisitor,
-		TexUrlRenderVisitor,
 		TexStyledTextRenderVisitor
 
 internal interface TexCoreInlineRenderVisitor : InlineRenderVisitor {

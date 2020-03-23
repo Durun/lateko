@@ -15,5 +15,5 @@ interface InlineRenderVisitor : InlineVisitor<String> {
 
 	override fun visit(text: Text): String = text.text.escape()
 	override fun visit(code: EmbeddedCode): String = code.takeIf { it.format == outputFormat() }?.code.orEmpty()
-	override fun visit(element: InlineExtension): String = element.renderedAs(format = outputFormat())
+	override fun visit(element: InlineExtension): String = element.renderedAs(format = outputFormat()).orEmpty()
 }

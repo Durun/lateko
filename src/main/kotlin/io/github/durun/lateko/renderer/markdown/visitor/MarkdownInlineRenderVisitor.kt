@@ -5,7 +5,6 @@ import io.github.durun.lateko.renderer.markdown.MarkdownEscaper
 
 internal interface MarkdownInlineRenderVisitor : MarkdownInlineRenderVisitorCore,
 		MarkdownRefRenderVisitor,
-		MarkdownUrlRenderVisitor,
 		MarkdownStyledTextRenderVisitor
 
 internal interface MarkdownInlineRenderVisitorCore : InlineRenderVisitor {
