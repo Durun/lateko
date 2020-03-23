@@ -5,7 +5,7 @@ class Section(name: String) : SimpleTexCommand("section", arg = name)
 class SubSection(name: String) : SimpleTexCommand("subsection", arg = name)
 class SubSubSection(name: String) : SimpleTexCommand("subsubsection", arg = name)
 
-class Begin(name: String) : SimpleTexCommand("begin", arg = name)
+class Begin(name: String, vararg options: String) : SimpleTexCommand("begin", arg = name, options = options.asList())
 class End(name: String) : SimpleTexCommand("end", arg = name)
 
 class Title(name: String) : SimpleTexCommand("title", arg = name)
