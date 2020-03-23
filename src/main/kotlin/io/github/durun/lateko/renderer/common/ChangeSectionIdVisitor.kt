@@ -32,8 +32,6 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 		}.toComposition()
 	}
 
-	override fun visit(paragraph: Paragraph): StructureElement = paragraph
-
 	override fun visit(section: Section): StructureElement {
 		sectionNestLevel++
 		nameStack.push(section.name?.getText() ?: section.id)
