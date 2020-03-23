@@ -10,12 +10,11 @@ import io.github.durun.lateko.model.structure.StructureElement
 import io.github.durun.lateko.renderer.markdown.MarkdownEscaper
 import io.github.durun.lateko.renderer.markdown.anchor
 
-internal class MarkdownSectionsRenderVisitor(
-		private val structureVisitor: MarkdownStructureRenderVisitor) {
+internal class MarkdownSectionsRenderVisitor {
 	private val InlineElement.rendered: String
 		get() = this.renderedAs(EmbeddedCode.Format.Markdown)
 	private val StructureElement.rendered: String
-		get() = this.accept(structureVisitor)
+		get() = this.renderedAs(EmbeddedCode.Format.Markdown)
 
 	private var sectionNestLevel = 1
 

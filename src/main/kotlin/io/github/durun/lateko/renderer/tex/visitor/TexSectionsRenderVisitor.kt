@@ -10,14 +10,13 @@ import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureElement
 
-internal class TexSectionsRenderVisitor(
-		private val structureVisitor: TexStructureRenderVisitor) {
+internal class TexSectionsRenderVisitor {
 	private val InlineElement.rendered: String
 		get() = this.renderedAs(EmbeddedCode.Format.Tex)
 	private val LineElement.rendered: String
 		get() = this.renderedAs(EmbeddedCode.Format.Tex)
 	private val StructureElement.rendered: String
-		get() = this.accept(structureVisitor)
+		get() = this.renderedAs(EmbeddedCode.Format.Tex)
 
 	private var sectionNestLevel = 0
 	private var chapterNestLevel = 0

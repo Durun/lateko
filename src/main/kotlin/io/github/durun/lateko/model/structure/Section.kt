@@ -13,9 +13,5 @@ data class Section(
 		idName = newId
 	}
 
-	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
-		EmbeddedCode.Format.Markdown -> TODO()
-		EmbeddedCode.Format.Tex -> TODO()
-		else -> TODO()
-	}
+	override fun renderedAs(format: EmbeddedCode.Format): String = TODO()
 }

@@ -7,7 +7,7 @@ import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 
 internal class MarkdownStructureRenderVisitor : StructureRenderVisitor {
 	override val StructureElement.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Markdown)
-	private val sectionVisitor = MarkdownSectionsRenderVisitor(this)
+	private val sectionVisitor = MarkdownSectionsRenderVisitor()
 
 	override fun visit(structure: Structure): String = structure.rendered
 	override fun visit(paragraph: Paragraph): String = paragraph.rendered
