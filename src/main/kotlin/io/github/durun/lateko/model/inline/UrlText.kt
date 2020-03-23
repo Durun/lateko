@@ -8,16 +8,16 @@ data class UrlText(
 		val url: String,
 		val text: InlineElement = url.text
 ) : InlineExtension {
-	override fun renderedAs(format: EmbeddedCode.Format): String? = when (format) {
+	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
 		EmbeddedCode.Format.Tex -> {
-			val text = text.renderedAs(format).orEmpty()
+			val text = text.renderedAs(format)
 			val url = url
 			if (text == url)
 				SimpleTexCommand("url", arg = url).toString()
 			else
 				SimpleTexCommand("href", args = listOf(url, text)).toString()
 		}
-		EmbeddedCode.Format.Markdown -> Link(url = url, element = this.text.renderedAs(format).orEmpty()).toString()
-		else -> null
+		EmbeddedCode.Format.Markdown -> Link(url = url, element = this.text.renderedAs(format)).toString()
+		else -> "${text.renderedAs(format)}($url)"
 	}
 }

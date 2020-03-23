@@ -18,7 +18,7 @@ data class StyledText(val text: Text, val styles: Set<Style>) : InlineExtension 
 		SmallCaps
 	}
 
-	override fun renderedAs(format: EmbeddedCode.Format): String? = when (format) {
+	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
 		EmbeddedCode.Format.Markdown -> styles.let {
 			when (true) {
 				it.containsAll(setOf(Style.Strong, Style.Italic)) -> BoldItalicText(string)

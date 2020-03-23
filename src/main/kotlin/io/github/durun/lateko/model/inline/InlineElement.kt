@@ -4,5 +4,5 @@ import io.github.durun.lateko.model.Element
 
 interface InlineElement : Element {
 	fun <R> accept(visitor: InlineVisitor<R>): R
-	fun renderedAs(format: EmbeddedCode.Format): String?
+	fun renderedAs(format: EmbeddedCode.Format): String
 }

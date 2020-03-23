@@ -8,9 +8,9 @@ class Reference(val element: StructureElement) : InlineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 	val id: String get() = element.id
 
-	override fun renderedAs(format: EmbeddedCode.Format): String? = when (format) {
+	override fun renderedAs(format: EmbeddedCode.Format): String = when (format) {
 		EmbeddedCode.Format.Markdown -> AnchorLink(url = "#$id", element = id).toString()
 		EmbeddedCode.Format.Tex -> Ref(id).toString()
-		else -> id
+		else -> "ref($id)"
 	}
 }
