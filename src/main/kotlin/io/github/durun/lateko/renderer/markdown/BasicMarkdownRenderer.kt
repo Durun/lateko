@@ -23,17 +23,15 @@ object BasicMarkdownRenderer : MarkdownRenderer {
 			StructureRenderVisitor by MarkdownStructureRenderVisitor(MarkdownInlineRenderVisitorObj, MarkdownLineRenderVisitorObj) {
 
 		private object MarkdownInlineRenderVisitorObj : MarkdownInlineRenderVisitor {
-			override fun EmbeddedCode.isEnabled(): Boolean = isMarkdown()
+			override fun outputFormat() = EmbeddedCode.Format.Markdown
 		}
 
 		private object MarkdownLineRenderVisitorObj : MarkdownLineRenderVisitor {
 			override val inlineRenderVisitor: InlineRenderVisitor = MarkdownInlineRenderVisitorObj
-			override fun EmbeddedCode.isEnabled(): Boolean = isMarkdown()
+			override fun outputFormat() = EmbeddedCode.Format.Markdown
 		}
 
 		override val inlineRenderVisitor: InlineRenderVisitor = MarkdownInlineRenderVisitorObj
-		override fun EmbeddedCode.isEnabled(): Boolean = isMarkdown()
+		override fun outputFormat() = EmbeddedCode.Format.Markdown
 	}
 }
-
-private fun EmbeddedCode.isMarkdown() = this.format == EmbeddedCode.Format.Markdown

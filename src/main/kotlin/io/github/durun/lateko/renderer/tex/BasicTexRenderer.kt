@@ -23,18 +23,15 @@ object BasicTexRenderer : TexRenderer {
 			StructureRenderVisitor by TexStructureRenderVisitor(TexInlineRenderVisitorObj, TexLineRenderVisitorObj) {
 
 		private object TexInlineRenderVisitorObj : TexInlineRenderVisitor {
-			override fun EmbeddedCode.isEnabled(): Boolean = isTex()
+			override fun outputFormat() = EmbeddedCode.Format.Tex
 		}
 
 		private object TexLineRenderVisitorObj : TexLineRenderVisitor {
 			override val inlineRenderVisitor: InlineRenderVisitor = TexInlineRenderVisitorObj
-
-			override fun EmbeddedCode.isEnabled(): Boolean = isTex()
+			override fun outputFormat() = EmbeddedCode.Format.Tex
 		}
 
 		override val inlineRenderVisitor: InlineRenderVisitor = TexInlineRenderVisitorObj
-		override fun EmbeddedCode.isEnabled(): Boolean = isTex()
+		override fun outputFormat() = EmbeddedCode.Format.Tex
 	}
 }
-
-private fun EmbeddedCode.isTex() = this.format == EmbeddedCode.Format.Tex

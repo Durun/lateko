@@ -68,7 +68,7 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 			// TODO
 		}
 
-		override fun EmbeddedCode.isEnabled(): Boolean = false
+		override fun outputFormat(): EmbeddedCode.Format = EmbeddedCode.Format.None
 		override fun visit(ref: Reference): String = throw IllegalStateException()
 		override fun visit(urlText: UrlText): String = urlText.text.rendered
 		override fun visit(text: StyledText): String = text.string

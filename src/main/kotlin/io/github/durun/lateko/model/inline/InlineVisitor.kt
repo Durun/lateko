@@ -10,6 +10,9 @@ interface InlineVisitor<R> {
 	fun visit(text: Text): R
 	fun visit(code: EmbeddedCode): R
 
+	// Extension
+	fun visit(element: InlineExtension): R
+
 	// Ref
 	fun visit(ref: Reference): R
 

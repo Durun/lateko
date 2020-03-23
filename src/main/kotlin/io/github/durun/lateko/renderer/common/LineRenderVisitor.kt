@@ -12,7 +12,7 @@ interface LineRenderVisitor : LineVisitor<String> {
 	val LineElement.rendered: String
 		get() = this.accept(this@LineRenderVisitor)
 
-	fun EmbeddedCode.isEnabled(): Boolean
+	fun outputFormat(): EmbeddedCode.Format
 
 	override fun visit(lines: LineComposition): String {
 		return lines.children.joinToString("") { it.rendered }
@@ -22,7 +22,7 @@ interface LineRenderVisitor : LineVisitor<String> {
 		val lineStr = line.element.accept(inlineRenderVisitor) + "\n"
 		return lineStr.takeUnless {
 			val e = line.element
-			e is EmbeddedCode && !e.isEnabled()
+			e is EmbeddedCode && e.format != outputFormat()
 		}.orEmpty()
 	}
 }
