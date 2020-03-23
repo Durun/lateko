@@ -9,11 +9,11 @@ import io.github.durun.lateko.model.line.SimpleItem
 import io.github.durun.lateko.renderer.common.LineRenderVisitor
 
 internal interface TexListRenderVisitor : LineRenderVisitor {
-	override fun visit(item: SimpleItem): String = "\\item ${item.element.accept(inlineRenderVisitor)}"
-	override fun visit(item: IndexedItem): String = "\\item ${item.element.accept(inlineRenderVisitor)}"
+	override fun visit(item: SimpleItem): String = "\\item ${item.element.rendered}"
+	override fun visit(item: IndexedItem): String = "\\item ${item.element.rendered}"
 	override fun visit(item: DescriptionItem): String {
-		val title = item.title.accept(inlineRenderVisitor)
-		val element = item.element.accept(inlineRenderVisitor)
+		val title = item.title.rendered
+		val element = item.element.rendered
 		return if (item.lineBreak)
 			"\\item[$title]\\mbox{}\\\\$element"
 		else

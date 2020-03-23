@@ -6,14 +6,12 @@ import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Paragraph
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.Structure
-import io.github.durun.lateko.renderer.common.InlineRenderVisitor
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 
 internal class TexStructureRenderVisitor(
-		inlineVisitor: InlineRenderVisitor,
 		lineVisitor: TexLineRenderVisitor) : StructureRenderVisitor {
 	private val coreVisitor = TexCoreStructureRenderVisitor(lineVisitor)
-	private val sectionVisitor = TexSectionsRenderVisitor(inlineVisitor, lineVisitor, this)
+	private val sectionVisitor = TexSectionsRenderVisitor(lineVisitor, this)
 
 	override fun visit(structure: Structure): String = coreVisitor.visit(structure)
 	override fun visit(paragraph: Paragraph): String = coreVisitor.visit(paragraph)

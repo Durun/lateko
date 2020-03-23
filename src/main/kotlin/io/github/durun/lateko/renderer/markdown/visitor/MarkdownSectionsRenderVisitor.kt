@@ -2,21 +2,20 @@ package io.github.durun.lateko.renderer.markdown.visitor
 
 import io.github.durun.lateko.command.markdown.Header
 import io.github.durun.lateko.model.Document
+import io.github.durun.lateko.model.inline.EmbeddedCode
 import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.model.line.LineElement
 import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureElement
-import io.github.durun.lateko.renderer.common.InlineRenderVisitor
 import io.github.durun.lateko.renderer.markdown.MarkdownEscaper
 import io.github.durun.lateko.renderer.markdown.anchor
 
 internal class MarkdownSectionsRenderVisitor(
-		private val inlineVisitor: InlineRenderVisitor,
 		private val lineVisitor: MarkdownLineRenderVisitor,
 		private val structureVisitor: MarkdownStructureRenderVisitor) {
 	private val InlineElement.rendered: String
-		get() = this.accept(inlineVisitor)
+		get() = this.renderedAs(EmbeddedCode.Format.Markdown)
 	private val LineElement.rendered: String
 		get() = this.accept(lineVisitor)
 	private val StructureElement.rendered: String
