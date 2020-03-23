@@ -6,8 +6,9 @@ import io.github.durun.lateko.model.structure.*
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 
 internal class TexStructureRenderVisitor : StructureRenderVisitor {
-	override val StructureElement.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Tex)
-	private val sectionVisitor = TexSectionsRenderVisitor()
+	private val Structure.rendered: String get() = this.element.renderedAs(EmbeddedCode.Format.Tex)
+	private val StructureExtension.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Tex)
+	private val sectionVisitor = TexSectionsRenderVisitor(this)
 
 	override fun visit(structure: Structure): String = structure.rendered
 	override fun visit(paragraph: Paragraph): String = paragraph.rendered
