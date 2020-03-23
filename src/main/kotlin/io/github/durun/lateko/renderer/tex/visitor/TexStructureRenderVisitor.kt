@@ -14,14 +14,9 @@ import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 internal class TexStructureRenderVisitor : StructureRenderVisitor {
 	override fun visit(structure: Structure): String = structure.element.renderedAs(EmbeddedCode.Format.Tex)
 	override fun visit(structure: StructureExtension): String = structure.renderedAs(EmbeddedCode.Format.Tex)
-
-
-	private val InlineElement.rendered: String
-		get() = this.renderedAs(EmbeddedCode.Format.Tex)
-	private val LineElement.rendered: String
-		get() = this.renderedAs(EmbeddedCode.Format.Tex)
-	private val StructureElement.rendered: String
-		get() = this.accept(this@TexStructureRenderVisitor)
+	private val InlineElement.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Tex)
+	private val LineElement.rendered: String get() = this.renderedAs(EmbeddedCode.Format.Tex)
+	private val StructureElement.rendered: String get() = this.accept(this@TexStructureRenderVisitor)
 
 	private var sectionNestLevel = 0
 	private var chapterNestLevel = 0
