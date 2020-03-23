@@ -1,11 +1,12 @@
 package io.github.durun.lateko.model.inline
 
-data class Text(val text: String) : InlineElement {
-	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
+import io.github.durun.lateko.renderer.markdown.MarkdownEscaper
+import io.github.durun.lateko.renderer.tex.TexEscaper
 
+data class Text(val text: String) : InlineExtension {
 	override fun renderedAs(format: EmbeddedCode.Format): String? = when (format) {
-		EmbeddedCode.Format.Markdown -> TODO()
-		EmbeddedCode.Format.Tex -> TODO()
-		else -> null
+		EmbeddedCode.Format.Markdown -> MarkdownEscaper.escape(text)
+		EmbeddedCode.Format.Tex -> TexEscaper.escape(text)
+		else -> text
 	}
 }

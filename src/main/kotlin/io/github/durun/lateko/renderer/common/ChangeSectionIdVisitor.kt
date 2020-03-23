@@ -1,7 +1,9 @@
 package io.github.durun.lateko.renderer.common
 
 import io.github.durun.lateko.model.Document
-import io.github.durun.lateko.model.inline.*
+import io.github.durun.lateko.model.inline.EmbeddedCode
+import io.github.durun.lateko.model.inline.InlineElement
+import io.github.durun.lateko.model.inline.Reference
 import io.github.durun.lateko.model.structure.*
 import io.github.durun.lateko.model.structure.StructureComposition.Companion.toComposition
 
@@ -18,7 +20,7 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 		return last
 	}
 
-	private fun MutableList<String>.toId() = this.joinToString("/")
+	private fun MutableList<String>.toId() = this.joinToString("/") { it.escape() }
 
 	private fun InlineElement.getText(): String = this.accept(GetTextVisitor)
 
@@ -58,18 +60,17 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 	}
 
 	private object GetTextVisitor : InlineRenderVisitor {
-		override fun String.escape(): String {
-			return this.replace('#', '＃')
-					.replace('&', '＆')
-					.replace('%', '％')
-					.replace('{', '｛')
-					.replace('}', '｝')
-					.replace(" ", "")
-			// TODO
-		}
-
 		override fun outputFormat(): EmbeddedCode.Format = EmbeddedCode.Format.None
 		override fun visit(ref: Reference): String = throw IllegalStateException()
-		override fun visit(text: StyledText): String = text.string
+	}
+
+	private fun String.escape(): String {
+		return this.replace('#', '＃')
+				.replace('&', '＆')
+				.replace('%', '％')
+				.replace('{', '｛')
+				.replace('}', '｝')
+				.replace(" ", "")
+		// TODO
 	}
 }
