@@ -9,4 +9,7 @@ interface StructureVisitor<R> {
 	fun visit(section: Section): R
 	fun visit(chapter: Chapter): R
 	fun visit(document: Document): R
+
+	// Extensions
+	fun visit(structure: StructureExtension): R
 }

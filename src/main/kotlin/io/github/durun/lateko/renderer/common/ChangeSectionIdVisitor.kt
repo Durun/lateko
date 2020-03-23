@@ -59,6 +59,8 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 		return document
 	}
 
+	override fun visit(structure: StructureExtension): StructureElement = structure
+
 	private object GetTextVisitor : InlineRenderVisitor {
 		override fun outputFormat(): EmbeddedCode.Format = EmbeddedCode.Format.None
 		override fun visit(ref: Reference): String = throw IllegalStateException()
