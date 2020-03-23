@@ -60,7 +60,7 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 	override fun visit(structure: StructureExtension): StructureElement = structure
 
 	private object GetTextVisitor : InlineRenderVisitor {
-		override fun outputFormat(): Format = Format.None
+		override val outputFormat: Format = Format.None
 		override fun visit(ref: Reference): String = throw IllegalStateException()
 	}
 

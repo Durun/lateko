@@ -17,10 +17,7 @@ object BasicTexRenderer : TexRenderer {
 
 	private class TexRenderVisitor : DocumentRenderVisitor,
 			StructureRenderVisitor by TexStructureRenderVisitor() {
-
-		override val InlineElement.rendered: String
-			get() = this.renderedAs(outputFormat())
-
-		override fun outputFormat() = Format.Tex
+		override val outputFormat = Format.Tex
+		override fun InlineElement.rendered(): String = this.renderedAs(outputFormat)
 	}
 }

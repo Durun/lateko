@@ -17,10 +17,7 @@ object BasicMarkdownRenderer : MarkdownRenderer {
 
 	private class MarkdownRenderVisitor : DocumentRenderVisitor,
 			StructureRenderVisitor by MarkdownStructureRenderVisitor() {
-
-		override val InlineElement.rendered: String
-			get() = this.renderedAs(outputFormat())
-
-		override fun outputFormat() = Format.Markdown
+		override val outputFormat = Format.Markdown
+		override fun InlineElement.rendered(): String = this.renderedAs(outputFormat)
 	}
 }
