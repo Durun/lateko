@@ -8,9 +8,10 @@ import io.github.durun.lateko.model.line.LineElement
 import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureElement
+import io.github.durun.lateko.renderer.common.InlineRenderVisitor
 
 internal class TexSectionsRenderVisitor(
-		private val inlineVisitor: TexInlineRenderVisitor,
+		private val inlineVisitor: InlineRenderVisitor,
 		private val lineVisitor: TexLineRenderVisitor,
 		private val structureVisitor: TexStructureRenderVisitor) {
 	private val InlineElement.rendered: String

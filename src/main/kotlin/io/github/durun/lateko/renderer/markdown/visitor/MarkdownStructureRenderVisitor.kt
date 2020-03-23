@@ -6,10 +6,11 @@ import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Paragraph
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.Structure
+import io.github.durun.lateko.renderer.common.InlineRenderVisitor
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
 
 internal class MarkdownStructureRenderVisitor(
-		inlineVisitor: MarkdownInlineRenderVisitor,
+		inlineVisitor: InlineRenderVisitor,
 		lineVisitor: MarkdownLineRenderVisitor) : StructureRenderVisitor {
 	private val coreVisitor = MarkdownCoreLineRenderVisitor(lineVisitor)
 	private val sectionVisitor = MarkdownSectionsRenderVisitor(inlineVisitor, lineVisitor, this)

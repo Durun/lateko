@@ -2,11 +2,11 @@ package io.github.durun.lateko.renderer.tex
 
 import io.github.durun.lateko.model.Document
 import io.github.durun.lateko.model.inline.EmbeddedCode
+import io.github.durun.lateko.model.inline.Reference
 import io.github.durun.lateko.renderer.common.ChangeSectionIdVisitor
 import io.github.durun.lateko.renderer.common.DocumentRenderVisitor
 import io.github.durun.lateko.renderer.common.InlineRenderVisitor
 import io.github.durun.lateko.renderer.common.StructureRenderVisitor
-import io.github.durun.lateko.renderer.tex.visitor.TexInlineRenderVisitor
 import io.github.durun.lateko.renderer.tex.visitor.TexLineRenderVisitor
 import io.github.durun.lateko.renderer.tex.visitor.TexStructureRenderVisitor
 
@@ -18,12 +18,14 @@ object BasicTexRenderer : TexRenderer {
 	}
 
 	private class TexRenderVisitor : DocumentRenderVisitor,
-			TexInlineRenderVisitor,
 			TexLineRenderVisitor,
 			StructureRenderVisitor by TexStructureRenderVisitor(TexInlineRenderVisitorObj, TexLineRenderVisitorObj) {
 
-		private object TexInlineRenderVisitorObj : TexInlineRenderVisitor {
+		private object TexInlineRenderVisitorObj : InlineRenderVisitor {
 			override fun outputFormat() = EmbeddedCode.Format.Tex
+			override fun visit(ref: Reference): String {
+				return ref.renderedAs(outputFormat()).orEmpty()
+			}
 		}
 
 		private object TexLineRenderVisitorObj : TexLineRenderVisitor {
@@ -32,6 +34,7 @@ object BasicTexRenderer : TexRenderer {
 		}
 
 		override val inlineRenderVisitor: InlineRenderVisitor = TexInlineRenderVisitorObj
+
 		override fun outputFormat() = EmbeddedCode.Format.Tex
 	}
 }

@@ -7,11 +7,12 @@ import io.github.durun.lateko.model.line.LineElement
 import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureElement
+import io.github.durun.lateko.renderer.common.InlineRenderVisitor
 import io.github.durun.lateko.renderer.markdown.MarkdownEscaper
 import io.github.durun.lateko.renderer.markdown.anchor
 
 internal class MarkdownSectionsRenderVisitor(
-		private val inlineVisitor: MarkdownInlineRenderVisitor,
+		private val inlineVisitor: InlineRenderVisitor,
 		private val lineVisitor: MarkdownLineRenderVisitor,
 		private val structureVisitor: MarkdownStructureRenderVisitor) {
 	private val InlineElement.rendered: String
