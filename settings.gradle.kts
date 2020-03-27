@@ -1,1 +1,1 @@
-rootProject.name = "io.github.durun.lateko"
+rootProject.name = "lateko"
