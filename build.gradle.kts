@@ -7,9 +7,9 @@ version = "0.1-SNAPSHOT"
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
 
 plugins {
-	kotlin("jvm") version "1.3.70"
+	maven
+	kotlin("jvm") version "1.3.71"
 	application
-
 	// Use shadowJar for generating fatJar.
 	id("com.github.johnrengelman.shadow") version "5.2.0"
 }
