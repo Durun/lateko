@@ -1,9 +1,13 @@
 package io.github.durun.lateko
 
-class App {
-	fun main() {
-		TODO()
-	}
+import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.subcommands
+import io.github.durun.lateko.app.CompileApp
+
+class App : CliktCommand() {
+	override fun run() {}
 }
 
-fun main() = App().main()
+fun main(args: Array<String>) = App().subcommands(
+		CompileApp()
+).main(args)

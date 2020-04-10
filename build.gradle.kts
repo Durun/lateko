@@ -33,6 +33,10 @@ dependencies {
 	implementation(kotlin("compiler-embeddable"))
 	implementation(kotlin("scripting-compiler-embeddable"))
 
+	// Use the CLI interface library.
+	val cliktVersion = "2.6.0"
+	implementation("com.github.ajalt:clikt:$cliktVersion")
+
 	// Use the Kotlin test library.
 	val kotestVersion = "4.0.0-BETA1"
 	testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
