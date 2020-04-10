@@ -1,5 +1,7 @@
 package io.github.durun.lateko.extension
 
+import io.github.durun.lateko.model.inline.InlineExtension
+import io.github.durun.lateko.model.inline.Text
 import io.github.durun.lateko.target.markdown.BoldItalicText
 import io.github.durun.lateko.target.markdown.BoldText
 import io.github.durun.lateko.target.markdown.CodeText
@@ -7,9 +9,6 @@ import io.github.durun.lateko.target.markdown.ItalicText
 import io.github.durun.lateko.target.tex.SmallCapsText
 import io.github.durun.lateko.target.tex.StrongItalicText
 import io.github.durun.lateko.target.tex.TypewriterText
-import io.github.durun.lateko.model.Format
-import io.github.durun.lateko.model.inline.InlineExtension
-import io.github.durun.lateko.model.inline.Text
 
 data class StyledText(val text: Text, val styles: Set<Style>) : InlineExtension {
 	val string: String = text.text
@@ -21,8 +20,8 @@ data class StyledText(val text: Text, val styles: Set<Style>) : InlineExtension 
 		SmallCaps
 	}
 
-	override fun renderedAs(format: Format): String = when (format) {
-		Format.Markdown -> styles.let {
+	override fun renderTex(): String {
+		return styles.let {
 			when (true) {
 				it.containsAll(setOf(Style.Strong, Style.Italic)) -> BoldItalicText(string)
 				it.contains(Style.Strong) -> BoldText(string)
@@ -31,8 +30,10 @@ data class StyledText(val text: Text, val styles: Set<Style>) : InlineExtension 
 				else -> null
 			}?.toString() ?: string
 		}
+	}
 
-		Format.Tex -> styles.let {
+	override fun renderMarkdown(): String {
+		return styles.let {
 			when (true) {
 				it.containsAll(setOf(Style.Strong, Style.Italic)) -> StrongItalicText(string)
 				it.contains(Style.Strong) -> io.github.durun.lateko.target.tex.BoldText(string)
@@ -42,7 +43,5 @@ data class StyledText(val text: Text, val styles: Set<Style>) : InlineExtension 
 				else -> null
 			}?.toString() ?: string
 		}
-
-		else -> string
 	}
 }

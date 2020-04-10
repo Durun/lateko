@@ -12,7 +12,6 @@ interface InlineRenderVisitor : InlineVisitor<String> {
 		return composition.children.joinToString("") { it.rendered() }
 	}
 
-	override fun visit(code: EmbeddedCode): String = code.rendered()
 	override fun visit(element: InlineExtension): String = element.rendered()
 	override fun visit(ref: Reference): String = ref.rendered()
 }
