@@ -26,6 +26,8 @@ fun sectionOf(title: String, content: SectionScope.() -> Unit) = sectionOf(title
 fun chapterOf(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
 fun chapterOf(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)
 
+fun chapter(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title, content = content)
+
 fun document(name: String? = null, content: DocumentScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
 
 fun texDocument(title: String?, autoMakeTitle: Boolean = true, header: TexHeaderScope.() -> Unit, content: DocumentScope.() -> Unit): Document {
