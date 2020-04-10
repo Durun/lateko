@@ -15,5 +15,5 @@ interface InlineRenderVisitor : InlineVisitor<String> {
 	override fun visit(code: EmbeddedCode): String = code.rendered()
 	override fun visit(element: InlineExtension): String = element.rendered()
 	override fun visit(ref: StructureReference): String = ref.rendered()
-	override fun visit(ref: LabelReference): String = ref.rendered()
+	override fun visit(ref: Reference): String = ref.rendered()
 }

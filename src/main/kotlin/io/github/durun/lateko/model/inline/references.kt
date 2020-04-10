@@ -5,7 +5,7 @@ import io.github.durun.lateko.model.structure.StructureElement
 import io.github.durun.lateko.target.markdown.AnchorLink
 import io.github.durun.lateko.target.tex.Ref
 
-class LabelReference(val label: String) : InlineElement {
+open class Reference(val label: String) : InlineElement {
 	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
 
 	override fun renderedAs(format: Format): String = when (format) {
