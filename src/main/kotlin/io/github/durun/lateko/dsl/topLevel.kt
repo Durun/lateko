@@ -16,6 +16,7 @@ import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.model.inline.StructureReference
 import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Section
+import io.github.durun.lateko.model.structure.StructureContext
 import io.github.durun.lateko.model.structure.StructureElement
 
 fun paragraphOf(content: ParagraphScope.() -> Unit): Paragraph = Paragraph(content.build())
@@ -27,7 +28,15 @@ fun chapterOf(title: InlineElement, content: ChapterScope.() -> Unit): Chapter =
 fun chapterOf(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)
 
 
-fun section(title: String, content: SectionScope.() -> Unit): Section = sectionOf(title = title, content = content)
+fun section(
+		title: String,
+		chapterName: String?=null,
+		content: SectionScope.() -> Unit
+): Section {
+	val context = StructureContext(sectionIdPath = listOfNotNull(chapterName))
+	return Section(name = title.text, content = content.build(), context = context)
+}
+
 fun chapter(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title, content = content)
 fun document(name: String? = null, content: DocumentScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
 
