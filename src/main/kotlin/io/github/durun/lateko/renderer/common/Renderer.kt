@@ -1,7 +1,7 @@
 package io.github.durun.lateko.renderer.common
 
-import io.github.durun.lateko.model.Document
+import io.github.durun.lateko.model.structure.StructureElement
 
 interface Renderer {
-	fun render(document: Document): String
+	fun render(document: StructureElement): String
 }
