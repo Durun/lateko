@@ -38,7 +38,7 @@ dependencies {
 	implementation("com.github.ajalt:clikt:$cliktVersion")
 
 	// Use the Kotlin test library.
-	val kotestVersion = "4.0.0-BETA1"
+	val kotestVersion = "4.0.2"
 	testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
 }
 
