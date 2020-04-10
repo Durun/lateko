@@ -21,18 +21,23 @@ import io.github.durun.lateko.model.structure.StructureElement
 
 fun paragraph(content: ParagraphScope.() -> Unit): Paragraph = Paragraph(content.build())
 
-fun section(title: String, content: SectionScope.() -> Unit): Section = Section(name = title.text, content = content.build())
+fun section(title: String, label: String? = null, chapterName: String? = null, content: SectionScope.() -> Unit): Section {
+	return section(title.text, label, chapterName, content)
+}
+
 fun section(
 		title: InlineElement? = null,
+		label: String? = null,
 		chapterName: String? = null,
 		content: SectionScope.() -> Unit
 ): Section {
 	val context = StructureContext(sectionIdPath = listOfNotNull(chapterName))
-	return Section(name = title, content = content.build(), context = context)
+	return Section(name = title, idName = label, content = content.build(), context = context)
 }
 
-fun chapter(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
-fun chapter(title: String, content: ChapterScope.() -> Unit): Chapter = chapter(title = title.text, content = content)
+
+fun chapter(title: InlineElement, label: String? = null, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, idName = label, content = content.build())
+fun chapter(title: String, label: String? = null, content: ChapterScope.() -> Unit): Chapter = chapter(title = title.text, label = label, content = content)
 
 
 fun document(name: String? = null, content: DocumentScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
