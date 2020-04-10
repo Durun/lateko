@@ -36,6 +36,8 @@ class Ref(label: String) : SimpleTexCommand("ref", arg = label)
 
 class Caption(title: String) : SimpleTexCommand("caption", arg = title)
 
+object Centering : SimpleTexCommand("centering")
+
 class BoldText(text: String) : SimpleTexCommand("textbf", arg = text)
 class ItalicText(text: String) : SimpleTexCommand("textsl", arg = text)
 class StrongItalicText(text: String) : SimpleTexCommand("textit", arg = text)
