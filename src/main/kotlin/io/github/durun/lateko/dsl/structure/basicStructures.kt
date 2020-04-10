@@ -23,7 +23,7 @@ fun DocumentScope.chapter(
 
 
 fun ChapterScope.section(
-		name: InlineElement? = null,
+		name: InlineElement,
 		label: String? = null,
 		content: SectionScope.() -> Unit
 ): Section = io.github.durun.lateko.dsl.section(name, label = label, content = content).adding()
@@ -36,7 +36,7 @@ fun ChapterScope.section(
 
 
 fun SectionScope.section(
-		name: InlineElement? = null,
+		name: InlineElement,
 		label: String? = null,
 		content: SectionScope.() -> Unit
 ): Section = io.github.durun.lateko.dsl.section(name, label = label, content = content).adding()
