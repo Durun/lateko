@@ -1,8 +1,8 @@
 package io.github.durun.lateko.dsl.command
 
-import io.github.durun.lateko.command.tex.BackMatter
-import io.github.durun.lateko.command.tex.FrontMatter
-import io.github.durun.lateko.command.tex.MainMatter
+import io.github.durun.lateko.target.tex.BackMatter
+import io.github.durun.lateko.target.tex.FrontMatter
+import io.github.durun.lateko.target.tex.MainMatter
 import io.github.durun.lateko.dsl.structure.StructureScope
 import io.github.durun.lateko.model.structure.Structure
 

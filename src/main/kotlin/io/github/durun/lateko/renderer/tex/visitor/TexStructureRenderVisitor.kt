@@ -1,6 +1,6 @@
 package io.github.durun.lateko.renderer.tex.visitor
 
-import io.github.durun.lateko.command.tex.*
+import io.github.durun.lateko.target.tex.*
 import io.github.durun.lateko.dsl.structure.IllegalNestError
 import io.github.durun.lateko.model.Document
 import io.github.durun.lateko.model.Format
@@ -28,7 +28,7 @@ internal class TexStructureRenderVisitor : StructureRenderVisitor {
 		sectionNestLevel++
 		val sectionName = section.name?.rendered().orEmpty()
 		val sectionCommand = when (sectionNestLevel) {
-			1 -> io.github.durun.lateko.command.tex.Section(sectionName)
+			1 -> io.github.durun.lateko.target.tex.Section(sectionName)
 			2 -> SubSection(sectionName)
 			3 -> SubSubSection(sectionName)
 			else -> throw IllegalNestError("Too many section nest.")
@@ -46,7 +46,7 @@ internal class TexStructureRenderVisitor : StructureRenderVisitor {
 		if (chapterNestLevel > 1) throw IllegalNestError("Too many chapter nest.")
 
 		val chapterName = chapter.name.rendered()
-		val chapterCommand = io.github.durun.lateko.command.tex.Chapter(chapterName)
+		val chapterCommand = io.github.durun.lateko.target.tex.Chapter(chapterName)
 		val labelCommand = Label(chapter.id)
 		val content = "$chapterCommand$labelCommand\n${chapter.content.rendered()}"
 		chapterNestLevel--

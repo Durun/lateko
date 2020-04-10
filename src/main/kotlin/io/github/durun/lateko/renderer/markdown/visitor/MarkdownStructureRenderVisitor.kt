@@ -1,6 +1,6 @@
 package io.github.durun.lateko.renderer.markdown.visitor
 
-import io.github.durun.lateko.command.markdown.Header
+import io.github.durun.lateko.target.markdown.Header
 import io.github.durun.lateko.model.Document
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement

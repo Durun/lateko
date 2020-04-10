@@ -1,4 +1,4 @@
-package io.github.durun.lateko.command.tex
+package io.github.durun.lateko.target.tex
 
 open class SimpleTexCommand(
 		val command: String,

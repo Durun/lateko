@@ -1,4 +1,4 @@
-package io.github.durun.lateko.command.tex
+package io.github.durun.lateko.target.tex
 
 class Chapter(name: String) : SimpleTexCommand("chapter", arg = name)
 class Section(name: String) : SimpleTexCommand("section", arg = name)

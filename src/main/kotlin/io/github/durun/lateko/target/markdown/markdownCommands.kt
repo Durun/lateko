@@ -1,4 +1,4 @@
-package io.github.durun.lateko.command.markdown
+package io.github.durun.lateko.target.markdown
 
 class Header(val level: Int, val text: String?) : MarkdownCommand {
 	override fun toString(): String {

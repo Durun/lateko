@@ -1,7 +1,7 @@
 package io.github.durun.lateko.extension
 
-import io.github.durun.lateko.command.tex.Begin
-import io.github.durun.lateko.command.tex.End
+import io.github.durun.lateko.target.tex.Begin
+import io.github.durun.lateko.target.tex.End
 import io.github.durun.lateko.model.Composition
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement

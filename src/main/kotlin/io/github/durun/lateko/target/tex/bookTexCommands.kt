@@ -1,4 +1,4 @@
-package io.github.durun.lateko.command.tex
+package io.github.durun.lateko.target.tex
 
 object FrontMatter : SimpleTexCommand("frontmatter")
 object MainMatter : SimpleTexCommand("mainmatter")

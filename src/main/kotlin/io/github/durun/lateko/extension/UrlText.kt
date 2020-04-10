@@ -1,7 +1,7 @@
 package io.github.durun.lateko.extension
 
-import io.github.durun.lateko.command.markdown.Link
-import io.github.durun.lateko.command.tex.SimpleTexCommand
+import io.github.durun.lateko.target.markdown.Link
+import io.github.durun.lateko.target.tex.SimpleTexCommand
 import io.github.durun.lateko.dsl.inline.text
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement

@@ -1,7 +1,7 @@
 package io.github.durun.lateko.dsl.header
 
-import io.github.durun.lateko.command.Command
-import io.github.durun.lateko.command.tex.*
+import io.github.durun.lateko.target.Command
+import io.github.durun.lateko.target.tex.*
 import io.github.durun.lateko.dsl.Builder
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.EmbeddedCode

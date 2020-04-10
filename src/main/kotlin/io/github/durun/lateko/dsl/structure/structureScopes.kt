@@ -1,6 +1,6 @@
 package io.github.durun.lateko.dsl.structure
 
-import io.github.durun.lateko.command.tex.SimpleTexCommand
+import io.github.durun.lateko.target.tex.SimpleTexCommand
 import io.github.durun.lateko.dsl.Builder
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.EmbeddedCode

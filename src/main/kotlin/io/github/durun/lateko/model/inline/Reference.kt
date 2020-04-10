@@ -1,7 +1,7 @@
 package io.github.durun.lateko.model.inline
 
-import io.github.durun.lateko.command.markdown.AnchorLink
-import io.github.durun.lateko.command.tex.Ref
+import io.github.durun.lateko.target.markdown.AnchorLink
+import io.github.durun.lateko.target.tex.Ref
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.structure.StructureElement
 
