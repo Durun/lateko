@@ -5,6 +5,7 @@ import io.github.durun.lateko.model.Composition
 interface StructureComposition : Composition<StructureElement>, StructureElement {
 	val children: List<StructureElement>
 	override fun <R> accept(visitor: StructureVisitor<R>): R = visitor.visit(this)
+	override val context: StructureContext? get() = null
 
 	companion object {
 		fun Iterable<StructureElement>.toComposition(): StructureComposition {

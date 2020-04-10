@@ -7,9 +7,9 @@ import io.github.durun.lateko.model.inline.Reference
 import io.github.durun.lateko.model.structure.*
 import io.github.durun.lateko.model.structure.StructureComposition.Companion.toComposition
 
-class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
+class ChangeSectionIdVisitor(context: StructureContext? = null) : StructureVisitor<StructureElement> {
+	private val nameStack: MutableList<String> = (context?.sectionIdPath ?: emptyList()).toMutableList()
 	private var sectionNestLevel = -1
-	private val nameStack: MutableList<String> = mutableListOf()
 	private fun MutableList<String>.push(name: String) {
 		this.add(name)
 	}

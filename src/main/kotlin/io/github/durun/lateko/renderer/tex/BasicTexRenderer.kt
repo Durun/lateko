@@ -11,7 +11,7 @@ import io.github.durun.lateko.renderer.tex.visitor.TexStructureRenderVisitor
 object BasicTexRenderer : TexRenderer {
 	override fun render(document: StructureElement): String {
 		return document
-				.accept(ChangeSectionIdVisitor())
+				.accept(ChangeSectionIdVisitor(document.context))
 				.accept(TexRenderVisitor())
 	}
 

@@ -11,7 +11,7 @@ import io.github.durun.lateko.renderer.markdown.visitor.MarkdownStructureRenderV
 object BasicMarkdownRenderer : MarkdownRenderer {
 	override fun render(document: StructureElement): String {
 		return document
-				.accept(ChangeSectionIdVisitor())
+				.accept(ChangeSectionIdVisitor(document.context))
 				.accept(MarkdownRenderVisitor())
 	}
 
