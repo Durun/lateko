@@ -1,6 +1,7 @@
 package io.github.durun.lateko.model.inline
 
 import io.github.durun.lateko.model.Format
+import io.github.durun.lateko.model.structure.StructureElement
 import io.github.durun.lateko.target.markdown.AnchorLink
 import io.github.durun.lateko.target.tex.Ref
 
@@ -11,5 +12,16 @@ class LabelReference(val label: String) : InlineElement {
 		Format.Markdown -> AnchorLink(url = "#$label", element = label).toString()
 		Format.Tex -> Ref(label).toString()
 		else -> "ref($label)"
+	}
+}
+
+class StructureReference(val element: StructureElement) : InlineElement {
+	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
+	private val id: String get() = element.id
+
+	override fun renderedAs(format: Format): String = when (format) {
+		Format.Markdown -> AnchorLink(url = "#$id", element = id).toString()
+		Format.Tex -> Ref(id).toString()
+		else -> "ref($id)"
 	}
 }
