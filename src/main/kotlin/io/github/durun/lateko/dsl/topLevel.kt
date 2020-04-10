@@ -19,13 +19,13 @@ import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureContext
 import io.github.durun.lateko.model.structure.StructureElement
 
-fun paragraph(content: ParagraphScope.() -> Unit): Paragraph = Paragraph(content.build())
+fun paragraphOf(content: ParagraphScope.() -> Unit): Paragraph = Paragraph(content.build())
 
-fun section(title: String, label: String? = null, chapterName: String? = null, content: SectionScope.() -> Unit): Section {
-	return section(title.text, label, chapterName, content)
+fun sectionOf(title: String, label: String? = null, chapterName: String? = null, content: SectionScope.() -> Unit): Section {
+	return sectionOf(title.text, label, chapterName, content)
 }
 
-fun section(
+fun sectionOf(
 		title: InlineElement? = null,
 		label: String? = null,
 		chapterName: String? = null,
@@ -36,8 +36,8 @@ fun section(
 }
 
 
-fun chapter(title: InlineElement, label: String? = null, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, idName = label, content = content.build())
-fun chapter(title: String, label: String? = null, content: ChapterScope.() -> Unit): Chapter = chapter(title = title.text, label = label, content = content)
+fun chapterOf(title: InlineElement, label: String? = null, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, idName = label, content = content.build())
+fun chapterOf(title: String, label: String? = null, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title.text, label = label, content = content)
 
 
 fun document(name: String? = null, content: DocumentScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)

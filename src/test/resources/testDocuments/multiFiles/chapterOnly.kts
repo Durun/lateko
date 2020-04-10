@@ -1,7 +1,7 @@
-import io.github.durun.lateko.dsl.chapter
+import io.github.durun.lateko.dsl.chapterOf
 import io.github.durun.lateko.dsl.structure.p
 
-chapter("Chapter Only") {
+chapterOf("Chapter Only") {
 	p {
 		-"This is a chapter."
 	}
