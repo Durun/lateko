@@ -11,6 +11,6 @@ interface InlineVisitor<R> {
 	fun visit(element: InlineExtension): R
 
 	// Ref
-	fun visit(ref: Reference): R
+	fun visit(ref: StructureReference): R
 	fun visit(ref: LabelReference): R
 }

@@ -4,7 +4,7 @@ import io.github.durun.lateko.model.Document
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.InlineElement
 import io.github.durun.lateko.model.inline.LabelReference
-import io.github.durun.lateko.model.inline.Reference
+import io.github.durun.lateko.model.inline.StructureReference
 import io.github.durun.lateko.model.structure.*
 import io.github.durun.lateko.model.structure.StructureComposition.Companion.toComposition
 
@@ -62,7 +62,7 @@ class ChangeSectionIdVisitor : StructureVisitor<StructureElement> {
 
 	private object GetTextVisitor : InlineRenderVisitor {
 		override val outputFormat: Format = Format.None
-		override fun visit(ref: Reference): String = throw IllegalStateException()
+		override fun visit(ref: StructureReference): String = throw IllegalStateException()
 		override fun visit(ref: LabelReference): String = throw IllegalStateException()
 	}
 

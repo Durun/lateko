@@ -13,7 +13,7 @@ import io.github.durun.lateko.dsl.structure.SectionScope.Companion.build
 import io.github.durun.lateko.extension.Paragraph
 import io.github.durun.lateko.model.Document
 import io.github.durun.lateko.model.inline.InlineElement
-import io.github.durun.lateko.model.inline.Reference
+import io.github.durun.lateko.model.inline.StructureReference
 import io.github.durun.lateko.model.structure.Chapter
 import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureElement
@@ -49,4 +49,4 @@ fun texDocument(title: String?, autoMakeTitle: Boolean = true, header: TexHeader
 	)
 }
 
-val StructureElement.ref: Reference get() = Reference(this)
+val StructureElement.ref: StructureReference get() = StructureReference(this)
