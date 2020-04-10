@@ -36,7 +36,7 @@ class ChangeSectionIdVisitor(context: StructureContext? = null) : StructureVisit
 		sectionNestLevel++
 		nameStack.push(section.name?.getText() ?: section.id)
 		section.content.accept(this)
-		section.changeId("${"sub".repeat(sectionNestLevel)}sec:${nameStack.toId()}")
+		if (section.isIdDefault()) section.changeId("${"sub".repeat(sectionNestLevel)}sec:${nameStack.toId()}")
 		nameStack.pop()
 		sectionNestLevel--
 		return section
@@ -47,7 +47,7 @@ class ChangeSectionIdVisitor(context: StructureContext? = null) : StructureVisit
 
 		nameStack.push(chapter.name.getText())
 		chapter.content.accept(this)
-		chapter.changeId("ch:${nameStack.toId()}")
+		if (chapter.isIdDefault()) chapter.changeId("ch:${nameStack.toId()}")
 		nameStack.pop()
 		return chapter
 	}

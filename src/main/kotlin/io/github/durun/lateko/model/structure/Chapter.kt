@@ -10,6 +10,7 @@ data class Chapter(
 ) : StructureElement {
 	override fun <R> accept(visitor: StructureVisitor<R>): R = visitor.visit(this)
 	override val id: String get() = idName ?: super.id
+	fun isIdDefault(): Boolean = idName == null
 	fun changeId(newId: String) {
 		idName = newId
 	}
