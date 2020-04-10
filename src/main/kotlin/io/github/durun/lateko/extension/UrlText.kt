@@ -11,6 +11,7 @@ data class UrlText(
 		val url: String,
 		val text: InlineElement = url.text
 ) : InlineExtension {
+	override fun renderPlane(): String = url
 	override fun renderTex(): String {
 		val text = text.renderedAs(Format.Tex)
 		val url = url

@@ -9,10 +9,11 @@ interface InlineExtension : InlineElement {
 		return when (format) {
 			Format.Tex -> renderTex()
 			Format.Markdown -> renderMarkdown()
-			else -> null
-		}.orEmpty()
+			else -> renderPlane()
+		}
 	}
 
 	fun renderTex(): String
 	fun renderMarkdown(): String
+	fun renderPlane():String
 }

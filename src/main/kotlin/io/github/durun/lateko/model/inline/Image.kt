@@ -8,6 +8,7 @@ class Image(
 		val title: String,
 		val path: String
 ) : InlineExtension {
+	override fun renderPlane(): String = title
 	override fun renderTex(): String {
 		return BeginEnd("figure") {
 			"""

@@ -8,7 +8,6 @@ import javax.script.ScriptEngineManager
 fun main() = TestDocumentGenerator.main()
 
 object TestDocumentGenerator {
-	private val scriptEngine: ScriptEngine = ScriptEngineManager().getEngineByExtension("kts")!!
 	fun main() {
 		val dirName = "testDocuments"
 		val dir = Paths.get("src/test/resources/$dirName").toFile()
