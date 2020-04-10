@@ -19,25 +19,22 @@ import io.github.durun.lateko.model.structure.Section
 import io.github.durun.lateko.model.structure.StructureContext
 import io.github.durun.lateko.model.structure.StructureElement
 
-fun paragraphOf(content: ParagraphScope.() -> Unit): Paragraph = Paragraph(content.build())
+fun paragraph(content: ParagraphScope.() -> Unit): Paragraph = Paragraph(content.build())
 
-fun sectionOf(title: InlineElement? = null, content: SectionScope.() -> Unit): Section = Section(name = title, content = content.build())
-fun sectionOf(title: String, content: SectionScope.() -> Unit): Section = sectionOf(title = title.text, content = content)
-
-fun chapterOf(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
-fun chapterOf(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title.text, content = content)
-
-
+fun section(title: String, content: SectionScope.() -> Unit): Section = Section(name = title.text, content = content.build())
 fun section(
-		title: String,
-		chapterName: String?=null,
+		title: InlineElement? = null,
+		chapterName: String? = null,
 		content: SectionScope.() -> Unit
 ): Section {
 	val context = StructureContext(sectionIdPath = listOfNotNull(chapterName))
-	return Section(name = title.text, content = content.build(), context = context)
+	return Section(name = title, content = content.build(), context = context)
 }
 
-fun chapter(title: String, content: ChapterScope.() -> Unit): Chapter = chapterOf(title = title, content = content)
+fun chapter(title: InlineElement, content: ChapterScope.() -> Unit): Chapter = Chapter(name = title, content = content.build())
+fun chapter(title: String, content: ChapterScope.() -> Unit): Chapter = chapter(title = title.text, content = content)
+
+
 fun document(name: String? = null, content: DocumentScope.() -> Unit): Document = texDocument(title = name.orEmpty(), header = {}, content = content)
 
 fun texDocument(title: String?, autoMakeTitle: Boolean = true, header: TexHeaderScope.() -> Unit, content: DocumentScope.() -> Unit): Document {
