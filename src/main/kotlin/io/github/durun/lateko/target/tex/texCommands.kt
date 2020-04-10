@@ -8,6 +8,7 @@ class SubSubSection(name: String) : SimpleTexCommand("subsubsection", arg = name
 class Begin(name: String, vararg options: String) : SimpleTexCommand("begin", arg = name, options = options.asList())
 class End(name: String) : SimpleTexCommand("end", arg = name)
 
+
 class Title(name: String) : SimpleTexCommand("title", arg = name)
 class Author(name: String) : SimpleTexCommand("author", arg = name)
 class Date(date: String) : SimpleTexCommand("date", arg = date)
@@ -32,6 +33,8 @@ class UsePackage(options: List<String>, name: String) : SimpleTexCommand("usepac
 class Label(id: String) : SimpleTexCommand("label", arg = id)
 class Ref(label: String) : SimpleTexCommand("ref", arg = label)
 //TODO class Cite
+
+class Caption(title: String) : SimpleTexCommand("caption", arg = title)
 
 class BoldText(text: String) : SimpleTexCommand("textbf", arg = text)
 class ItalicText(text: String) : SimpleTexCommand("textsl", arg = text)

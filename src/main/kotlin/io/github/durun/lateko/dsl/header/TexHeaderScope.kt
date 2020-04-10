@@ -1,7 +1,5 @@
 package io.github.durun.lateko.dsl.header
 
-import io.github.durun.lateko.target.Command
-import io.github.durun.lateko.target.tex.*
 import io.github.durun.lateko.dsl.Builder
 import io.github.durun.lateko.model.Format
 import io.github.durun.lateko.model.inline.EmbeddedCode
@@ -11,13 +9,16 @@ import io.github.durun.lateko.model.line.LineComposition
 import io.github.durun.lateko.model.line.LineComposition.Companion.toComposition
 import io.github.durun.lateko.model.line.LineElement
 import io.github.durun.lateko.renderer.tex.TexEscaper
+import io.github.durun.lateko.target.Command
+import io.github.durun.lateko.target.tex.*
 
 open class TexHeaderScope : Builder<LineElement>() {
 	companion object {
 		private val defaultDocumentClass = DocumentClass(name = "jsbook", options = listOf("a4paper", "11pt", "oneside", "openany", "report"))
 		private val defaultUsePackages: List<UsePackage> = listOf(
 				UsePackage(name = "hyperref", option = "dvipdfmx"),
-				UsePackage(name = "pxjahyper")
+				UsePackage(name = "pxjahyper"),
+				UsePackage(name = "graphicx", option = "dvipdfmx")
 		)
 		private val defaultRequirePackages: List<RequirePackage> = listOf()
 
