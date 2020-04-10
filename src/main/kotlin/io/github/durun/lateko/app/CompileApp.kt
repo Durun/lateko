@@ -15,14 +15,26 @@ import java.nio.file.Path
 class CompileApp : CliktCommand(name = "compile") {
 	private val inputPaths by argument("input")
 			.path(
-					mustBeReadable = true,
-					canBeDir = false
+					mustBeReadable = true
 			).multiple()
 
 	override fun run() {
 		inputPaths.forEach { inputPath ->
-			processFile(inputPath)
+			when {
+				inputPath.toFile().isFile -> processFile(inputPath)
+				inputPath.toFile().isDirectory -> processDir(inputPath)
+			}
 		}
+	}
+
+	private fun processDir(path: Path) {
+		val dir = path.toFile()
+		assert(dir.isDirectory)
+		dir.walk().toSet()
+				.filter { it.extension == "kts" }
+				.forEach { file ->
+					processFile(file.toPath())
+				}
 	}
 
 	private fun processFile(input: Path) {
