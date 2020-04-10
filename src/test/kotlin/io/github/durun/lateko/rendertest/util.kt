@@ -10,7 +10,6 @@ import java.io.File
 
 
 internal fun generateDocument(script: File): StructureElement {
-	val reader = script.reader()
 	println("Parsing: $script")
 	return DocumentScriptParser().parse(script)
 }

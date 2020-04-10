@@ -15,13 +15,4 @@ open class Reference(val label: String) : InlineElement {
 	}
 }
 
-class StructureReference(val element: StructureElement) : InlineElement {
-	override fun <R> accept(visitor: InlineVisitor<R>): R = visitor.visit(this)
-	private val id: String get() = element.id
-
-	override fun renderedAs(format: Format): String = when (format) {
-		Format.Markdown -> AnchorLink(url = "#$id", element = id).toString()
-		Format.Tex -> Ref(id).toString()
-		else -> "ref($id)"
-	}
-}
+class StructureReference(val element: StructureElement) : Reference(element.id)
