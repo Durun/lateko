@@ -4,6 +4,6 @@ import io.github.durun.lateko.dsl.structure.section
 
 document("emptySection") {
 	chapter("Chapter") {
-		section { }
+		section("Section") { }
 	}
 }

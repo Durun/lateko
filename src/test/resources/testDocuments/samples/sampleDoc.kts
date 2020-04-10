@@ -16,7 +16,7 @@ document("サンプル") {
 				-"こんにちは。"
 				-"はい、こんにちは。"
 			}
-			section {
+			section("サブセクション") {
 				p {
 					-"これはsubsection."
 				}
