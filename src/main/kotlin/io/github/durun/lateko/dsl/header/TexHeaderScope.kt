@@ -19,8 +19,7 @@ open class TexHeaderScope : Builder<LineElement>() {
 				UsePackage("hyperref", option = "dvipdfmx"),
 				UsePackage("pxjahyper"),
 				UsePackage("graphicx", option = "dvipdfmx"),
-				UsePackage("listings"),
-				UsePackage("jlisting")
+				UsePackage("listings")
 		)
 		private val defaultRequirePackages: List<RequirePackage> = listOf()
 
