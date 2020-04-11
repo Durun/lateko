@@ -16,9 +16,11 @@ open class TexHeaderScope : Builder<LineElement>() {
 	companion object {
 		private val defaultDocumentClass = DocumentClass(name = "jsbook", options = listOf("a4paper", "11pt", "oneside", "openany", "report"))
 		private val defaultUsePackages: List<UsePackage> = listOf(
-				UsePackage(name = "hyperref", option = "dvipdfmx"),
-				UsePackage(name = "pxjahyper"),
-				UsePackage(name = "graphicx", option = "dvipdfmx")
+				UsePackage("hyperref", option = "dvipdfmx"),
+				UsePackage("pxjahyper"),
+				UsePackage("graphicx", option = "dvipdfmx"),
+				UsePackage("listings"),
+				UsePackage("jlisting")
 		)
 		private val defaultRequirePackages: List<RequirePackage> = listOf()
 
